@@ -1,0 +1,569 @@
+Settings:
+  Output files: "/gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/AhSRK07.*.bt2"
+  Line rate: 6 (line is 64 bytes)
+  Lines per side: 1 (side is 64 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+  Strings: unpacked
+  Max bucket size: default
+  Max bucket size, sqrt multiplier: default
+  Max bucket size, len divisor: 4
+  Difference-cover sample period: 1024
+  Endianness: little
+  Actual local endianness: little
+  Sanity checking: disabled
+  Assertions: disabled
+  Random seed: 0
+  Sizeofs: void*:8, int:4, long:8, size_t:8
+Input files DNA, FASTA:
+  /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/REF/AhSRK07.fasta
+Reading reference sizes
+  Time reading reference sizes: 00:00:00
+Calculating joined length
+Writing header
+Reserving space for joined string
+Joining reference sequences
+  Time to join reference sequences: 00:00:00
+bmax according to bmaxDivN setting: 151
+Using parameters --bmax 114 --dcv 1024
+  Doing ahead-of-time memory usage test   Passed!  Constructing with these parameters: --bmax 130 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:00
+  Allocating rank array
+  Ranking v-sort output
+  Ranking v-sort output time: 00:00:00
+  Invoking Larsson-Sadakane on ranks
+  Invoking Larsson-Sadakane on ranks time: 00:00:00
+  Sanity-checking and returning
+Building samples
+Reserving space for 12 sample suffixes
+Generating random suffixes
+QSorting 12 sample offsets, eliminating duplicates
+QSorting sample offsets, eliminating duplicates time: 00:00:00
+Multikey QSorting 12 samples
+  (Using difference cover)
+  Multikey QSorting samples time: 00:00:01
+Calculating bucket sizes
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 2, merged 6; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 2, merged 1; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Avg bucket size: 85.875 (target: 129)
+Converting suffix-array elements to index image
+Allocating ftab, absorbFtab
+Entering Ebwt loop
+Getting block 1 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 73
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 74
+Getting block 2 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 128
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 129
+Getting block 3 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 82
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 83
+Getting block 4 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 79
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 80
+Getting block 5 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 107
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 108
+Getting block 6 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 54
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 55
+Getting block 7 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 122
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 123
+Getting block 8 of 8
+  Reserving size (130) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 42
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 43
+Exited Ebwt loop
+fchr[A]: 0
+fchr[C]: 207
+fchr[G]: 327
+fchr[T]: 505
+fchr[$]: 694
+Exiting Ebwt::buildToDisk()
+Returning from initFromVector
+Wrote 4194729 bytes to primary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/AhSRK06.1.bt2
+Wrote 180 bytes to secondary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/AhSRK06.2.bt2
+Re-opening _in1 and _in2 as input streams
+Returning from Ebwt constructor
+Headers:
+    len: 694
+    bwtLen: 695
+      Passed!  Constructing with these parameters: --bmax 155 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:00
+  Allocating rank array
+  Ranking v-sort output
+  Ranking v-sort output time: 00:00:00
+  Invoking Larsson-Sadakane on ranks
+  Invoking Larsson-Sadakane on ranks time: 00:00:00
+  Sanity-checking and returning
+Building samples
+Reserving space for 12 sample suffixes
+GeneratingConstructing suffix-array element generator
+Building Di  Passed!  Constructing with these parameters: --bmax 106 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrdeConstructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:00
+  Allocating rank array
+  Ranking v-sort output
+  Ranking v-sort output time: 00:00:00
+  Invoking Larsson-Sadakane on ranks
+  Invoking Larsson-Sadakane on ranks time: 00:00:00
+  Sanity-checking and returning
+Building samples
+Reserving space for 12 sample suffixes
+Generating random suffixes
+QSorting 12 sample offsets, eliminating duplicates
+QSorting sample offsets, eliminating duplicates time: 00:00:00
+Multikey QSorting 12 samples
+  (Using difference cover)
+  Multikey QSorting samples time: 00:00:00
+Calculating bucket sizes
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 2, merged 6; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 2, merged 2; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 1, merged 1; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Avg bucket size: 123 (target: 161)
+Converting suffix-array elements to index image
+Allocating ftab, absorbFtab
+Entering Ebwt loop
+Getting block 1 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 154
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 155
+Getting block 2 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 85
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 86
+Getting block 3 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 153
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 154
+Getting block 4 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 99
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 100
+Getting block 5 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 136
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 137
+Getting block 6 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 154
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 155
+Getting block 7 of 7
+  Reserving size (162) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00Exiting Ebwt::buildToDisk()
+Returning from initFromVector
+Wrote 4194729 bytes to primary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/AhSRK06.rev.1.bt2
+Wrote 180 bytes to secondary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018Exiting Ebwt::buildToDisk()
+Returning from initFromVector
+Wrote 4194794 bytes to primary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/CgrSRK20.rev.1.bt2
+Wrote 224 bytes to secondary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/CgrSRK20.rev.2.bt2
+Re-opening _in1 and _in2 as input streams
+Returning from Ebwt constructor
+Headers:
+    len: 867
+    bwtLen: 868
+    sz: 217
+    bwtSz: 217
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 55
+    offsSz: 220
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 5
+    numLines: 5
+    ebwtTotLen: 320
+    ebwtTotSz: 320
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:05
+NoPARALOGS/BWT_RefIndexes/AhSRK15.rev.1.bt2
+Wrote 328 bytes to secondary EBWT file: /gepv/home2/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_25092018_DomSRK_NoPARALOGS/BWT_RefIndexes/AhSRK15.rev.2.bt2
+Re-opening _in1 and _in2 as input streams
+Returning from Ebwt constructor
+Headers:
+    len: 1294
+    bwtLen: 1295
+    sz: 324
+    bwtSz: 324
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 81
+    offsSz: 324
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 7
+    numLines: 7
+    ebwtTotLen: 448
+    ebwtTotSz: 448
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:02
+bwtTotSz: 256
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:02

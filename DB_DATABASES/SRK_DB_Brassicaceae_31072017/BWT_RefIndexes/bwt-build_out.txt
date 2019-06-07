@@ -1,0 +1,581 @@
+Settings:
+  Output files: "/gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/AhSRK07.*.bt2"
+  Line rate: 6 (line is 64 bytes)
+  Lines per side: 1 (side is 64 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+  Strings: unpacked
+  Max bucket size: default
+  Max bucket size, sqrt multiplier: default
+  Max bucket size, len divisor: 4
+  Difference-cover sample period: 1024
+  Endianness: little
+  Actual local endianness: little
+  Sanity checking: disabled
+  Assertions: disabled
+  Random seed: 0
+  Sizeofs: void*:8, int:4, long:8, size_t:8
+Input files DNA, FASTA:
+  /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/REF/AhSRK07.fasta
+Reading reference sizes
+  Time reading reference sizes: 00:00:00
+Calculating joined length
+Writing header
+Reserving space for joined string
+Joining reference sequences
+  Time to join reference sequences: 00:00:00
+bmax according to bmaxDivN setting: 482
+Using parameters --bmax 362 --dcv 1024
+  Doing ahead-of-time memory usage test
+  Passed!  Constructing with these parameters: --bmax 249 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:00
+  Allocating rank array
+  Ranking v-sort output
+  Ranking v-sort output time: 00:00:00
+  Invoking Larsson-Sadakane on ranks
+  Invoking Larsson-Sadakane on ranks time: 00:00:00
+  Sanity-checking and returning
+Building samples
+Reserving space for 12 sample suffixes
+Generating random suffixes
+QSorting 12 sample offsets, eliminating duplicates
+QSorting sample offsets, eliminating duplicates time: 00:00:00
+Multikey QSorting 12 samples
+  (Using difference cover)
+  Multikey QSorting samples time: 00:00:00
+Calculating bucket sizes
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 1, merged 7; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Avg bucket size: 79.1429 (target: 104)
+Converting suffix-array elements to index image
+Allocating ftab, absorbFtab
+Entering Ebwt loop
+Getting block 1 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 96
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 97
+Getting block 2 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 62
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 63
+Getting block 3 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 79
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 80
+Getting block 4 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 94
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 95
+Getting block 5 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 101
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 102
+Getting block 6 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 41
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 42
+Getting block 7 of 7
+  Reserving size (105) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 81
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 82
+Exited Ebwt loop
+fchr[A]: 0
+fchr[C]: 162
+fchr[G]: 261
+fchr[T]: 408
+fchr[$]: 560
+Exiting Ebwt::buildToDisk()
+Returning from initFromVector
+Wrote 4194665 bytes to primary EBWT file: /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/AlSRK17.1.bt2
+Wrote 148 bytes to secondary EBWT file: /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/AlSRK17.2.bt2
+Re-opening _in1 and _in2 as input streams
+Returning from Ebwt constructor
+Headers:
+    len: 560
+    bwtLen: 561
+    sz: 140
+    bwtSz: 141
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 36
+    offsSz: 144
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 3
+    numLines: 3
+    ebwtTotLen: 192
+    ebwtTotSz: 192
+    color: 0
+    reverse: 0
+Total time for call to driver() for forward index: 00:00:06
+Reading reference sizes
+  Time reading reference sizes: 00:00:00
+Calculating joined length
+Writing header
+Reserving space for joined string
+Joining reference sequences
+  Time to join reference sequences: 00:00:00
+  Time to reverConstructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting sam  Passed!  Constructing with these parameters: --bmax 105 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:00
+  Allocating rank array
+  Ranking v-sor  Passed!  Constructing with these parameters: --bmax 1590 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:00
+  Allocating rank array
+  Ranking v-sort output
+  Ranking v-sort output time: 00:00:00
+  Invoking Larsson-Sadakane on ranks
+  Invoking Larsson-Sadakane on ranks time: 00:00:00
+  Sanity-checking and returning
+Building samples
+Reserving space for 12 sample suffixes
+Generating random suffixes
+QSorting 12 sample offsets, eliminating duplicates
+QSorting sample offsets, eliminating duplicates time: 00:00:00
+Multikey QSorting 12 samples
+  (Using difference cover)
+  Multikey QSorting samples time: 00:00:00
+Calculating bucket sizes
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 1, merged 6; iterating...
+  Binary sorting into buckets
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Binary sorting into buckets time: 00:00:00
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Avg bucket size: 1058.75 (target: 1589)
+Converting suffix-array elements to index image
+Allocating ftab, absorbFtab
+Entering Ebwt loop
+Getting block 1 of 8
+  Reserving size (1590) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 835
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 836
+Getting block 2 of 8
+  Reserving size (1590) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 1142
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 1143
+Getting block 3 of 8
+  Reserving size (1590) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 1339
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 1340
+Getting block 4 of 8
+  Reserving size (1590) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 1251
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 1252
+Getting block 5 of 8
+  Reserving size (1590) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of length 898
+  (Using difference cover)
+  Sorting block time: 00:00:00
+Returning block of 899
+Getting block 6 of 8
+  Reserving size (1590) for bucket
+  Calculating Z arrays
+  Calculating Z arrays time: 00:00:00
+  Entering block accumulator loop:
+  10%
+  20%
+  30%
+  40%
+  50%
+  60%
+  70%
+  80%
+  90%
+  100%
+  Block accumulator loop time: 00:00:00
+  Sorting block of lenExiting Ebwt::buildToDisk()
+Returning from initFromVector
+Wrote 4194665 bytes to primary EBWT file: /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/AlSRK17.rev.1.bt2
+Wrote 148 bytes to secondary EBWT file: /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/AlSRK17.rev.2.bt2
+Re-opening _in1 and _in2 as input streams
+Returning from Ebwt constructor
+Headers:
+    len: 560
+    bwtLen: 561
+    sz: 140
+    bwtSz: 141
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 36
+    offsSz: 144
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 3
+    numLines: 3
+    ebwtTotLen: 192
+    ebwtTotSz: 192
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:01
+::buildToDisk()Exiting Ebwt::buildToDisk()
+Returning from initFromVector
+Wrote 4194730 bytes to primary EBWT file: /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/CgrSRK51.rev.1.bt2
+Wrote 192 bytes to secondary EBWT file: /gepv/home2/mathieu/tools/NGSgenotyp/DB_DATABASES/SRK_DB_Brassicaceae_31072017/BWT_RefIndexes/CgrSRK51.rev.2.bt2
+Re-opening _in1 and _in2 as input streams
+Returning from Ebwt constructor
+Headers:
+    len: 743
+    bwtLen: 744
+    sz: 186
+    bwtSz: 186
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 47
+    offsSz: 188
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 4
+    numLines: 4
+    ebwtTotLen: 256
+    ebwtTotSz: 256
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:01
+: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 36
+    offsSz: 144
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 3
+    numLines: 3
+    ebwtTotLen: 192
+    ebwtTotSz: 192
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:03
+hars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 83
+    offsSz: 332
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 7
+    numLines: 7
+    ebwtTotLen: 448
+    ebwtTotSz: 448
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:01
+m Ebwt constructor
+Headers:
+    len: 1296
+    bwtLen: 1297
+    sz: 324
+    bwtSz: 325
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 20
+    eftabSz: 80
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 82
+    offsSz: 328
+    lineSz: 64
+    sideSz: 64
+    sideBwtSz: 48
+    sideBwtLen: 192
+    numSides: 7
+    numLines: 7
+    ebwtTotLen: 448
+    ebwtTotSz: 448
+    color: 0
+    reverse: 1
+Total time for backward call to driver() for mirror index: 00:00:04

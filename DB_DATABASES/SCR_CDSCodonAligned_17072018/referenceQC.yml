@@ -1,0 +1,198 @@
+'AhSCR03':
+  'fragments':
+    'F1':
+      'GC': 41.1
+      'bases_count': ''
+      'len': 246
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR03'
+  'seq_len': 246
+  'specie': 'A. halleri'
+'AhSCR04':
+  'fragments':
+    'F1':
+      'GC': 39.1
+      'bases_count': ''
+      'len': 261
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR04'
+  'seq_len': 261
+  'specie': 'A. halleri'
+'AhSCR10':
+  'fragments':
+    'F1':
+      'GC': 38.4
+      'bases_count': ''
+      'len': 279
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR10'
+  'seq_len': 279
+  'specie': 'A. halleri'
+'AhSCR12':
+  'fragments':
+    'F1':
+      'GC': 39.4
+      'bases_count': ''
+      'len': 246
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR12'
+  'seq_len': 246
+  'specie': 'A. halleri'
+'AhSCR13':
+  'fragments':
+    'F1':
+      'GC': 38.2
+      'bases_count': ''
+      'len': 249
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR13'
+  'seq_len': 249
+  'specie': 'A. halleri'
+'AhSCR15':
+  'fragments':
+    'F1':
+      'GC': 35.0
+      'bases_count': ''
+      'len': 246
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR15'
+  'seq_len': 246
+  'specie': 'A. halleri'
+'AhSCR20':
+  'fragments':
+    'F1':
+      'GC': 37.9
+      'bases_count': ''
+      'len': 261
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR20'
+  'seq_len': 261
+  'specie': 'A. halleri'
+'AhSCR28':
+  'fragments':
+    'F1':
+      'GC': 34.6
+      'bases_count': ''
+      'len': 246
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR28'
+  'seq_len': 246
+  'specie': 'A. halleri'
+'AhSCR29':
+  'fragments':
+    'F1':
+      'GC': 43.7
+      'bases_count': ''
+      'len': 261
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR29'
+  'seq_len': 261
+  'specie': 'A. halleri'
+'AhSCR32':
+  'fragments':
+    'F1':
+      'GC': 39.4
+      'bases_count': ''
+      'len': 282
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR32'
+  'seq_len': 282
+  'specie': 'A. halleri'
+'AhSCR36':
+  'fragments':
+    'F1':
+      'GC': 39.6
+      'bases_count': ''
+      'len': 255
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR36'
+  'seq_len': 255
+  'specie': 'A. halleri'
+'AhSCR43':
+  'fragments':
+    'F1':
+      'GC': 42.2
+      'bases_count': ''
+      'len': 263
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSCR43'
+  'seq_len': 263
+  'specie': 'A. halleri'
+'AlSCR01':
+  'fragments':
+    'F1':
+      'GC': 38.7
+      'bases_count': ''
+      'len': 243
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSCR01'
+  'seq_len': 243
+  'specie': 'A. lyrata'
+'AlSCR14':
+  'fragments':
+    'F1':
+      'GC': 39.3
+      'bases_count': ''
+      'len': 252
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSCR14'
+  'seq_len': 252
+  'specie': 'A. lyrata'
+'AlSCR16':
+  'fragments':
+    'F1':
+      'GC': 38.4
+      'bases_count': ''
+      'len': 279
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSCR16'
+  'seq_len': 279
+  'specie': 'A. lyrata'
+'AlSCR18':
+  'fragments':
+    'F1':
+      'GC': 40.1
+      'bases_count': ''
+      'len': 237
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSCR18'
+  'seq_len': 237
+  'specie': 'A. lyrata'
+'AlSCR38':
+  'fragments':
+    'F1':
+      'GC': 37.3
+      'bases_count': ''
+      'len': 252
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSCR38'
+  'seq_len': 252
+  'specie': 'A. lyrata'
+'AlSCR50':
+  'fragments':
+    'F1':
+      'GC': 39.4
+      'bases_count': ''
+      'len': 246
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSCR50'
+  'seq_len': 246
+  'specie': 'A. lyrata'

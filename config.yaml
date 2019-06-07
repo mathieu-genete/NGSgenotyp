@@ -1,0 +1,119 @@
+#NGSgenotyp V1.0.8
+#number of parallels job by defaut
+MaxParallelsJobs: 100
+
+#Maximum graphs per figure for coverage plots
+MaxgraphPerFigure: 6
+
+#parameters for plots: [param1, ..., paramN] --> param1: ['excel parameter','bolean operation (<,>,==,<=,>=,!=)','numeric value']
+plot_selection_param: [['error rate','<',0.08]]
+
+#Parameters to define genotyp threshold value
+genotyp_def_ErrorRate: 0.05
+genotyp_def_MeanCover_factor: 0.25
+genotyp_def_MinRegionCov: 0.95
+
+#paralog isPositiv alleleprobability threshold
+paralogAlleleProb_THRLD : 0.05
+
+#parameters for genotyp score calculation
+#logNormal parameters mean (μ = -4.080423) and standard deviation (σ = 0.565112)
+mu : -4.080423
+sigma : 0.565112
+
+#exponential distribution
+#here beacaus of distribution, lbda = 1/(1-"expected value")
+#λ = 1/(1-0.95) = 20
+lbda : 20
+
+#Score calculation without paralogs
+covariance_factor: 0.15
+
+#error rate limit for SharedReads xls files
+sharedReads_errorRatelim: 0.1
+
+remove_OldDB : True
+data_dir : DB_DATABASES
+refs_catalog: refs_catalog.p
+ref_dir : REF
+sampleQC_dir: QC_SamplesRef
+all_results_dir: Resultats
+species_dict : species.yaml
+
+#Log file
+log_folder : logs
+
+#results files
+xls_shared_reads: shared_reads.xls
+putative_alleles: putative_alleles.txt
+MaxSheetNbr: 15
+SortKey: 'NormScore'
+sortOrderReverse: True
+
+xls_headers_titles: {'NormScore':'Genotyp Score','error rate':'Error rate', 'mean cover':'Mean Depth', 'Group ID':'Homolog IDs', 'RefLen':'Reference Length (bp)', 'bases mapped (cigar)':'bases mapped', 'mismatches':'mismatches','Region Cov':'Region Coverage','score':'Score','GS_Threshold':'Genotyp Threshold','Region':'Analysed Region (bp)','Warnings':'Warnings'}
+
+result_stats_headers: ['NormScore','error rate', 'mean cover', 'Group ID', 'RefLen', 'bases mapped (cigar)', 'mismatches','Region Cov','GS_Threshold','Warnings']
+
+result_stats_headersPaired: ['NormScore','error rate', 'mean cover', 'Group ID', 'RefLen', 'reads properly paired', 'bases mapped (cigar)', 'mismatches','Region Cov','GS_Threshold','Warnings']
+
+seqLen_distrib_graph: RefLen_Distrib.png
+
+#By default pdf reports is desactivated, you should use -pdf option to force pdf generation
+generate_pdf_reports: false
+
+#PDF files generation
+ERate_MeanCov_PDF: False
+Group_ErrMeanCov_PDF: False
+ErrRegionCov_PDF: True
+
+#tools relative path
+samtools: TOOLS/samtools-1.4/
+bowtie2: TOOLS/bowtie2-2.2.6/
+fastqc: TOOLS/FastQC_v0_11_4/
+picklestats_file: samview_stats.p
+
+picklestats_params: ['reads mapped', 'bases mapped (cigar)', 'mismatches', 'error rate', 'average length', 'average quality']
+
+#Filtered fastq:
+out_filtered: FQ_filtered
+out_reads_yaml: filtered_reads_list.yaml
+kmerFilter_Yaml: kmerRefFilter_resume.yaml
+
+#splited reads:
+out_splited: FQ_Splited
+out_splitedReads_yaml: splited_reads_list.yaml
+
+#yaml file with treated reads location
+finalReads_yaml: final_reads.yaml
+
+#Bowtie results
+bwt_IndexdirResult: 'BWT_RefIndexes'
+bwt_build_out: 'bwt-build_out.txt'
+bwt_yam_reflist: 'bwt_Reflist.yml'
+
+bwt_dirResult: 'BWT_Results'
+#bowtie2_args : ['--phred33', '--minins 0', '--maxins 1000']
+bowtie2_args : ['--phred33']
+
+#quality control
+GC_interval: [35,60]
+seq_min_len: 1000
+
+#quality control results
+yml_qc_ref: 'referenceQC.yml'
+xls_results_qc : 'referenceQC.xls'
+yamlReads_file: 'fastq_ReadsNbr.yml'
+fastqc_stdout: fastqc_stdout
+fastqc_stderr: fastqc_sterr
+
+#output split_fasta
+sep_motif : NNNNN
+
+#species : ['A. halleri', 'A. lyrata']
+species : all
+
+
+ref_id : "Ref_"
+
+#Warnings messages list
+Warn_refLen : "Ref. Length"

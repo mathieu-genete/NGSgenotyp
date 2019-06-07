@@ -1,0 +1,192 @@
+'ALP-ARK3-1':
+  'fragments':
+    'F1':
+      'GC': 42.6
+      'ShEntropy': 1.9338846197905886
+      'bases_count': ''
+      'len': 568
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALP-ARK3-1'
+  'seq_len': 568
+  'specie': 'Other'
+'ALPSRK09':
+  'fragments':
+    'F1':
+      'GC': 43.4
+      'ShEntropy': 1.9651831518246328
+      'bases_count': ''
+      'len': 542
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK09'
+  'seq_len': 542
+  'specie': 'Other'
+'ALPSRK1':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.9848543041177535
+      'bases_count': ''
+      'len': 938
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK1'
+  'seq_len': 938
+  'specie': 'Other'
+'ALPSRK10':
+  'fragments':
+    'F1':
+      'GC': 43.7
+      'ShEntropy': 1.9708012195299722
+      'bases_count': ''
+      'len': 545
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK10'
+  'seq_len': 545
+  'specie': 'Other'
+'ALPSRK11':
+  'fragments':
+    'F1':
+      'GC': 44.0
+      'ShEntropy': 1.9785518493975671
+      'bases_count': ''
+      'len': 545
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK11'
+  'seq_len': 545
+  'specie': 'Other'
+'ALPSRK12':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.9789466476194453
+      'bases_count': ''
+      'len': 545
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK12'
+  'seq_len': 545
+  'specie': 'Other'
+'ALPSRK13':
+  'fragments':
+    'F1':
+      'GC': 44.2
+      'ShEntropy': 1.977014362252334
+      'bases_count': ''
+      'len': 545
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK13'
+  'seq_len': 545
+  'specie': 'Other'
+'ALPSRK14':
+  'fragments':
+    'F1':
+      'GC': 48.1
+      'ShEntropy': 1.9899863034200362
+      'bases_count': ''
+      'len': 784
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK14'
+  'seq_len': 784
+  'specie': 'Other'
+'ALPSRK15':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.981796213550417
+      'bases_count': ''
+      'len': 869
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK15'
+  'seq_len': 869
+  'specie': 'Other'
+'ALPSRK2':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.9827448042577154
+      'bases_count': 'R:1,Y:1'
+      'len': 932
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK2'
+  'seq_len': 932
+  'specie': 'Other'
+'ALPSRK3':
+  'fragments':
+    'F1':
+      'GC': 46.1
+      'ShEntropy': 1.99145404640727
+      'bases_count': ''
+      'len': 941
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK3'
+  'seq_len': 941
+  'specie': 'Other'
+'ALPSRK4':
+  'fragments':
+    'F1':
+      'GC': 48.1
+      'ShEntropy': 1.990712177009378
+      'bases_count': ''
+      'len': 659
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK4'
+  'seq_len': 659
+  'specie': 'Other'
+'ALPSRK5':
+  'fragments':
+    'F1':
+      'GC': 46.6
+      'ShEntropy': 1.9920594789118373
+      'bases_count': ''
+      'len': 974
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK5'
+  'seq_len': 974
+  'specie': 'Other'
+'ALPSRK6':
+  'fragments':
+    'F1':
+      'GC': 45.8
+      'ShEntropy': 1.9894010672005256
+      'bases_count': ''
+      'len': 950
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK6'
+  'seq_len': 950
+  'specie': 'Other'
+'ALPSRK7':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.9673018572562335
+      'bases_count': ''
+      'len': 591
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK7'
+  'seq_len': 591
+  'specie': 'Other'
+'ALPSRK8':
+  'fragments':
+    'F1':
+      'GC': 43.7
+      'ShEntropy': 1.9719833846565746
+      'bases_count': ''
+      'len': 579
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'ALPSRK8'
+  'seq_len': 579
+  'specie': 'Other'
