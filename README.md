@@ -1,6 +1,5 @@
 # NGSgenotyp
 ## Installation
 
-1. **install python required libraries for IFB cloud**
+1. **install python required libraries**
 
-  execute sh install_libs.sh
