@@ -23,8 +23,8 @@ sigma : 0.565112
 
 #exponential distribution
 #here beacaus of distribution, lbda = 1/(1-"expected value")
-#λ = 1/(1-0.95) = 20
-lbda : 20
+#λ = 1/(1-0.990758928571429) = 108.2126
+lbda : 108.2126
 
 #Score calculation without paralogs
 covariance_factor: 0.15
