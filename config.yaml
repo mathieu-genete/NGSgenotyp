@@ -11,20 +11,20 @@ plot_selection_param: [['error rate','<',0.08]]
 #Parameters to define genotyp threshold value
 genotyp_def_ErrorRate: 0.05
 genotyp_def_MeanCover_factor: 0.25
-genotyp_def_MinRegionCov: 0.95
+genotyp_def_MinRegionCov: 0.85
 
 #paralog isPositiv alleleprobability threshold
 paralogAlleleProb_THRLD : 0.05
 
 #parameters for genotyp score calculation
-#logNormal parameters mean (μ = -4.080423) and standard deviation (σ = 0.565112)
-mu : -4.080423
-sigma : 0.565112
+#logNormal parameters mean (μ = -4.4081573) and standard deviation (σ = 0.6205917)
+mu : -4.4081573
+sigma : 0.6205917
 
 #exponential distribution
 #here beacaus of distribution, lbda = 1/(1-"expected value")
-#λ = 1/(1-0.990758928571429) = 108.2126
-lbda : 108.2126
+#λ = 1/(1-0.989583) = 96
+lbda : 96
 
 #Score calculation without paralogs
 covariance_factor: 0.15
