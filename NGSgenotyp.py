@@ -1164,14 +1164,13 @@ def samtools_SortIndexStats():
 				
 					stats_rslt [read_file[0]][reference]['max depth'] = float(rslt_BDC['maxdepth'])
 					stats_rslt [read_file[0]][reference]['mean cover'] = float(rslt_BDC['mean'])
+					stats_rslt [read_file[0]][reference]['NormDepth'] = 0
 					stats_rslt [read_file[0]][reference]['cov median'] = float(rslt_BDC['median'])
 					stats_rslt [read_file[0]][reference]['cov IQR'] = float(rslt_BDC['iqr'])
 					stats_rslt [read_file[0]][reference]['Norm IQR'] = float(rslt_BDC['riqr'])
 					stats_rslt [read_file[0]][reference]['Norm med'] = float(rslt_BDC['rmed'])
 					stats_rslt [read_file[0]][reference]['Region Cov'] = round(float(rslt_BDC['pSeqCov']),3)
-                                        stats_rslt [read_file[0]][reference]['score'] = 0
-                                        stats_rslt [read_file[0]][reference]['NormScore'] = 0
-                                        stats_rslt [read_file[0]][reference]['GS_Threshold'] = 0
+                                        stats_rslt [read_file[0]][reference]['gscore'] = 0
                                         stats_rslt [read_file[0]][reference]['Warnings'] = []
 					AllBamDepthCoverage[aln_name] = (rslt_BDC)
 						
@@ -1183,15 +1182,14 @@ def samtools_SortIndexStats():
 	
 	headers.append('RefLen')
 	headers.append('mean cover')
+        headers.append('NormDepth')
 	headers.append('cov median')
 	headers.append('cov IQR')
 	headers.append('Norm IQR')
 	headers.append('Norm med')
 	headers.append('max depth')
 	headers.append('Region Cov')
-	headers.append('score')
-        headers.append('NormScore')
-        headers.append('GS_Threshold')
+	headers.append('gscore')
         headers.append('Warnings')
 	
 	headers = list(set(headers))
@@ -1334,13 +1332,12 @@ def ErrorRate_Density(ErrList):
         ErrRatesList=sorted(ErrList)
         density = gaussian_kde(ErrRatesList)
         xs=np.linspace(0,max(ErrRatesList),len(ErrRatesList))
-        #density.covariance_factor = lambda : 0.204
         density._compute_covariance()       
         Adensity = np.array(density(xs))
         return {'xs':xs,'density':Adensity}
 
 def get_errorratesCov(stats,List_Paralogs):
-        ErrorRateCovList={'err':[],'cov':[],'IsPositiv':[],'depth':[],'score':[]}
+        ErrorRateCovList={'err':[],'cov':[],'IsPositiv':[],'depth':[],'gscore':[]}
         for indiv,v in stats.items():
                 for ref,w in v.items():
                         if w['mean cover']>0 and ref not in List_Paralogs:
@@ -1348,14 +1345,13 @@ def get_errorratesCov(stats,List_Paralogs):
                                 ErrorRateCovList['cov'].append(w['Region Cov'])
                                 ErrorRateCovList['IsPositiv'].append(w['IsPositiv'])
                                 ErrorRateCovList['depth'].append(w['mean cover'])
-                                ErrorRateCovList['score'].append(w['NormScore'])
+                                ErrorRateCovList['gscore'].append(w['gscore'])
         return ErrorRateCovList
 
 def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 	
 	List_Paralogs = Load_Paralogs()
-        #allele_prob_THRLD = allele_prob(config['genotyp_def_ErrorRate'],config['genotyp_def_MinRegionCov'])
-        allele_prob_THRLD = config['genotyp_alleleProb_THRLD']
+        allele_prob_THRLD = float(config['genotyp_alleleProb_THRLD'])
 
 	for sname, values in stats_rslt.items():
 		for ref, statRef in values.items():
@@ -1363,7 +1359,7 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                         if stats_rslt[sname][ref]['RefLen']<config['seq_min_len']:
                                 stats_rslt[sname][ref]['Warnings'].append(config['Warn_refLen'])
 
-                        stats_rslt[sname][ref]['score'] = calcul_AlleleScore(statRef['error rate'],statRef['Region Cov'],statRef['mean cover'])
+                        stats_rslt[sname][ref]['gscore'] = calcul_AlleleScore(statRef['error rate'],statRef['Region Cov'],statRef['mean cover'])
                         AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov'])
                         stats_rslt[sname][ref]['alleleProb'] = AlleleProb
 			HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
@@ -1375,52 +1371,22 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 			else:
 				stats_rslt[sname][ref]['IsParalog'] = False
 
-                        if stats_rslt[sname][ref]['IsParalog'] == True:
-                                #if (AlleleProb>=config["paralogAlleleProb_THRLD"]):
-                                if (AlleleProb>=allele_prob_THRLD):
-                                        stats_rslt[sname][ref]['IsPositiv'] = True
-                                else:
-                                        stats_rslt[sname][ref]['IsPositiv'] = False
-
-                #NormScore calculation
-                parScores = np.array([v['score'] for v in values.values() if (v['IsParalog'] and v['IsPositiv'] and v['mean cover']>0)])
-                if len(parScores)>0:
-                        parMedScore = np.median(parScores)
-                for statRef in values.values():
-                        if len(parScores)>0:
-                                statRef['NormScore']= statRef['score']/parMedScore
+                        if (AlleleProb>=allele_prob_THRLD):
+                                stats_rslt[sname][ref]['IsPositiv'] = True
                         else:
-                                statRef['NormScore']= statRef['score']
+                                stats_rslt[sname][ref]['IsPositiv'] = False
 
-                parMeanCov = np.array([v['mean cover'] for v in values.values() if (v['IsParalog'] and v['IsPositiv'] and v['mean cover']>0)])
-                if len(parMeanCov)>0:
-                        parMedMeanCov = np.median(parMeanCov)
-                        GS_Threshold = calcul_AlleleScore(config['genotyp_def_ErrorRate'],config['genotyp_def_MinRegionCov'],parMedMeanCov*config['genotyp_def_MeanCover_factor'])
-                        addTextToLogFile("{} - genotyp threshold = {}".format(sname,GS_Threshold))
-                else:
-                        SampleScores = [v['score'] for v in values.values() if (not v['IsParalog'] and v['mean cover']>0)]
-                        GS_Threshold = get_NoParalog_DensityThrld(SampleScores)['Threshold']
-                        addTextToLogFile("{} - NO PARALOGS genotyp threshold = {}".format(sname,GS_Threshold))
-                if math.isnan(GS_Threshold):
-                        addTextToLogFile("THRESHOLD NOT DETERMINED FOR {} ".format(sname))
-
-                if len(parScores)>0:
-                        GS_Threshold = GS_Threshold/parMedScore
+                #NormDepth calculation
+                parDepth = np.array([v['Mean Depth'] for v in values.values() if (v['IsParalog'] and v['IsPositiv'] and v['mean cover']>0)])
+                if len(parDepth)>0:
+                        parMedDepth = np.median(parDepth)
 
                 for statRef in values.values():
+                        if len(parDepth)>0:
+                                statRef['NormDepth']= statRef['Mean Depth']/parMedScore
+                        else:
+                                statRef['NormDepth']= statRef['Mean Depth']
 
-                        statRef['GS_Threshold']= GS_Threshold
-
-                        if GS_Threshold>0 and not statRef['IsParalog'] and not math.isnan(GS_Threshold):
-                                if statRef['NormScore'] >= GS_Threshold:
-                                        statRef['IsPositiv']=True
-                                else:
-                                        statRef['IsPositiv']=False
-                        elif not statRef['IsParalog']:
-                                if (statRef['error rate']/(statRef['Region Cov']+0.0000000001))<=config['genotyp_def_ErrorRate']:
-                                        statRef['IsPositiv']=True
-                                else:
-                                        statRef['IsPositiv']=False
 
         ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
         ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
@@ -1429,24 +1395,8 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                 pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],config['genotyp_def_ErrorRate'],ErrorRateDensityDatas['xs'],ErrorRateDensityDatas['density']))
                 pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],config['genotyp_def_ErrorRate']))
                 pdf.savefig(ErrCovDepth_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv']))
-                pdf.savefig(ErrCovScore_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['score'],ErrorRateCovList['IsPositiv']))
+                pdf.savefig(ErrCovScore_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['gscore'],ErrorRateCovList['IsPositiv']))
         return stats_rslt
-
-def get_NoParalog_DensityThrld(ScoreList):
-        if len(ScoreList)>=5:
-                density = gaussian_kde(ScoreList)
-                xs=np.linspace(0,max(ScoreList),max(ScoreList))
-                density.covariance_factor = lambda : config['covariance_factor']
-                density._compute_covariance()       
-                Adensity = np.array(density(xs))
-                diffDensity = np.diff(Adensity,n=2)
-                SignDiffDensity = np.sign(diffDensity)
-                DiffSignD= np.diff(SignDiffDensity)
-                SignIds = np.array(np.where(abs(DiffSignD)==2)).tolist()[0]
-                Thrld = np.mean([i+3 for i in SignIds[:2]])
-                return {'density':density(xs),'Threshold':Thrld}
-        else:
-                return {'density':[],'Threshold':0.0}
 
 
 def generatePutativeAllelesTXTFile(outTXT,stats_rslt):

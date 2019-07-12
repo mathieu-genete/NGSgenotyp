@@ -10,8 +10,6 @@ plot_selection_param: [['error rate','<',0.08]]
 
 #Parameters to define genotyp threshold value
 genotyp_def_ErrorRate: 0.05
-genotyp_def_MeanCover_factor: 0.25
-genotyp_def_MinRegionCov: 0.85
 genotyp_alleleProb_THRLD: 1e-8
 
 #paralog isPositiv alleleprobability threshold
@@ -26,9 +24,6 @@ sigma : 0.6205917
 #here beacaus of distribution, lbda = 1/(1-"expected value")
 #λ = 1/(1-0.989583) = 96
 lbda : 96
-
-#Score calculation without paralogs
-covariance_factor: 0.15
 
 #error rate limit for SharedReads xls files
 sharedReads_errorRatelim: 0.1
@@ -51,11 +46,11 @@ MaxSheetNbr: 15
 SortKey: 'NormScore'
 sortOrderReverse: True
 
-xls_headers_titles: {'NormScore':'Genotyp Score','error rate':'Error rate', 'mean cover':'Mean Depth', 'Group ID':'Homolog IDs', 'RefLen':'Reference Length (bp)', 'bases mapped (cigar)':'bases mapped', 'mismatches':'mismatches','Region Cov':'Region Coverage','score':'Score','GS_Threshold':'Genotyp Threshold','Region':'Analysed Region (bp)','Warnings':'Warnings'}
+xls_headers_titles: {'gscore':'Genotyp Score','error rate':'Error rate', 'mean cover':'Mean Depth','NormDepth':'Normalized Depth', 'Group ID':'Homolog IDs', 'RefLen':'Reference Length (bp)', 'bases mapped (cigar)':'bases mapped', 'mismatches':'mismatches','Region Cov':'Region Coverage','Region':'Analysed Region (bp)','Warnings':'Warnings'}
 
-result_stats_headers: ['NormScore','error rate', 'mean cover', 'Group ID', 'RefLen', 'bases mapped (cigar)', 'mismatches','Region Cov','GS_Threshold','Warnings']
+result_stats_headers: ['gscore','error rate', 'mean cover','NormDepth', 'Group ID', 'RefLen', 'bases mapped (cigar)', 'mismatches','Region Cov','Warnings']
 
-result_stats_headersPaired: ['NormScore','error rate', 'mean cover', 'Group ID', 'RefLen', 'reads properly paired', 'bases mapped (cigar)', 'mismatches','Region Cov','GS_Threshold','Warnings']
+result_stats_headersPaired: ['gscore','error rate', 'mean cover', 'NormDepth','Group ID', 'RefLen', 'reads properly paired', 'bases mapped (cigar)', 'mismatches','Region Cov','Warnings']
 
 seqLen_distrib_graph: RefLen_Distrib.png
 
