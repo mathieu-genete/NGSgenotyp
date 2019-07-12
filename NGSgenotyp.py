@@ -1354,7 +1354,8 @@ def get_errorratesCov(stats,List_Paralogs):
 def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 	
 	List_Paralogs = Load_Paralogs()
-        allele_prob_THRLD = allele_prob(config['genotyp_def_ErrorRate'],config['genotyp_def_MinRegionCov'])
+        #allele_prob_THRLD = allele_prob(config['genotyp_def_ErrorRate'],config['genotyp_def_MinRegionCov'])
+        allele_prob_THRLD = config['genotyp_alleleProb_THRLD']
 
 	for sname, values in stats_rslt.items():
 		for ref, statRef in values.items():

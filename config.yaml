@@ -12,9 +12,10 @@ plot_selection_param: [['error rate','<',0.08]]
 genotyp_def_ErrorRate: 0.05
 genotyp_def_MeanCover_factor: 0.25
 genotyp_def_MinRegionCov: 0.85
+genotyp_alleleProb_THRLD: 1e-8
 
 #paralog isPositiv alleleprobability threshold
-paralogAlleleProb_THRLD : 0.05
+#paralogAlleleProb_THRLD : 0.05
 
 #parameters for genotyp score calculation
 #logNormal parameters mean (μ = -4.4081573) and standard deviation (σ = 0.6205917)
