@@ -1377,15 +1377,15 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                                 stats_rslt[sname][ref]['IsPositiv'] = False
 
                 #NormDepth calculation
-                parDepth = np.array([v['Mean Depth'] for v in values.values() if (v['IsParalog'] and v['IsPositiv'] and v['mean cover']>0)])
+                parDepth = np.array([v['mean cover'] for v in values.values() if (v['IsParalog'] and v['IsPositiv'] and v['mean cover']>0)])
                 if len(parDepth)>0:
                         parMedDepth = np.median(parDepth)
 
                 for statRef in values.values():
                         if len(parDepth)>0:
-                                statRef['NormDepth']= statRef['Mean Depth']/parMedScore
+                                statRef['NormDepth']= statRef['mean cover']/parMedScore
                         else:
-                                statRef['NormDepth']= statRef['Mean Depth']
+                                statRef['NormDepth']= statRef['mean cover']
 
 
         ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
