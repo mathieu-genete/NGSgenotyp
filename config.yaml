@@ -43,7 +43,7 @@ log_folder : logs
 xls_shared_reads: shared_reads.xls
 putative_alleles: putative_alleles.txt
 MaxSheetNbr: 15
-SortKey: 'NormScore'
+SortKey: 'gscore'
 sortOrderReverse: True
 
 xls_headers_titles: {'gscore':'Genotyp Score','error rate':'Error rate', 'mean cover':'Mean Depth','NormDepth':'Normalized Depth', 'Group ID':'Homolog IDs', 'RefLen':'Reference Length (bp)', 'bases mapped (cigar)':'bases mapped', 'mismatches':'mismatches','Region Cov':'Region Coverage','Region':'Analysed Region (bp)','Warnings':'Warnings'}
