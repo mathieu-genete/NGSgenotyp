@@ -1383,7 +1383,7 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 
                 for statRef in values.values():
                         if len(parDepth)>0:
-                                statRef['NormDepth']= statRef['mean cover']/parMedScore
+                                statRef['NormDepth']= statRef['mean cover']/parMedDepth
                         else:
                                 statRef['NormDepth']= statRef['mean cover']
 
