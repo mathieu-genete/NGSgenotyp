@@ -1359,10 +1359,10 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                         if stats_rslt[sname][ref]['RefLen']<config['seq_min_len']:
                                 stats_rslt[sname][ref]['Warnings'].append(config['Warn_refLen'])
 
-                        stats_rslt[sname][ref]['gscore'] = calcul_AlleleScore(statRef['error rate'],statRef['Region Cov'],statRef['mean cover'])
                         AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov'])
                         stats_rslt[sname][ref]['alleleProb'] = AlleleProb
-			HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
+			stats_rslt[sname][ref]['gscore'] = AlleleProb
+                        HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
 			stats_rslt[sname][ref]['Group ID'] = str(HomoParaInfo['grpRef'])
 			
 			if ref in List_Paralogs:
