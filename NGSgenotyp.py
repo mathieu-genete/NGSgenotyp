@@ -1239,7 +1239,7 @@ def loi_LogNormalFixed(x):
 def calculIntegrale(f,a,b):
         if callable(f):
                 s=0
-                stepVal=0.001
+                stepVal=0.0001
                 for x in np.arange(a,b,stepVal):
                         s += (stepVal/6.0)*(f(x)+4*f((x+x+stepVal)/2.0)+f(x+stepVal))
                 return s
@@ -1255,7 +1255,7 @@ def get_CovProb(cov):
 def allele_prob(err,cov):
         errProb = get_ErrProb(err)
         covProb = get_CovProb(cov)
-        allProb = config['alleleProb_formula']
+        allProb = eval(config['alleleProb_formula'])
         return {'alleleP':allProb,'errP':errProb,'covP':covProb}
 
 def get_maxMeanCover(stats_rslt,sname):
