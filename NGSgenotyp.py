@@ -1358,12 +1358,6 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                         if stats_rslt[sname][ref]['RefLen']<config['seq_min_len']:
                                 stats_rslt[sname][ref]['Warnings'].append(config['Warn_refLen'])
 
-                        AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov'])
-                        stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
-			stats_rslt[sname][ref]['gscore'] = AlleleProb['alleleP']
-			stats_rslt[sname][ref]['errProb'] = AlleleProb['errP']
-			stats_rslt[sname][ref]['covProb'] = AlleleProb['covP']
-
                         HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
 			stats_rslt[sname][ref]['Group ID'] = str(HomoParaInfo['grpRef'])
 			
@@ -1373,21 +1367,32 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 			else:
 				stats_rslt[sname][ref]['IsParalog'] = False
 
-                        if (AlleleProb['alleleP']>=allele_prob_THRLD):
-                                stats_rslt[sname][ref]['IsPositiv'] = True
-                        else:
-                                stats_rslt[sname][ref]['IsPositiv'] = False
-
                 #NormDepth calculation
-                parDepth = np.array([v['mean cover'] for v in values.values() if (v['IsParalog'] and v['IsPositiv'] and v['mean cover']>0)])
+                parDepth = np.array([v['mean cover'] for v in values.values() if (v['IsParalog'] and v['error rate']<config['genotyp_def_ErrorRate'] and v['mean cover']>0)])
                 if len(parDepth)>0:
                         parMedDepth = np.median(parDepth)
 
+                parCov = np.array([v['Region Cov'] for v in values.values() if (v['IsParalog'] and v['error rate']<config['genotyp_def_ErrorRate'] and v['mean cover']>0)])
+                if len(parCov)>0:
+                        parMedCov = np.median(parCov)
+
                 for statRef in values.values():
+
+                        AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov']*(1/parMedCov))
+                        stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
+			stats_rslt[sname][ref]['gscore'] = AlleleProb['alleleP']
+			stats_rslt[sname][ref]['errProb'] = AlleleProb['errP']
+			stats_rslt[sname][ref]['covProb'] = AlleleProb['covP']
+
                         if len(parDepth)>0:
                                 statRef['NormDepth']= statRef['mean cover']/parMedDepth
                         else:
                                 statRef['NormDepth']= statRef['mean cover']
+                                
+                        if (AlleleProb['alleleP']>=allele_prob_THRLD):
+                                stats_rslt[sname][ref]['IsPositiv'] = True
+                        else:
+                                stats_rslt[sname][ref]['IsPositiv'] = False
 
 
         ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
