@@ -1255,7 +1255,7 @@ def get_CovProb(cov):
 def allele_prob(err,cov):
         errProb = get_ErrProb(err)
         covProb = get_CovProb(cov)
-        allProb = errProb*covProb
+        allProb = config['alleleProb_formula']
         return {'alleleP':allProb,'errP':errProb,'covP':covProb}
 
 def get_maxMeanCover(stats_rslt,sname):

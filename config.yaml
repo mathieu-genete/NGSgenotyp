@@ -12,6 +12,9 @@ plot_selection_param: [['error rate','<',0.08]]
 genotyp_def_ErrorRate: 0.05
 genotyp_alleleProb_THRLD: 1e-8
 
+# use errProb for error probability and covProb for coverage probability
+alleleProb_formula: 'errProb*covProb'
+
 #paralog isPositiv alleleprobability threshold
 #paralogAlleleProb_THRLD : 0.05
 
