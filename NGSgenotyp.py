@@ -1253,11 +1253,10 @@ def get_CovProb(cov):
         return calculIntegrale(loi_ExpoFixed,0,cov)
 
 def allele_prob(err,cov):
-        return get_ErrProb(err)*get_CovProb(cov)
-
-def calcul_AlleleScore(errorRate,RegionCov,MeanCover):
-        score=allele_prob(errorRate,RegionCov)*MeanCover
-        return score
+        errProb = get_ErrProb(err)
+        covProb = get_CovProb(cov)
+        allProb = errProb*covProb
+        return {'alleleP':allProb,'errP':errProb,'covP':covProb}
 
 def get_maxMeanCover(stats_rslt,sname):
         maxMeanCover = 0.00000000000001
@@ -1360,8 +1359,11 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                                 stats_rslt[sname][ref]['Warnings'].append(config['Warn_refLen'])
 
                         AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov'])
-                        stats_rslt[sname][ref]['alleleProb'] = AlleleProb
-			stats_rslt[sname][ref]['gscore'] = AlleleProb
+                        stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
+			stats_rslt[sname][ref]['gscore'] = AlleleProb['alleleP']
+			stats_rslt[sname][ref]['errProb'] = AlleleProb['errP']
+			stats_rslt[sname][ref]['covProb'] = AlleleProb['covP']
+
                         HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
 			stats_rslt[sname][ref]['Group ID'] = str(HomoParaInfo['grpRef'])
 			
@@ -1371,7 +1373,7 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 			else:
 				stats_rslt[sname][ref]['IsParalog'] = False
 
-                        if (AlleleProb>=allele_prob_THRLD):
+                        if (AlleleProb['alleleP']>=allele_prob_THRLD):
                                 stats_rslt[sname][ref]['IsPositiv'] = True
                         else:
                                 stats_rslt[sname][ref]['IsPositiv'] = False
