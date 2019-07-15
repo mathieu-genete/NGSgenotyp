@@ -1360,7 +1360,9 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 
                         HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
 			stats_rslt[sname][ref]['Group ID'] = str(HomoParaInfo['grpRef'])
-			
+
+			stats_rslt[sname][ref]['IsPositiv'] = False
+
 			if ref in List_Paralogs:
 				stats_rslt[sname][ref]['IsParalog'] = True
 				stats_rslt[sname][ref]['Group ID'] = 'Paralog'
