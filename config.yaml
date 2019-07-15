@@ -28,6 +28,9 @@ sigma : 0.6205917
 #λ = 1/(1-0.989583) = 96
 lbda : 96
 
+#simpson step for integrale calculation
+simpson_step: 0.001
+
 #error rate limit for SharedReads xls files
 sharedReads_errorRatelim: 0.1
 

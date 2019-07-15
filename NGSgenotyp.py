@@ -1239,7 +1239,7 @@ def loi_LogNormalFixed(x):
 def calculIntegrale(f,a,b):
         if callable(f):
                 s=0
-                stepVal=0.0001
+                stepVal=float(config['simpson_step'])
                 for x in np.arange(a,b,stepVal):
                         s += (stepVal/6.0)*(f(x)+4*f((x+x+stepVal)/2.0)+f(x+stepVal))
                 return s
