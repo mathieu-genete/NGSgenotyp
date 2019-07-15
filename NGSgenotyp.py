@@ -1378,8 +1378,7 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                 if len(parCov)>0:
                         parMedCov = np.median(parCov)
 
-                for statRef in values.values():
-                        print statRef['error rate'],statRef['Region Cov'],parMedCov
+                for ref, statRef in values.items():
                         AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov']*(1.0/float(parMedCov)))
                         stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
 			stats_rslt[sname][ref]['gscore'] = AlleleProb['alleleP']
