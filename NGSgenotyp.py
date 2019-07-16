@@ -44,12 +44,13 @@ import threading
 import ctypes
 import urlparse
 from urllib2 import urlopen
+from operator import itemgetter
 
 plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.2.1"
+__version__="v1.3"
 AppName = "NGSgenotyp"
 
 config = None
@@ -1227,6 +1228,11 @@ def loi_LogNormal(x,mu,sigma):
         else:
                 return 0.0
 
+def loi_Normal(x,mu,sigma):
+        p1 = 1/(sigma*math.sqrt(2*math.pi))
+        p2 = math.exp(-0.5*((x-mu)/sigma)**2)
+        return p1*p2
+        
 def loi_ExpoFixed(x):
         l=config['lbda']
         return loi_Exponentielle(1-x,l)
@@ -1235,6 +1241,11 @@ def loi_LogNormalFixed(x):
         mu=config['mu']
         sigma=config['sigma']
         return loi_LogNormal(x,mu,sigma)
+
+def loi_NormalFixed(x):
+        mu=config['mu']
+        sigma=config['sigma']
+        return loi_Normal(x,mu,sigma)
 
 def calculIntegrale(f,a,b):
         if callable(f):
@@ -1247,7 +1258,7 @@ def calculIntegrale(f,a,b):
                 print "f is not a function"
 
 def get_ErrProb(err):
-        return calculIntegrale(loi_LogNormalFixed,err,1)
+        return calculIntegrale(loi_NormalFixed,err,1)
 
 def get_CovProb(cov):
         return calculIntegrale(loi_ExpoFixed,0,cov)
@@ -1301,6 +1312,24 @@ def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,ErrThrld):
         ax1.axhline(y=ErrThrld,color='red', linewidth=1)
         return fig
 
+def LogalleleProb__plot(sortedLogAllelesProb,ProbThrld,title):
+        plt.clf()
+        fig, ax1 = plt.subplots()
+        ax1.yaxis.set_major_locator(ticker.AutoLocator())
+        ax1.yaxis.set_minor_locator(ticker.AutoMinorLocator())
+        ax1.set_axisbelow(True)
+        ax1.yaxis.grid(True, linestyle=':',color='lightgray',which='minor')
+        ax1.yaxis.grid(True, linestyle='-',color='lightgray',which='major')
+        ax1.set_title(title,fontsize=8)
+        val = [v[1] for v in sortedLogAllelesProb]
+        ax1.plot(val,marker=".")
+        #ax1.set_yticks(np.arange(math.floor(min(val)),0,step=1))
+        #ax1.tick_params(axis='y',labelsize=6)
+        ax1.axhline(y=math.log10(ProbThrld),color='red', linewidth=1)
+        ax1.set_xlabel(r"Alignments", fontsize=12)
+        ax1.set_ylabel("log(Allele probability)", fontsize=12)
+        return fig
+
 def ErrCovDepth_plot3d(ErrDatas,CovDatas,Depth,IsPositiv):
     col={True:'red',False:'black'}
     colors=[col[v] for v in IsPositiv]
@@ -1351,6 +1380,8 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 	
 	List_Paralogs = Load_Paralogs()
         allele_prob_THRLD = float(config['genotyp_alleleProb_THRLD'])
+        LogAllelesProbList=[]
+        LogParalogsAllelesProbList=[]
 
 	for sname, values in stats_rslt.items():
 		for ref, statRef in values.items():
@@ -1378,9 +1409,20 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                 if len(parCov)>0:
                         parMedCov = np.median(parCov)
 
+                #Allele probability calculation
                 for ref, statRef in values.items():
-                        AlleleProb = allele_prob(statRef['error rate'],statRef['Region Cov']*(1.0/float(parMedCov)))
+                        if config['normalized_cov']:
+                                covValue = statRef['Region Cov']*(1.0/float(parMedCov))
+                        else:
+                                covValue = statRef['Region Cov']
+
+                        AlleleProb = allele_prob(statRef['error rate'],covValue)
                         stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
+                        if AlleleProb['alleleP']>0:
+                                log10AlleleP = math.log10(AlleleProb['alleleP'])
+                        else:
+                                log10AlleleP = 0                                
+                        stats_rslt[sname][ref]['LOGalleleProb'] = log10AlleleP
 			stats_rslt[sname][ref]['gscore'] = AlleleProb['alleleP']
 			stats_rslt[sname][ref]['errProb'] = AlleleProb['errP']
 			stats_rslt[sname][ref]['covProb'] = AlleleProb['covP']
@@ -1389,12 +1431,19 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                                 statRef['NormDepth']= statRef['mean cover']/parMedDepth
                         else:
                                 statRef['NormDepth']= statRef['mean cover']
-                                
-                        if (AlleleProb['alleleP']>=allele_prob_THRLD):
+
+                LogAllelesProbList = LogAllelesProbList + [(v['alleleProb'],v['LOGalleleProb']) for v in values.values() if (v['alleleProb']>0  and not v['IsParalog'])]
+                LogParalogsAllelesProbList = LogParalogsAllelesProbList + [(v['alleleProb'],v['LOGalleleProb']) for v in values.values() if (v['alleleProb']>0 and v['IsParalog'])]
+
+                #define putatives alleles
+                for ref, statRef in values.items():
+                        if (stats_rslt[sname][ref]['alleleProb']>=config['genotyp_alleleProb_THRLD']):
                                 stats_rslt[sname][ref]['IsPositiv'] = True
                         else:
                                 stats_rslt[sname][ref]['IsPositiv'] = False
 
+        sortedLogAllelesProb = sorted(LogAllelesProbList,key=itemgetter(0),reverse=True)
+        sortedLogParalogsAllelesProbList = sorted(LogParalogsAllelesProbList,key=itemgetter(0),reverse=True)
 
         ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
         ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
@@ -1404,9 +1453,17 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                 pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],config['genotyp_def_ErrorRate']))
                 pdf.savefig(ErrCovDepth_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv']))
                 pdf.savefig(ErrCovScore_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['gscore'],ErrorRateCovList['IsPositiv']))
+                pdf.savefig(LogalleleProb__plot(sortedLogAllelesProb,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for references alleles (exclude paralogs)"))
+                pdf.savefig(LogalleleProb__plot(sortedLogParalogsAllelesProbList,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for paralogs only"))
         return stats_rslt
 
-
+def first_max(values):
+        tmp=(0,0)
+        for v in values:
+                if v[1]<tmp[1] and tmp[1]>10: break
+                if v[1]>tmp[1]: tmp=v
+        return tmp
+             
 def generatePutativeAllelesTXTFile(outTXT,stats_rslt):
         out=""
         fout = open(outTXT,'w')
