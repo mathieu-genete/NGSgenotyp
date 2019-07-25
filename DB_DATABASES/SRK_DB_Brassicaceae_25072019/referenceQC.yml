@@ -1,0 +1,2256 @@
+'AhSRK01':
+  'fragments':
+    'F1':
+      'GC': 44.9
+      'ShEntropy': 1.9906283050034095
+      'bases_count': ''
+      'len': 1288
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=1|specie=halleri|grpRef=H1001'
+  'seq_id': 'AhSRK01'
+  'seq_len': 1288
+  'specie': 'A. halleri'
+'AhSRK02':
+  'fragments':
+    'F1':
+      'GC': 42.7
+      'ShEntropy': 1.9821166561967318
+      'bases_count': ''
+      'len': 1413
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=3|specie=halleri|grpRef=H3001'
+  'seq_id': 'AhSRK02'
+  'seq_len': 1413
+  'specie': 'A. halleri'
+'AhSRK03':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.989511744553975
+      'bases_count': ''
+      'len': 1321
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=2|specie=halleri|grpRef=H2001'
+  'seq_id': 'AhSRK03'
+  'seq_len': 1321
+  'specie': 'A. halleri'
+'AhSRK04':
+  'fragments':
+    'F1':
+      'GC': 44.6
+      'ShEntropy': 1.990305348721542
+      'bases_count': ''
+      'len': 1288
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=3|specie=halleri|grpRef=H3002'
+  'seq_id': 'AhSRK04'
+  'seq_len': 1288
+  'specie': 'A. halleri'
+'AhSRK05':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9631171257007864
+      'bases_count': ''
+      'len': 529
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=4|specie=halleri|grpRef=H4001'
+  'seq_id': 'AhSRK05'
+  'seq_len': 529
+  'specie': 'A. halleri'
+'AhSRK06':
+  'fragments':
+    'F1':
+      'GC': 42.9
+      'ShEntropy': 1.9729085088243934
+      'bases_count': ''
+      'len': 694
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=3|specie=halleri|grpRef=H3003'
+  'seq_id': 'AhSRK06'
+  'seq_len': 694
+  'specie': 'A. halleri'
+'AhSRK07':
+  'fragments':
+    'F1':
+      'GC': 46.6
+      'ShEntropy': 1.9833942886019553
+      'bases_count': ''
+      'len': 607
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=4|specie=halleri|grpRef=H4002'
+  'seq_id': 'AhSRK07'
+  'seq_len': 607
+  'specie': 'A. halleri'
+'AhSRK08':
+  'fragments':
+    'F1':
+      'GC': 43.0
+      'ShEntropy': 1.971645106900088
+      'bases_count': ''
+      'len': 567
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=2|specie=halleri|grpRef=H2002'
+  'seq_id': 'AhSRK08'
+  'seq_len': 567
+  'specie': 'A. halleri'
+'AhSRK09':
+  'fragments':
+    'F1':
+      'GC': 44.2
+      'ShEntropy': 1.970906864982466
+      'bases_count': ''
+      'len': 573
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=2|specie=halleri|grpRef=H2003'
+  'seq_id': 'AhSRK09'
+  'seq_len': 573
+  'specie': 'A. halleri'
+'AhSRK10':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.9888600606903315
+      'bases_count': ''
+      'len': 1291
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=3|specie=halleri|grpRef=H3004'
+  'seq_id': 'AhSRK10'
+  'seq_len': 1291
+  'specie': 'A. halleri'
+'AhSRK11':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.979377132447958
+      'bases_count': ''
+      'len': 567
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=4|specie=halleri|grpRef=H4003'
+  'seq_id': 'AhSRK11'
+  'seq_len': 567
+  'specie': 'A. halleri'
+'AhSRK12':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.9931454351455795
+      'bases_count': ''
+      'len': 1291
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=4|specie=halleri|grpRef=H4004'
+  'seq_id': 'AhSRK12'
+  'seq_len': 1291
+  'specie': 'A. halleri'
+'AhSRK13':
+  'fragments':
+    'F1':
+      'GC': 45.4
+      'ShEntropy': 1.9919257512706718
+      'bases_count': ''
+      'len': 1285
+      'pos': 0
+  'seq_description': '|HaploId=5|gprId=4|specie=halleri|grpRef=H4005'
+  'seq_id': 'AhSRK13'
+  'seq_len': 1285
+  'specie': 'A. halleri'
+'AhSRK14':
+  'fragments':
+    'F1':
+      'GC': 42.6
+      'ShEntropy': 1.9632950540104401
+      'bases_count': ''
+      'len': 561
+      'pos': 0
+  'seq_description': '|HaploId=5|gprId=3|specie=halleri|grpRef=H3005'
+  'seq_id': 'AhSRK14'
+  'seq_len': 561
+  'specie': 'A. halleri'
+'AhSRK15':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9863493526803826
+      'bases_count': ''
+      'len': 1294
+      'pos': 0
+  'seq_description': '|HaploId=6|gprId=4|specie=halleri|grpRef=H4006'
+  'seq_id': 'AhSRK15'
+  'seq_len': 1294
+  'specie': 'A. halleri'
+'AhSRK16':
+  'fragments':
+    'F1':
+      'GC': 45.5
+      'ShEntropy': 1.9873942292024256
+      'bases_count': ''
+      'len': 573
+      'pos': 0
+  'seq_description': '|HaploId=7|gprId=4|specie=halleri|grpRef=H4007'
+  'seq_id': 'AhSRK16'
+  'seq_len': 573
+  'specie': 'A. halleri'
+'AhSRK17':
+  'fragments':
+    'F1':
+      'GC': 47.4
+      'ShEntropy': 1.9770940980702096
+      'bases_count': ''
+      'len': 567
+      'pos': 0
+  'seq_description': '|HaploId=6|gprId=3|specie=halleri|grpRef=H3006'
+  'seq_id': 'AhSRK17'
+  'seq_len': 567
+  'specie': 'A. halleri'
+'AhSRK18':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.989329463529684
+      'bases_count': ''
+      'len': 1172
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=4|specie=halleri|grpRef=H4008'
+  'seq_id': 'AhSRK18'
+  'seq_len': 1172
+  'specie': 'A. halleri'
+'AhSRK19':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.988367351063332
+      'bases_count': ''
+      'len': 1323
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=2|specie=halleri|grpRef=H2004'
+  'seq_id': 'AhSRK19'
+  'seq_len': 1323
+  'specie': 'A. halleri'
+'AhSRK20':
+  'fragments':
+    'F1':
+      'GC': 45.8
+      'ShEntropy': 1.9937958008566186
+      'bases_count': ''
+      'len': 1327
+      'pos': 0
+  'seq_description': '|HaploId=9|gprId=4|specie=halleri|grpRef=H4009'
+  'seq_id': 'AhSRK20'
+  'seq_len': 1327
+  'specie': 'A. halleri'
+'AhSRK21':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.9864920546867235
+      'bases_count': ''
+      'len': 1306
+      'pos': 0
+  'seq_description': '|HaploId=10|gprId=4|specie=halleri|grpRef=H4010'
+  'seq_id': 'AhSRK21'
+  'seq_len': 1306
+  'specie': 'A. halleri'
+'AhSRK22':
+  'fragments':
+    'F1':
+      'GC': 50.1
+      'ShEntropy': 1.9653284934543933
+      'bases_count': ''
+      'len': 567
+      'pos': 0
+  'seq_description': '|HaploId=11|gprId=4|specie=halleri|grpRef=H4011'
+  'seq_id': 'AhSRK22'
+  'seq_len': 567
+  'specie': 'A. halleri'
+'AhSRK23':
+  'fragments':
+    'F1':
+      'GC': 44.6
+      'ShEntropy': 1.9810300675691668
+      'bases_count': ''
+      'len': 558
+      'pos': 0
+  'seq_description': '|HaploId=5|gprId=2|specie=halleri|grpRef=H2005'
+  'seq_id': 'AhSRK23'
+  'seq_len': 558
+  'specie': 'A. halleri'
+'AhSRK24':
+  'fragments':
+    'F1':
+      'GC': 43.7
+      'ShEntropy': 1.9633185038292327
+      'bases_count': ''
+      'len': 552
+      'pos': 0
+  'seq_description': '|HaploId=12|gprId=4|specie=halleri|grpRef=H4012'
+  'seq_id': 'AhSRK24'
+  'seq_len': 552
+  'specie': 'A. halleri'
+'AhSRK25':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9813245011565725
+      'bases_count': ''
+      'len': 546
+      'pos': 0
+  'seq_description': '|HaploId=7|gprId=3|specie=halleri|grpRef=H3007'
+  'seq_id': 'AhSRK25'
+  'seq_len': 546
+  'specie': 'A. halleri'
+'AhSRK26':
+  'fragments':
+    'F1':
+      'GC': 47.1
+      'ShEntropy': 1.9696493860909867
+      'bases_count': ''
+      'len': 552
+      'pos': 0
+  'seq_description': '|HaploId=13|gprId=4|specie=halleri|grpRef=H4013'
+  'seq_id': 'AhSRK26'
+  'seq_len': 552
+  'specie': 'A. halleri'
+'AhSRK27':
+  'fragments':
+    'F1':
+      'GC': 45.5
+      'ShEntropy': 1.9737201449356894
+      'bases_count': ''
+      'len': 561
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=0|specie=halleri|grpRef=H0001'
+  'seq_id': 'AhSRK27'
+  'seq_len': 561
+  'specie': 'A. halleri'
+'AhSRK28':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.987708739096695
+      'bases_count': ''
+      'len': 1315
+      'pos': 0
+  'seq_description': '|HaploId=6|gprId=2|specie=halleri|grpRef=H2006'
+  'seq_id': 'AhSRK28'
+  'seq_len': 1315
+  'specie': 'A. halleri'
+'AhSRK29':
+  'fragments':
+    'F1':
+      'GC': 42.6
+      'ShEntropy': 1.9822128651883717
+      'bases_count': ''
+      'len': 1297
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=3|specie=halleri|grpRef=H3008'
+  'seq_id': 'AhSRK29'
+  'seq_len': 1297
+  'specie': 'A. halleri'
+'AhSRK30':
+  'fragments':
+    'F1':
+      'GC': 45.8
+      'ShEntropy': 1.9744973216366857
+      'bases_count': ''
+      'len': 544
+      'pos': 0
+  'seq_description': '|HaploId=9|gprId=3|specie=halleri|grpRef=H3009'
+  'seq_id': 'AhSRK30'
+  'seq_len': 544
+  'specie': 'A. halleri'
+'AhSRK31':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.9889207439286891
+      'bases_count': ''
+      'len': 1303
+      'pos': 0
+  'seq_description': '|HaploId=35|gprId=4|specie=halleri|grpRef=H4035'
+  'seq_id': 'AhSRK31'
+  'seq_len': 1303
+  'specie': 'A. halleri'
+'AhSRK32':
+  'fragments':
+    'F1':
+      'GC': 45.7
+      'ShEntropy': 1.9940475492846654
+      'bases_count': ''
+      'len': 1303
+      'pos': 0
+  'seq_description': '|HaploId=14|gprId=4|specie=halleri|grpRef=H4014'
+  'seq_id': 'AhSRK32'
+  'seq_len': 1303
+  'specie': 'A. halleri'
+'AhSRK33':
+  'fragments':
+    'F1':
+      'GC': 44.6
+      'ShEntropy': 1.9884055097145052
+      'bases_count': ''
+      'len': 1315
+      'pos': 0
+  'seq_description': '|HaploId=7|gprId=2|specie=halleri|grpRef=H2007'
+  'seq_id': 'AhSRK33'
+  'seq_len': 1315
+  'specie': 'A. halleri'
+'AhSRK34':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.990141900547198
+      'bases_count': ''
+      'len': 1420
+      'pos': 0
+  'seq_description': '|HaploId=15|gprId=4|specie=halleri|grpRef=H4015'
+  'seq_id': 'AhSRK34'
+  'seq_len': 1420
+  'specie': 'A. halleri'
+'AhSRK35':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9912692478123977
+      'bases_count': ''
+      'len': 1321
+      'pos': 0
+  'seq_description': '|HaploId=16|gprId=4|specie=halleri|grpRef=H4016'
+  'seq_id': 'AhSRK35'
+  'seq_len': 1321
+  'specie': 'A. halleri'
+'AhSRK36':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.9867373844431557
+      'bases_count': ''
+      'len': 1300
+      'pos': 0
+  'seq_description': '|HaploId=17|gprId=4|specie=halleri|grpRef=H4017'
+  'seq_id': 'AhSRK36'
+  'seq_len': 1300
+  'specie': 'A. halleri'
+'AhSRK37':
+  'fragments':
+    'F1':
+      'GC': 45.6
+      'ShEntropy': 1.9780382427314334
+      'bases_count': 'N:2'
+      'len': 609
+      'pos': 0
+  'seq_description': '|HaploId=18|gprId=4|specie=halleri|grpRef=H4018'
+  'seq_id': 'AhSRK37'
+  'seq_len': 609
+  'specie': 'A. halleri'
+'AhSRK38':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.968932950566232
+      'bases_count': 'W:1,M:1,K:1,R:1'
+      'len': 609
+      'pos': 0
+  'seq_description': '|HaploId=19|gprId=4|specie=halleri|grpRef=H4019'
+  'seq_id': 'AhSRK38'
+  'seq_len': 609
+  'specie': 'A. halleri'
+'AhSRK39':
+  'fragments':
+    'F1':
+      'GC': 46.3
+      'ShEntropy': 1.9623738236407569
+      'bases_count': ''
+      'len': 603
+      'pos': 0
+  'seq_description': '|HaploId=20|gprId=4|specie=halleri|grpRef=H4020'
+  'seq_id': 'AhSRK39'
+  'seq_len': 603
+  'specie': 'A. halleri'
+'AhSRK40':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.9871712222476936
+      'bases_count': 'N:1'
+      'len': 1257
+      'pos': 0
+  'seq_description': '|HaploId=21|gprId=4|specie=halleri|grpRef=H4021'
+  'seq_id': 'AhSRK40'
+  'seq_len': 1257
+  'specie': 'A. halleri'
+'AhSRK41':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.9919531243255908
+      'bases_count': ''
+      'len': 1408
+      'pos': 0
+  'seq_description': '|HaploId=22|gprId=4|specie=halleri|grpRef=H4022'
+  'seq_id': 'AhSRK41'
+  'seq_len': 1408
+  'specie': 'A. halleri'
+'AhSRK42':
+  'fragments':
+    'F1':
+      'GC': 43.2
+      'ShEntropy': 1.9819969345881
+      'bases_count': ''
+      'len': 644
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSRK42'
+  'seq_len': 644
+  'specie': 'A. halleri'
+'AhSRK43':
+  'fragments':
+    'F1':
+      'GC': 43.4
+      'ShEntropy': 1.9861518006689045
+      'bases_count': ''
+      'len': 1303
+      'pos': 0
+  'seq_description': '|HaploId=23|gprId=4|specie=halleri|grpRef=H4023'
+  'seq_id': 'AhSRK43'
+  'seq_len': 1303
+  'specie': 'A. halleri'
+'AhSRK44':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.995363335277725
+      'bases_count': ''
+      'len': 1115
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSRK44'
+  'seq_len': 1115
+  'specie': 'A. halleri'
+'AhSRK45':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9855543840386631
+      'bases_count': ''
+      'len': 1323
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSRK45'
+  'seq_len': 1323
+  'specie': 'A. halleri'
+'AhSRK46':
+  'fragments':
+    'F1':
+      'GC': 43.3
+      'ShEntropy': 1.9864767559580376
+      'bases_count': ''
+      'len': 1033
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSRK46'
+  'seq_len': 1033
+  'specie': 'A. halleri'
+'AhSRK50':
+  'fragments':
+    'F1':
+      'GC': 45.9
+      'ShEntropy': 1.9940780791798254
+      'bases_count': ''
+      'len': 1353
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhSRK50'
+  'seq_len': 1353
+  'specie': 'A. halleri'
+'AhgSRKA':
+  'fragments':
+    'F1':
+      'GC': 43.7
+      'ShEntropy': 1.9828216166890478
+      'bases_count': ''
+      'len': 1354
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AhgSRKA'
+  'seq_len': 1354
+  'specie': 'A. halleri gemmifera'
+'AhgSRKB':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9888659991711302
+      'bases_count': ''
+      'len': 1300
+      'pos': 0
+  'seq_description': '|HaploId=24|gprId=4|specie=halleri|grpRef=H4024'
+  'seq_id': 'AhgSRKB'
+  'seq_len': 1300
+  'specie': 'A. halleri gemmifera'
+'Ahg_Aly10':
+  'fragments':
+    'F1':
+      'GC': 42.7
+      'ShEntropy': 1.9810140342519642
+      'bases_count': ''
+      'len': 1246
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=halleri'
+  'seq_id': 'Ahg_Aly10'
+  'seq_len': 1246
+  'specie': 'A. halleri gemmifera'
+'Ahg_Aly14':
+  'fragments':
+    'F1':
+      'GC': 42.0
+      'ShEntropy': 1.979765782772413
+      'bases_count': ''
+      'len': 1278
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=halleri'
+  'seq_id': 'Ahg_Aly14'
+  'seq_len': 1278
+  'specie': 'A. halleri gemmifera'
+'Ahg_Aly3':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.9890396365176608
+      'bases_count': ''
+      'len': 1317
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=halleri'
+  'seq_id': 'Ahg_Aly3'
+  'seq_len': 1317
+  'specie': 'A. halleri gemmifera'
+'Ahg_Aly7':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.9860111824638234
+      'bases_count': 'R:1,Y:1'
+      'len': 1158
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=halleri'
+  'seq_id': 'Ahg_Aly7'
+  'seq_len': 1158
+  'specie': 'A. halleri gemmifera'
+'Ahg_Aly8':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.9871907311269918
+      'bases_count': ''
+      'len': 1287
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=halleri'
+  'seq_id': 'Ahg_Aly8'
+  'seq_len': 1287
+  'specie': 'A. halleri gemmifera'
+'Ahg_Aly9':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.9864168168589371
+      'bases_count': ''
+      'len': 1312
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=halleri'
+  'seq_id': 'Ahg_Aly9'
+  'seq_len': 1312
+  'specie': 'A. halleri gemmifera'
+'AkSRKA':
+  'fragments':
+    'F1':
+      'GC': 43.7
+      'ShEntropy': 1.9828216166890478
+      'bases_count': ''
+      'len': 1354
+      'pos': 0
+  'seq_description': '|HaploId=13|gprId=4|specie=kamchatika|grpRef=H4013'
+  'seq_id': 'AkSRKA'
+  'seq_len': 1354
+  'specie': 'A. kamchatika'
+'AkSRKB':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9888659991711302
+      'bases_count': ''
+      'len': 1300
+      'pos': 0
+  'seq_description': '|HaploId=24|gprId=4|specie=kamchatika|grpRef=H4024'
+  'seq_id': 'AkSRKB'
+  'seq_len': 1300
+  'specie': 'A. kamchatika'
+'AkSRKC':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.990281326323676
+      'bases_count': ''
+      'len': 1300
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=1|specie=kamchatika|grpRef=H1001'
+  'seq_id': 'AkSRKC'
+  'seq_len': 1300
+  'specie': 'A. kamchatika'
+'AkSRKD':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.9910473141732217
+      'bases_count': ''
+      'len': 1322
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=4|specie=kamchatika|grpRef=H4004'
+  'seq_id': 'AkSRKD'
+  'seq_len': 1322
+  'specie': 'A. kamchatika'
+'AkSRKE':
+  'fragments':
+    'F1':
+      'GC': 43.8
+      'ShEntropy': 1.9846916644340271
+      'bases_count': ''
+      'len': 1316
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=3|specie=kamchatika|grpRef=H3001'
+  'seq_id': 'AkSRKE'
+  'seq_len': 1316
+  'specie': 'A. kamchatika'
+'AlLal2':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.9880949901873521
+      'bases_count': ''
+      'len': 1200
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'AlLal2'
+  'seq_len': 1200
+  'specie': 'A. lyrata'
+'AlSRK01':
+  'fragments':
+    'F1':
+      'GC': 44.6
+      'ShEntropy': 1.9899371155152816
+      'bases_count': ''
+      'len': 1288
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=1|specie=lyrata|grpRef=H1001'
+  'seq_id': 'AlSRK01'
+  'seq_len': 1288
+  'specie': 'A. lyrata'
+'AlSRK03':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.9839175608277584
+      'bases_count': ''
+      'len': 961
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=2|specie=lyrata|grpRef=H2001'
+  'seq_id': 'AlSRK03'
+  'seq_len': 961
+  'specie': 'A. lyrata'
+'AlSRK04':
+  'fragments':
+    'F1':
+      'GC': 45.9
+      'ShEntropy': 1.9862142797233115
+      'bases_count': ''
+      'len': 953
+      'pos': 0
+  'seq_description': '|HaploId=25|gprId=4|specie=lyrata|grpRef=H4025'
+  'seq_id': 'AlSRK04'
+  'seq_len': 953
+  'specie': 'A. lyrata'
+'AlSRK05':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.9860173482346086
+      'bases_count': ''
+      'len': 950
+      'pos': 0
+  'seq_description': '|HaploId=10|gprId=3|specie=lyrata|grpRef=H3010'
+  'seq_id': 'AlSRK05'
+  'seq_len': 950
+  'specie': 'A. lyrata'
+'AlSRK06':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.989104799722992
+      'bases_count': ''
+      'len': 1315
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=2|specie=lyrata|grpRef=H2008'
+  'seq_id': 'AlSRK06'
+  'seq_len': 1315
+  'specie': 'A. lyrata'
+'AlSRK08':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.9839398519954061
+      'bases_count': ''
+      'len': 938
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=2|specie=lyrata|grpRef=H2004'
+  'seq_id': 'AlSRK08'
+  'seq_len': 938
+  'specie': 'A. lyrata'
+'AlSRK09':
+  'fragments':
+    'F1':
+      'GC': 45.9
+      'ShEntropy': 1.9900203725051064
+      'bases_count': ''
+      'len': 1246
+      'pos': 0
+  'seq_description': '|HaploId=15|gprId=4|specie=lyrata|grpRef=H4015'
+  'seq_id': 'AlSRK09'
+  'seq_len': 1246
+  'specie': 'A. lyrata'
+'AlSRK10':
+  'fragments':
+    'F1':
+      'GC': 47.9
+      'ShEntropy': 1.9648100698350115
+      'bases_count': ''
+      'len': 610
+      'pos': 0
+  'seq_description': '|HaploId=16|gprId=4|specie=lyrata|grpRef=H4016'
+  'seq_id': 'AlSRK10'
+  'seq_len': 610
+  'specie': 'A. lyrata'
+'AlSRK11':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9791796153017636
+      'bases_count': ''
+      'len': 557
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=4|specie=lyrata|grpRef=H4003'
+  'seq_id': 'AlSRK11'
+  'seq_len': 557
+  'specie': 'A. lyrata'
+'AlSRK12':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.9723076208252623
+      'bases_count': ''
+      'len': 563
+      'pos': 0
+  'seq_description': '|HaploId=36|gprId=4|specie=lyrata|grpRef=H4036'
+  'seq_id': 'AlSRK12'
+  'seq_len': 563
+  'specie': 'A. lyrata'
+'AlSRK13':
+  'fragments':
+    'F1':
+      'GC': 43.0
+      'ShEntropy': 1.9836671725790527
+      'bases_count': ''
+      'len': 1297
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=3|specie=lyrata|grpRef=H3008'
+  'seq_id': 'AlSRK13'
+  'seq_len': 1297
+  'specie': 'A. lyrata'
+'AlSRK14':
+  'fragments':
+    'F1':
+      'GC': 44.0
+      'ShEntropy': 1.98774579946711
+      'bases_count': ''
+      'len': 1315
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=2|specie=lyrata|grpRef=H2003'
+  'seq_id': 'AlSRK14'
+  'seq_len': 1315
+  'specie': 'A. lyrata'
+'AlSRK15':
+  'fragments':
+    'F1':
+      'GC': 43.5
+      'ShEntropy': 1.9863256653776098
+      'bases_count': ''
+      'len': 1306
+      'pos': 0
+  'seq_description': '|HaploId=10|gprId=4|specie=lyrata|grpRef=H4010'
+  'seq_id': 'AlSRK15'
+  'seq_len': 1306
+  'specie': 'A. lyrata'
+'AlSRK16':
+  'fragments':
+    'F1':
+      'GC': 45.2
+      'ShEntropy': 1.9891434050771324
+      'bases_count': ''
+      'len': 1318
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=3|specie=lyrata|grpRef=H3004'
+  'seq_id': 'AlSRK16'
+  'seq_len': 1318
+  'specie': 'A. lyrata'
+'AlSRK17':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9767851194636077
+      'bases_count': ''
+      'len': 560
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=3|specie=lyrata|grpRef=H3001'
+  'seq_id': 'AlSRK17'
+  'seq_len': 560
+  'specie': 'A. lyrata'
+'AlSRK18':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.9890940861985902
+      'bases_count': ''
+      'len': 1312
+      'pos': 0
+  'seq_description': '|HaploId=7|gprId=2|specie=lyrata|grpRef=H2007'
+  'seq_id': 'AlSRK18'
+  'seq_len': 1312
+  'specie': 'A. lyrata'
+'AlSRK19':
+  'fragments':
+    'F1':
+      'GC': 45.2
+      'ShEntropy': 1.9761826745182511
+      'bases_count': ''
+      'len': 714
+      'pos': 0
+  'seq_description': '|HaploId=35|gprId=4|specie=lyrata|grpRef=H4035'
+  'seq_id': 'AlSRK19'
+  'seq_len': 714
+  'specie': 'A. lyrata'
+'AlSRK20':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.97030090876902
+      'bases_count': ''
+      'len': 694
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'AlSRK20'
+  'seq_len': 694
+  'specie': 'A. lyrata'
+'AlSRK21':
+  'fragments':
+    'F1':
+      'GC': 45.9
+      'ShEntropy': 1.9718265927932088
+      'bases_count': ''
+      'len': 479
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=3|specie=lyrata|grpRef=H3003'
+  'seq_id': 'AlSRK21'
+  'seq_len': 479
+  'specie': 'A. lyrata'
+'AlSRK22':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.986994334098446
+      'bases_count': ''
+      'len': 1234
+      'pos': 0
+  'seq_description': '|HaploId=13|gprId=4|specie=lyrata|grpRef=H4013'
+  'seq_id': 'AlSRK22'
+  'seq_len': 1234
+  'specie': 'A. lyrata'
+'AlSRK23':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9839239509995636
+      'bases_count': ''
+      'len': 858
+      'pos': 0
+  'seq_description': '|HaploId=26|gprId=4|specie=lyrata|grpRef=H4026'
+  'seq_id': 'AlSRK23'
+  'seq_len': 858
+  'specie': 'A. lyrata'
+'AlSRK25':
+  'fragments':
+    'F1':
+      'GC': 45.4
+      'ShEntropy': 1.9892280511607894
+      'bases_count': ''
+      'len': 1225
+      'pos': 0
+  'seq_description': '|HaploId=11|gprId=3|specie=lyrata|grpRef=H3011'
+  'seq_id': 'AlSRK25'
+  'seq_len': 1225
+  'specie': 'A. lyrata'
+'AlSRK27':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.969948914263767
+      'bases_count': 'N:6,M:1'
+      'len': 539
+      'pos': 0
+  'seq_description': '|HaploId=18|gprId=4|specie=lyrata|grpRef=H4018'
+  'seq_id': 'AlSRK27'
+  'seq_len': 539
+  'specie': 'A. lyrata'
+'AlSRK28':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.9721942128965346
+      'bases_count': ''
+      'len': 550
+      'pos': 0
+  'seq_description': '|HaploId=6|gprId=2|specie=lyrata|grpRef=H2006'
+  'seq_id': 'AlSRK28'
+  'seq_len': 550
+  'specie': 'A. lyrata'
+'AlSRK29':
+  'fragments':
+    'F1':
+      'GC': 46.9
+      'ShEntropy': 1.9810234351476805
+      'bases_count': ''
+      'len': 516
+      'pos': 0
+  'seq_description': '|HaploId=9|gprId=2|specie=lyrata|grpRef=H2009'
+  'seq_id': 'AlSRK29'
+  'seq_len': 516
+  'specie': 'A. lyrata'
+'AlSRK30':
+  'fragments':
+    'F1':
+      'GC': 44.2
+      'ShEntropy': 1.9759333517025581
+      'bases_count': ''
+      'len': 668
+      'pos': 0
+  'seq_description': '|HaploId=27|gprId=4|specie=lyrata|grpRef=H4027'
+  'seq_id': 'AlSRK30'
+  'seq_len': 668
+  'specie': 'A. lyrata'
+'AlSRK31':
+  'fragments':
+    'F1':
+      'GC': 43.8
+      'ShEntropy': 1.9884256905348212
+      'bases_count': ''
+      'len': 1205
+      'pos': 0
+  'seq_description': '|HaploId=7|gprId=4|specie=lyrata|grpRef=H4007'
+  'seq_id': 'AlSRK31'
+  'seq_len': 1205
+  'specie': 'A. lyrata'
+'AlSRK33':
+  'fragments':
+    'F1':
+      'GC': 49.1
+      'ShEntropy': 1.9812887875376908
+      'bases_count': ''
+      'len': 552
+      'pos': 0
+  'seq_description': '|HaploId=28|gprId=4|specie=lyrata|grpRef=H4028'
+  'seq_id': 'AlSRK33'
+  'seq_len': 552
+  'specie': 'A. lyrata'
+'AlSRK34':
+  'fragments':
+    'F1':
+      'GC': 43.4
+      'ShEntropy': 1.9645328362819166
+      'bases_count': ''
+      'len': 535
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=4|specie=lyrata|grpRef=H4001'
+  'seq_id': 'AlSRK34'
+  'seq_len': 535
+  'specie': 'A. lyrata'
+'AlSRK35':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.963778513947484
+      'bases_count': ''
+      'len': 541
+      'pos': 0
+  'seq_description': '|HaploId=20|gprId=4|specie=lyrata|grpRef=H4020'
+  'seq_id': 'AlSRK35'
+  'seq_len': 541
+  'specie': 'A. lyrata'
+'AlSRK36':
+  'fragments':
+    'F1':
+      'GC': 43.2
+      'ShEntropy': 1.9844575053404037
+      'bases_count': ''
+      'len': 1272
+      'pos': 0
+  'seq_description': '|HaploId=17|gprId=4|specie=lyrata|grpRef=H4017'
+  'seq_id': 'AlSRK36'
+  'seq_len': 1272
+  'specie': 'A. lyrata'
+'AlSRK37':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.9919661694221316
+      'bases_count': ''
+      'len': 1288
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=3|specie=lyrata|grpRef=H3002'
+  'seq_id': 'AlSRK37'
+  'seq_len': 1288
+  'specie': 'A. lyrata'
+'AlSRK38':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.990959346721656
+      'bases_count': ''
+      'len': 1327
+      'pos': 0
+  'seq_description': '|HaploId=29|gprId=4|specie=lyrata|grpRef=H4029'
+  'seq_id': 'AlSRK38'
+  'seq_len': 1327
+  'specie': 'A. lyrata'
+'AlSRK39':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.9898837741440185
+      'bases_count': ''
+      'len': 1309
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=4|specie=lyrata|grpRef=H4008'
+  'seq_id': 'AlSRK39'
+  'seq_len': 1309
+  'specie': 'A. lyrata'
+'AlSRK42':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.9759382841208284
+      'bases_count': ''
+      'len': 535
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=4|specie=lyrata|grpRef=H4004'
+  'seq_id': 'AlSRK42'
+  'seq_len': 535
+  'specie': 'A. lyrata'
+'AlSRK43':
+  'fragments':
+    'F1':
+      'GC': 42.6
+      'ShEntropy': 1.966689541243268
+      'bases_count': ''
+      'len': 544
+      'pos': 0
+  'seq_description': '|HaploId=23|gprId=4|specie=lyrata|grpRef=H4023'
+  'seq_id': 'AlSRK43'
+  'seq_len': 544
+  'specie': 'A. lyrata'
+'AlSRK44':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.9695302638604044
+      'bases_count': ''
+      'len': 547
+      'pos': 0
+  'seq_description': '|HaploId=38|gprId=4|specie=lyrata|grpRef=H4038'
+  'seq_id': 'AlSRK44'
+  'seq_len': 547
+  'specie': 'A. lyrata'
+'AlSRK45':
+  'fragments':
+    'F1':
+      'GC': 48.4
+      'ShEntropy': 1.9936526735215498
+      'bases_count': ''
+      'len': 366
+      'pos': 0
+  'seq_description': '|HaploId=37|gprId=4|specie=lyrata|grpRef=H4037'
+  'seq_id': 'AlSRK45'
+  'seq_len': 366
+  'specie': 'A. lyrata'
+'AlSRK50':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.9943791113545544
+      'bases_count': ''
+      'len': 1306
+      'pos': 0
+  'seq_description': '|HaploId=30|gprId=4|specie=lyrata|grpRef=H4030'
+  'seq_id': 'AlSRK50'
+  'seq_len': 1306
+  'specie': 'A. lyrata'
+'Aly10_ARK1_PL22':
+  'fragments':
+    'F1':
+      'GC': 42.6
+      'ShEntropy': 1.9759976754241548
+      'bases_count': 'W:1,M:2,R:1,Y:1'
+      'len': 1155
+      'pos': 0
+  'seq_description': '|Paralog=1'
+  'seq_id': 'Aly10_ARK1_PL22'
+  'seq_len': 1155
+  'specie': 'A. lyrata'
+'Aly13-2':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.9890888384686047
+      'bases_count': ''
+      'len': 935
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly13-2'
+  'seq_len': 935
+  'specie': 'A. lyrata'
+'Aly13-7':
+  'fragments':
+    'F1':
+      'GC': 45.6
+      'ShEntropy': 1.987387107248998
+      'bases_count': ''
+      'len': 938
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly13-7'
+  'seq_len': 938
+  'specie': 'A. lyrata'
+'Aly14_PL22':
+  'fragments':
+    'F1':
+      'GC': 42.1
+      'ShEntropy': 1.980344411366732
+      'bases_count': ''
+      'len': 1282
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly14_PL22'
+  'seq_len': 1282
+  'specie': 'A. lyrata'
+'Aly3_PL22':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9875943735202208
+      'bases_count': 'M:1'
+      'len': 1318
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly3_PL22'
+  'seq_len': 1318
+  'specie': 'A. lyrata'
+'Aly7_PL22':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.988394644683322
+      'bases_count': 'S:1'
+      'len': 1251
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly7_PL22'
+  'seq_len': 1251
+  'specie': 'A. lyrata'
+'Aly8_ARK3':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.985575952039301
+      'bases_count': ''
+      'len': 1297
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly8_ARK3'
+  'seq_len': 1297
+  'specie': 'A. lyrata'
+'Aly9_PL22':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.9858389039512738
+      'bases_count': 'Y:1'
+      'len': 1312
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=lyrata'
+  'seq_id': 'Aly9_PL22'
+  'seq_len': 1312
+  'specie': 'A. lyrata'
+'AtSRKA':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.9886735982732793
+      'bases_count': ''
+      'len': 1318
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=3|specie=thaliana|grpRef=H3002'
+  'seq_id': 'AtSRKA'
+  'seq_len': 1318
+  'specie': 'A. thaliana'
+'AtSRKB':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.9877273889648799
+      'bases_count': ''
+      'len': 1318
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=3|specie=halleri|grpRef=H3004'
+  'seq_id': 'AtSRKB'
+  'seq_len': 1318
+  'specie': 'A. thaliana'
+'AtSRKC':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.986340714800397
+      'bases_count': ''
+      'len': 1300
+      'pos': 0
+  'seq_description': '|HaploId=17|gprId=4|specie=thaliana|grpRef=H4017'
+  'seq_id': 'AtSRKC'
+  'seq_len': 1300
+  'specie': 'A. thaliana'
+'BoSRK02b':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.9908489689128612
+      'bases_count': ''
+      'len': 1312
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BoSRK02b'
+  'seq_len': 1312
+  'specie': 'B. oleraceae'
+'BoSRK07':
+  'fragments':
+    'F1':
+      'GC': 45.2
+      'ShEntropy': 1.9909034296514307
+      'bases_count': ''
+      'len': 1303
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BoSRK07'
+  'seq_len': 1303
+  'specie': 'B. oleraceae'
+'BoSRK12':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9944198517468195
+      'bases_count': ''
+      'len': 1297
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BoSRK12'
+  'seq_len': 1297
+  'specie': 'B. oleraceae'
+'BoSRK15':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.991718658207553
+      'bases_count': ''
+      'len': 1315
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BoSRK15'
+  'seq_len': 1315
+  'specie': 'B. oleraceae'
+'BrSRK08':
+  'fragments':
+    'F1':
+      'GC': 44.9
+      'ShEntropy': 1.9913471408338164
+      'bases_count': ''
+      'len': 1297
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BrSRK08'
+  'seq_len': 1297
+  'specie': 'B. rapa - campestris'
+'BrSRK46':
+  'fragments':
+    'F1':
+      'GC': 45.4
+      'ShEntropy': 1.9908171453747447
+      'bases_count': ''
+      'len': 1303
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BrSRK46'
+  'seq_len': 1303
+  'specie': 'B. rapa - campestris'
+'BrSRK54':
+  'fragments':
+    'F1':
+      'GC': 46.4
+      'ShEntropy': 1.9949233122056669
+      'bases_count': ''
+      'len': 1294
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'BrSRK54'
+  'seq_len': 1294
+  'specie': 'B. rapa - campestris'
+'Carubv10007030_Aly8':
+  'fragments':
+    'F1':
+      'GC': 45.6
+      'ShEntropy': 1.9871835957468647
+      'bases_count': ''
+      'len': 1297
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=Capselle_rubella'
+  'seq_id': 'Carubv10007030_Aly8'
+  'seq_len': 1297
+  'specie': 'Other'
+'Carubv10007718_Aly14':
+  'fragments':
+    'F1':
+      'GC': 43.2
+      'ShEntropy': 1.9839622777177113
+      'bases_count': ''
+      'len': 1273
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=Capselle_rubella'
+  'seq_id': 'Carubv10007718_Aly14'
+  'seq_len': 1273
+  'specie': 'Other'
+'Carubv10016249_Aly9':
+  'fragments':
+    'F1':
+      'GC': 44.1
+      'ShEntropy': 1.9869072066631355
+      'bases_count': ''
+      'len': 1303
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=Capselle_rubella'
+  'seq_id': 'Carubv10016249_Aly9'
+  'seq_len': 1303
+  'specie': 'Other'
+'Carubv10019903_Aly10_1':
+  'fragments':
+    'F1':
+      'GC': 42.8
+      'ShEntropy': 1.9792115715674157
+      'bases_count': ''
+      'len': 1255
+      'pos': 0
+  'seq_description': '|Paralog=1|specie=Capselle_rubella'
+  'seq_id': 'Carubv10019903_Aly10_1'
+  'seq_len': 1255
+  'specie': 'Other'
+'CgSRK07':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.9894977511644243
+      'bases_count': ''
+      'len': 1300
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgSRK07'
+  'seq_len': 1300
+  'specie': 'Other'
+'CgrSRK01':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.9862088380391283
+      'bases_count': ''
+      'len': 1037
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK01'
+  'seq_len': 1037
+  'specie': 'C. grandiflora'
+'CgrSRK02':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.9854336647146846
+      'bases_count': ''
+      'len': 965
+      'pos': 0
+  'seq_description': '|HaploId=20|gprId=4|specie=Capsella_grandiflora|grpRef=H4020'
+  'seq_id': 'CgrSRK02'
+  'seq_len': 965
+  'specie': 'C. grandiflora'
+'CgrSRK03':
+  'fragments':
+    'F1':
+      'GC': 45.8
+      'ShEntropy': 1.9898003109464946
+      'bases_count': ''
+      'len': 1022
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=1|specie=Capsella_grandiflora|grpRef=H1001'
+  'seq_id': 'CgrSRK03'
+  'seq_len': 1022
+  'specie': 'C. grandiflora'
+'CgrSRK04':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.9827128116741304
+      'bases_count': ''
+      'len': 1035
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK04'
+  'seq_len': 1035
+  'specie': 'C. grandiflora'
+'CgrSRK05':
+  'fragments':
+    'F1':
+      'GC': 43.2
+      'ShEntropy': 1.978234085475677
+      'bases_count': ''
+      'len': 977
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK05'
+  'seq_len': 977
+  'specie': 'C. grandiflora'
+'CgrSRK06':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.9854634770118311
+      'bases_count': ''
+      'len': 974
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK06'
+  'seq_len': 974
+  'specie': 'C. grandiflora'
+'CgrSRK08':
+  'fragments':
+    'F1':
+      'GC': 43.0
+      'ShEntropy': 1.974451842936129
+      'bases_count': ''
+      'len': 846
+      'pos': 0
+  'seq_description': '|HaploId=5|gprId=2|specie=Capsella_grandiflora|grpRef=H2005'
+  'seq_id': 'CgrSRK08'
+  'seq_len': 846
+  'specie': 'C. grandiflora'
+'CgrSRK09':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.9802530154189144
+      'bases_count': ''
+      'len': 861
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK09'
+  'seq_len': 861
+  'specie': 'C. grandiflora'
+'CgrSRK10':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.9785137183442925
+      'bases_count': ''
+      'len': 873
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=2|specie=Capsella_grandiflora|grpRef=H2002'
+  'seq_id': 'CgrSRK10'
+  'seq_len': 873
+  'specie': 'C. grandiflora'
+'CgrSRK11':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.9763853998543393
+      'bases_count': ''
+      'len': 759
+      'pos': 0
+  'seq_description': '|HaploId=12|gprId=3|specie=Capsella_grandiflora|grpRef=H3012'
+  'seq_id': 'CgrSRK11'
+  'seq_len': 759
+  'specie': 'C. grandiflora'
+'CgrSRK12':
+  'fragments':
+    'F1':
+      'GC': 45.7
+      'ShEntropy': 1.984232355792763
+      'bases_count': ''
+      'len': 801
+      'pos': 0
+  'seq_description': '|HaploId=3|gprId=3|specie=Capsella_grandiflora|grpRef=H3003'
+  'seq_id': 'CgrSRK12'
+  'seq_len': 801
+  'specie': 'C. grandiflora'
+'CgrSRK13':
+  'fragments':
+    'F1':
+      'GC': 45.1
+      'ShEntropy': 1.9792609583816165
+      'bases_count': ''
+      'len': 849
+      'pos': 0
+  'seq_description': '|HaploId=13|gprId=3|specie=Capsella_grandiflora|grpRef=H3013'
+  'seq_id': 'CgrSRK13'
+  'seq_len': 849
+  'specie': 'C. grandiflora'
+'CgrSRK14':
+  'fragments':
+    'F1':
+      'GC': 42.6
+      'ShEntropy': 1.9658255578052914
+      'bases_count': ''
+      'len': 619
+      'pos': 0
+  'seq_description': '|HaploId=23|gprId=4|specie=Capsella_grandiflora|grpRef=H4023'
+  'seq_id': 'CgrSRK14'
+  'seq_len': 619
+  'specie': 'C. grandiflora'
+'CgrSRK15':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.978499259165357
+      'bases_count': ''
+      'len': 583
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=4|specie=Capsella_grandiflora|grpRef=H4008'
+  'seq_id': 'CgrSRK15'
+  'seq_len': 583
+  'specie': 'C. grandiflora'
+'CgrSRK16':
+  'fragments':
+    'F1':
+      'GC': 44.4
+      'ShEntropy': 1.976170562706646
+      'bases_count': ''
+      'len': 603
+      'pos': 0
+  'seq_description': '|HaploId=4|gprId=4|specie=Capsella_grandiflora|grpRef=H4004'
+  'seq_id': 'CgrSRK16'
+  'seq_len': 603
+  'specie': 'C. grandiflora'
+'CgrSRK17':
+  'fragments':
+    'F1':
+      'GC': 45.2
+      'ShEntropy': 1.9827124304036452
+      'bases_count': ''
+      'len': 752
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=3|specie=Capsella_grandiflora|grpRef=H3002'
+  'seq_id': 'CgrSRK17'
+  'seq_len': 752
+  'specie': 'C. grandiflora'
+'CgrSRK18':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.980862763059977
+      'bases_count': ''
+      'len': 752
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=3|specie=Capsella_grandiflora|grpRef=H3001'
+  'seq_id': 'CgrSRK18'
+  'seq_len': 752
+  'specie': 'C. grandiflora'
+'CgrSRK19':
+  'fragments':
+    'F1':
+      'GC': 43.4
+      'ShEntropy': 1.9812893265061498
+      'bases_count': ''
+      'len': 835
+      'pos': 0
+  'seq_description': '|HaploId=14|gprId=3|specie=Capsella_grandiflora|grpRef=H3014'
+  'seq_id': 'CgrSRK19'
+  'seq_len': 835
+  'specie': 'C. grandiflora'
+'CgrSRK20':
+  'fragments':
+    'F1':
+      'GC': 45.2
+      'ShEntropy': 1.9838773575474784
+      'bases_count': ''
+      'len': 867
+      'pos': 0
+  'seq_description': '|HaploId=15|gprId=3|specie=Capsella_grandiflora|grpRef=H3015'
+  'seq_id': 'CgrSRK20'
+  'seq_len': 867
+  'specie': 'C. grandiflora'
+'CgrSRK21':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.9837918443574842
+      'bases_count': ''
+      'len': 825
+      'pos': 0
+  'seq_description': '|HaploId=24|gprId=4|specie=Capsella_grandiflora|grpRef=H4024'
+  'seq_id': 'CgrSRK21'
+  'seq_len': 825
+  'specie': 'C. grandiflora'
+'CgrSRK22':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.9699599915687094
+      'bases_count': ''
+      'len': 584
+      'pos': 0
+  'seq_description': '|HaploId=35|gprId=4|specie=Capsella_grandiflora|grpRef=H4035'
+  'seq_id': 'CgrSRK22'
+  'seq_len': 584
+  'specie': 'C. grandiflora'
+'CgrSRK23':
+  'fragments':
+    'F1':
+      'GC': 44.2
+      'ShEntropy': 1.9766623620109862
+      'bases_count': ''
+      'len': 826
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK23'
+  'seq_len': 826
+  'specie': 'C. grandiflora'
+'CgrSRK24':
+  'fragments':
+    'F1':
+      'GC': 45.7
+      'ShEntropy': 1.978150267096395
+      'bases_count': ''
+      'len': 856
+      'pos': 0
+  'seq_description': '|HaploId=6|gprId=2|specie=Capsella_grandiflora|grpRef=H2006'
+  'seq_id': 'CgrSRK24'
+  'seq_len': 856
+  'specie': 'C. grandiflora'
+'CgrSRK25':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9769090122353372
+      'bases_count': ''
+      'len': 879
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK25'
+  'seq_len': 879
+  'specie': 'C. grandiflora'
+'CgrSRK26':
+  'fragments':
+    'F1':
+      'GC': 46.2
+      'ShEntropy': 1.9750019117361344
+      'bases_count': ''
+      'len': 599
+      'pos': 0
+  'seq_description': '|HaploId=10|gprId=4|specie=Capsella_grandiflora|grpRef=H4010'
+  'seq_id': 'CgrSRK26'
+  'seq_len': 599
+  'specie': 'C. grandiflora'
+'CgrSRK27':
+  'fragments':
+    'F1':
+      'GC': 45.6
+      'ShEntropy': 1.9803002735918676
+      'bases_count': ''
+      'len': 625
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK27'
+  'seq_len': 625
+  'specie': 'C. grandiflora'
+'CgrSRK28':
+  'fragments':
+    'F1':
+      'GC': 46.8
+      'ShEntropy': 1.9835583654740052
+      'bases_count': ''
+      'len': 622
+      'pos': 0
+  'seq_description': '|HaploId=31|gprId=4|specie=Capsella_grandiflora|grpRef=H4031'
+  'seq_id': 'CgrSRK28'
+  'seq_len': 622
+  'specie': 'C. grandiflora'
+'CgrSRK29':
+  'fragments':
+    'F1':
+      'GC': 44.3
+      'ShEntropy': 1.971722513667768
+      'bases_count': ''
+      'len': 594
+      'pos': 0
+  'seq_description': '|HaploId=12|gprId=4|specie=Capsella_grandiflora|grpRef=H4012'
+  'seq_id': 'CgrSRK29'
+  'seq_len': 594
+  'specie': 'C. grandiflora'
+'CgrSRK30':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.984655498030329
+      'bases_count': ''
+      'len': 717
+      'pos': 0
+  'seq_description': '|HaploId=16|gprId=3|specie=Capsella_grandiflora|grpRef=H3016'
+  'seq_id': 'CgrSRK30'
+  'seq_len': 717
+  'specie': 'C. grandiflora'
+'CgrSRK31':
+  'fragments':
+    'F1':
+      'GC': 45.2
+      'ShEntropy': 1.9817762519647713
+      'bases_count': ''
+      'len': 580
+      'pos': 0
+  'seq_description': '|HaploId=26|gprId=4|specie=Capsella_grandiflora|grpRef=H4026'
+  'seq_id': 'CgrSRK31'
+  'seq_len': 580
+  'specie': 'C. grandiflora'
+'CgrSRK32':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.9746339234861894
+      'bases_count': ''
+      'len': 814
+      'pos': 0
+  'seq_description': '|HaploId=5|gprId=3|specie=Capsella_grandiflora|grpRef=H3005'
+  'seq_id': 'CgrSRK32'
+  'seq_len': 814
+  'specie': 'C. grandiflora'
+'CgrSRK33':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9836578577938633
+      'bases_count': ''
+      'len': 787
+      'pos': 0
+  'seq_description': '|HaploId=17|gprId=3|specie=Capsella_grandiflora|grpRef=H3017'
+  'seq_id': 'CgrSRK33'
+  'seq_len': 787
+  'specie': 'C. grandiflora'
+'CgrSRK34':
+  'fragments':
+    'F1':
+      'GC': 44.5
+      'ShEntropy': 1.9852109823631765
+      'bases_count': ''
+      'len': 847
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK34'
+  'seq_len': 847
+  'specie': 'C. grandiflora'
+'CgrSRK35':
+  'fragments':
+    'F1':
+      'GC': 46.3
+      'ShEntropy': 1.9903959502110413
+      'bases_count': ''
+      'len': 1012
+      'pos': 0
+  'seq_description': '|HaploId=19|gprId=4|specie=Capsella_grandiflora|grpRef=H4019'
+  'seq_id': 'CgrSRK35'
+  'seq_len': 1012
+  'specie': 'C. grandiflora'
+'CgrSRK36':
+  'fragments':
+    'F1':
+      'GC': 45.6
+      'ShEntropy': 1.988035096733713
+      'bases_count': ''
+      'len': 997
+      'pos': 0
+  'seq_description': '|HaploId=32|gprId=4|specie=Capsella_grandiflora|grpRef=H4032'
+  'seq_id': 'CgrSRK36'
+  'seq_len': 997
+  'specie': 'C. grandiflora'
+'CgrSRK37':
+  'fragments':
+    'F1':
+      'GC': 45.4
+      'ShEntropy': 1.9908387069645728
+      'bases_count': ''
+      'len': 1116
+      'pos': 0
+  'seq_description': '|HaploId=27|gprId=4|specie=Capsella_grandiflora|grpRef=H4027'
+  'seq_id': 'CgrSRK37'
+  'seq_len': 1116
+  'specie': 'C. grandiflora'
+'CgrSRK38':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.9775571019985323
+      'bases_count': ''
+      'len': 651
+      'pos': 0
+  'seq_description': '|HaploId=8|gprId=2|specie=Capsella_grandiflora|grpRef=H2008'
+  'seq_id': 'CgrSRK38'
+  'seq_len': 651
+  'specie': 'C. grandiflora'
+'CgrSRK39':
+  'fragments':
+    'F1':
+      'GC': 43.4
+      'ShEntropy': 1.9746007570245263
+      'bases_count': ''
+      'len': 847
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK39'
+  'seq_len': 847
+  'specie': 'C. grandiflora'
+'CgrSRK40':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.9747798409829678
+      'bases_count': ''
+      'len': 612
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=0|specie=Capsella_grandiflora|grpRef=H0001'
+  'seq_id': 'CgrSRK40'
+  'seq_len': 612
+  'specie': 'C. grandiflora'
+'CgrSRK41':
+  'fragments':
+    'F1':
+      'GC': 45.0
+      'ShEntropy': 1.9678464265491358
+      'bases_count': ''
+      'len': 567
+      'pos': 0
+  'seq_description': '|HaploId=1|gprId=4|specie=Capsella_grandiflora|grpRef=H4001'
+  'seq_id': 'CgrSRK41'
+  'seq_len': 567
+  'specie': 'C. grandiflora'
+'CgrSRK42':
+  'fragments':
+    'F1':
+      'GC': 43.3
+      'ShEntropy': 1.9791875820444416
+      'bases_count': ''
+      'len': 832
+      'pos': 0
+  'seq_description': '|HaploId=18|gprId=3|specie=Capsella_grandiflora|grpRef=H3018'
+  'seq_id': 'CgrSRK42'
+  'seq_len': 832
+  'specie': 'C. grandiflora'
+'CgrSRK43':
+  'fragments':
+    'F1':
+      'GC': 43.9
+      'ShEntropy': 1.9659745616837663
+      'bases_count': ''
+      'len': 814
+      'pos': 0
+  'seq_description': '|HaploId=19|gprId=3|specie=Capsella_grandiflora|grpRef=H3019'
+  'seq_id': 'CgrSRK43'
+  'seq_len': 814
+  'specie': 'C. grandiflora'
+'CgrSRK44':
+  'fragments':
+    'F1':
+      'GC': 45.3
+      'ShEntropy': 1.986230468446431
+      'bases_count': ''
+      'len': 826
+      'pos': 0
+  'seq_description': '|HaploId=20|gprId=3|specie=Capsella_grandiflora|grpRef=H3020'
+  'seq_id': 'CgrSRK44'
+  'seq_len': 826
+  'specie': 'C. grandiflora'
+'CgrSRK45':
+  'fragments':
+    'F1':
+      'GC': 44.2
+      'ShEntropy': 1.974274092059919
+      'bases_count': ''
+      'len': 837
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK45'
+  'seq_len': 837
+  'specie': 'C. grandiflora'
+'CgrSRK46':
+  'fragments':
+    'F1':
+      'GC': 44.0
+      'ShEntropy': 1.9830821351447627
+      'bases_count': ''
+      'len': 828
+      'pos': 0
+  'seq_description': '|HaploId=10|gprId=3|specie=Capsella_grandiflora|grpRef=H3010'
+  'seq_id': 'CgrSRK46'
+  'seq_len': 828
+  'specie': 'C. grandiflora'
+'CgrSRK47':
+  'fragments':
+    'F1':
+      'GC': 45.8
+      'ShEntropy': 1.9878036488559925
+      'bases_count': ''
+      'len': 987
+      'pos': 0
+  'seq_description': '|HaploId=33|gprId=4|specie=Capsella_grandiflora|grpRef=H4033'
+  'seq_id': 'CgrSRK47'
+  'seq_len': 987
+  'specie': 'C. grandiflora'
+'CgrSRK48':
+  'fragments':
+    'F1':
+      'GC': 46.9
+      'ShEntropy': 1.9764352284704154
+      'bases_count': ''
+      'len': 407
+      'pos': 0
+  'seq_description': '|HaploId=7|gprId=4|specie=Capsella_grandiflora|grpRef=H4007'
+  'seq_id': 'CgrSRK48'
+  'seq_len': 407
+  'specie': 'C. grandiflora'
+'CgrSRK49':
+  'fragments':
+    'F1':
+      'GC': 46.1
+      'ShEntropy': 1.98113823797323
+      'bases_count': ''
+      'len': 709
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK49'
+  'seq_len': 709
+  'specie': 'C. grandiflora'
+'CgrSRK50':
+  'fragments':
+    'F1':
+      'GC': 48.0
+      'ShEntropy': 1.9334524281225032
+      'bases_count': ''
+      'len': 173
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK50'
+  'seq_len': 173
+  'specie': 'C. grandiflora'
+'CgrSRK51':
+  'fragments':
+    'F1':
+      'GC': 45.5
+      'ShEntropy': 1.9838762699341308
+      'bases_count': ''
+      'len': 743
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK51'
+  'seq_len': 743
+  'specie': 'C. grandiflora'
+'CgrSRK52':
+  'fragments':
+    'F1':
+      'GC': 47.0
+      'ShEntropy': 1.9650761667721315
+      'bases_count': ''
+      'len': 334
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK52'
+  'seq_len': 334
+  'specie': 'C. grandiflora'
+'CgrSRK53':
+  'fragments':
+    'F1':
+      'GC': 43.0
+      'ShEntropy': 1.962401129408266
+      'bases_count': ''
+      'len': 458
+      'pos': 0
+  'seq_description': '|HaploId=11|gprId=3|specie=Capsella_grandiflora|grpRef=H3011'
+  'seq_id': 'CgrSRK53'
+  'seq_len': 458
+  'specie': 'C. grandiflora'
+'CgrSRK54':
+  'fragments':
+    'F1':
+      'GC': 44.0
+      'ShEntropy': 1.9586114095214033
+      'bases_count': ''
+      'len': 461
+      'pos': 0
+  'seq_description': '|HaploId=36|gprId=4|specie=Capsella_grandiflora|grpRef=H4036'
+  'seq_id': 'CgrSRK54'
+  'seq_len': 461
+  'specie': 'C. grandiflora'
+'CgrSRK55':
+  'fragments':
+    'F1':
+      'GC': 44.8
+      'ShEntropy': 1.9654724556752474
+      'bases_count': ''
+      'len': 455
+      'pos': 0
+  'seq_description': '|HaploId=5|gprId=4|specie=Capsella_grandiflora|grpRef=H4005'
+  'seq_id': 'CgrSRK55'
+  'seq_len': 455
+  'specie': 'C. grandiflora'
+'CgrSRK56':
+  'fragments':
+    'F1':
+      'GC': 44.6
+      'ShEntropy': 1.9632390743202044
+      'bases_count': ''
+      'len': 462
+      'pos': 0
+  'seq_description': '|HaploId=21|gprId=4|specie=Capsella_grandiflora|grpRef=H4021'
+  'seq_id': 'CgrSRK56'
+  'seq_len': 462
+  'specie': 'C. grandiflora'
+'CgrSRK57':
+  'fragments':
+    'F1':
+      'GC': 43.4
+      'ShEntropy': 1.9733851417582162
+      'bases_count': ''
+      'len': 461
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CgrSRK57'
+  'seq_len': 461
+  'specie': 'C. grandiflora'
+'CgrSRK58':
+  'fragments':
+    'F1':
+      'GC': 48.4
+      'ShEntropy': 1.9868062736149474
+      'bases_count': ''
+      'len': 455
+      'pos': 0
+  'seq_description': '|HaploId=9|gprId=4|specie=Capsella_grandiflora|grpRef=H4009'
+  'seq_id': 'CgrSRK58'
+  'seq_len': 455
+  'specie': 'C. grandiflora'
+'CgrSRK59':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.9821096852438926
+      'bases_count': ''
+      'len': 465
+      'pos': 0
+  'seq_description': '|HaploId=34|gprId=4|specie=Capsella_grandiflora|grpRef=H4034'
+  'seq_id': 'CgrSRK59'
+  'seq_len': 465
+  'specie': 'C. grandiflora'
+'CgrSRK60':
+  'fragments':
+    'F1':
+      'GC': 46.6
+      'ShEntropy': 1.97712279644727
+      'bases_count': ''
+      'len': 474
+      'pos': 0
+  'seq_description': '|HaploId=2|gprId=4|specie=Capsella_grandiflora|grpRef=H4002'
+  'seq_id': 'CgrSRK60'
+  'seq_len': 474
+  'specie': 'C. grandiflora'
+'CgrSRK61':
+  'fragments':
+    'F1':
+      'GC': 49.9
+      'ShEntropy': 1.9747278466350342
+      'bases_count': ''
+      'len': 449
+      'pos': 0
+  'seq_description': '|HaploId=11|gprId=4|specie=Capsella_grandiflora|grpRef=H4011'
+  'seq_id': 'CgrSRK61'
+  'seq_len': 449
+  'specie': 'C. grandiflora'
+'CgrSRK62':
+  'fragments':
+    'F1':
+      'GC': 49.8
+      'ShEntropy': 1.9448545900270788
+      'bases_count': ''
+      'len': 327
+      'pos': 0
+  'seq_description': '|HaploId=15|gprId=4|specie=Capsella_grandiflora|grpRef=H4015'
+  'seq_id': 'CgrSRK62'
+  'seq_len': 327
+  'specie': 'C. grandiflora'
+'CrubSRK':
+  'fragments':
+    'F1':
+      'GC': 43.6
+      'ShEntropy': 1.9870995112568968
+      'bases_count': ''
+      'len': 1400
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'CrubSRK'
+  'seq_len': 1400
+  'specie': 'C. rubella'
+'Esa_PSRK':
+  'fragments':
+    'F1':
+      'GC': 46.0
+      'ShEntropy': 1.9918288122699548
+      'bases_count': ''
+      'len': 1338
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'Esa_PSRK'
+  'seq_len': 1338
+  'specie': 'Other'
+'Sir_PSRK':
+  'fragments':
+    'F1':
+      'GC': 45.8
+      'ShEntropy': 1.9940168954234674
+      'bases_count': ''
+      'len': 1306
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'Sir_PSRK'
+  'seq_len': 1306
+  'specie': 'Sisymbrium irio'
+'Spa_PSRK':
+  'fragments':
+    'F1':
+      'GC': 44.7
+      'ShEntropy': 1.988262306421663
+      'bases_count': ''
+      'len': 1062
+      'pos': 0
+  'seq_description': ''
+  'seq_id': 'Spa_PSRK'
+  'seq_len': 1062
+  'specie': 'Eutrema salsugineum'
