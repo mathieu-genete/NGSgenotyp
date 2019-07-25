@@ -10,10 +10,10 @@ plot_selection_param: [['error rate','<',0.08]]
 
 #Parameters to define genotyp threshold value
 genotyp_def_ErrorRate: 0.05
-genotyp_alleleProb_THRLD: 0.000001
+genotyp_alleleProb_THRLD: 0.00001
 
 # use errProb for error probability and covProb for coverage probability
-alleleProb_formula: 'errProb*covProb'
+alleleProb_formula: 'errProb*covProb**0.5'
 normalized_cov: False
 
 #paralog isPositiv alleleprobability threshold
@@ -23,6 +23,8 @@ normalized_cov: False
 #logNormal parameters mean (μ) and standard deviation (σ)
 mu : 0.01992734
 sigma : 0.01024804
+#mu : -4.056581
+#sigma : 0.556193
 
 #exponential distribution
 #here because of distribution, lbda = 1/(1-"expected value") 108.212560

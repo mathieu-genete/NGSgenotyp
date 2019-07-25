@@ -50,7 +50,7 @@ plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.3"
+__version__="v1.4"
 AppName = "NGSgenotyp"
 
 config = None
@@ -104,6 +104,7 @@ def genotyp(ArgsVal):
 	parser.add_argument("-o","--outfolder", help="destination folder (create it if not exist)", required=True)
 	parser.add_argument("-i","--readsinfo", help="Configuration file with reads informations if reads ares paired add [format=paired] parameter", required=True)
 	parser.add_argument("-d","--refdatabase", help="reference database in fasta format (see documentation)", required=True)
+	parser.add_argument("-x","--refexclude", help="simple text file contains for each line, references names to exclude for current analysis")
 	
 	parser.add_argument("--config", help="config file")
 	args = parser.parse_args(ArgsVal)
@@ -118,6 +119,17 @@ def genotyp(ArgsVal):
         #Force error rate threshold
         if args.ErroRateThrld:
                 config['genotyp_def_ErrorRate']=args.ErroRateThrld
+
+        config['refexclude']=[]
+
+        if args.refexclude:
+                if os.path.exists(args.refexclude):
+                        tmp=[]
+                        exfile=open(args.refexclude,'r')
+                        for exref in exfile:
+                                tmp.append(exref.strip())
+                        exfile.close()
+                        config['refexclude']=tmp
 	
 	currentDateTime = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 	
@@ -180,7 +192,10 @@ def genotyp(ArgsVal):
 		addTextToLogFile("USE fastqc : {}".format(fastqc_path))
 	else:
 		fastqc_path = ''
-	
+        
+        if len(config['refexclude'])>0:
+                addTextToLogFile("References to exluce : {}".format(",".join(config['refexclude'])))
+
 	#Database fasta file
 	IsRefInCatalog, config['ref_file'] = refDatabase_in_catalog(args.refdatabase,check_DatabaseFastaInputName(args.refdatabase))
 	
@@ -602,7 +617,7 @@ def generateXlsSharedReads(ShReadsdict, xls_save_file, picklestats_list):
 	
 	workbook = xlwt.Workbook()
 	
-	for k1,sample in ShReadsdict.items():
+	for k1,sample in sorted(ShReadsdict.items(),key=itemgetter(0)):
 		if len(sample.keys())>0:
 			if len(k1)>31:
 				stdout_print("Shared reads: sheet name lenght '{}' to long truncate to '{}'".format(k1,k1[:31]))
@@ -1117,7 +1132,9 @@ def samtools_SortIndexStats():
 		
 		readsNbr = sum(ReadsCounts[read_file[0]].values())
 		
-		for reference in References_list.values():
+                references_Names = [v for v in References_list.values() if v not in config['refexclude']]
+
+		for reference in references_Names:
 		
 			aln_name = "Aln_{}_VS_{}".format(read_file[0],reference)
 			aln_path = os.path.join(Sample_path,aln_name)
@@ -1259,6 +1276,7 @@ def calculIntegrale(f,a,b):
 
 def get_ErrProb(err):
         return calculIntegrale(loi_NormalFixed,err,1)
+        #return calculIntegrale(loi_LogNormalFixed,err,1)
 
 def get_CovProb(cov):
         return calculIntegrale(loi_ExpoFixed,0,cov)
@@ -1275,7 +1293,7 @@ def get_maxMeanCover(stats_rslt,sname):
                maxMeanCover = max([statRef['mean cover'] for statRef in stats_rslt[sname].values()])
         return maxMeanCover
 
-def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,ErrThrld,Xdensity,Ydensity):
+def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,THRLD_range,maxerr=0):
         colorPos = {True:'red',False:'black'}
         colors = [colorPos[v] for v in IsPositiv]
         plt.clf()
@@ -1286,17 +1304,18 @@ def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,ErrThrld,Xdensity,Ydensity)
         ax1.xaxis.grid(True, linestyle=':',color='lightgray',which='minor')
         ax1.xaxis.grid(True, linestyle='-',color='lightgray',which='major')
         ax1.scatter(ErrDatas,CovDatas,marker=".",color=colors)
+        err_THRLD_range = [v[0] for v in THRLD_range]
+        cov_THRLD_range = [v[1] for v in THRLD_range]
+        ax1.plot(err_THRLD_range,cov_THRLD_range,linestyle=':',color='orange')
+        if maxerr>0:
+                ax1.set_xlim([0,maxerr])
+        ax1.set_ylim([0,1.0])
+        ax1.text(max(err_THRLD_range),max(cov_THRLD_range),"genotyp score thresold: {}".format(config['genotyp_alleleProb_THRLD']),fontsize=6,color='orange')
         ax1.set_ylabel(r"Coverage", fontsize=12)
         ax1.set_xlabel("Error rate", fontsize=12)
-        ax2 = ax1.twinx()
-        ax2.plot(Xdensity,Ydensity,color="blue")
-        ax2.axvline(x=ErrThrld,color='red', linewidth=1)
-        ax2.set_ylabel(r"Error rate density", fontsize=12, color="blue")
-        for label in ax2.get_yticklabels():
-                label.set_color("blue")
         return fig
 
-def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,ErrThrld):
+def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,maxcov=0):
         colorPos = {True:'red',False:'black'}
         colors = [colorPos[v] for v in IsPositiv]
         plt.clf()
@@ -1307,9 +1326,10 @@ def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,ErrThrld):
         ax1.yaxis.grid(True, linestyle=':',color='lightgray',which='minor')
         ax1.yaxis.grid(True, linestyle='-',color='lightgray',which='major')
         ax1.scatter(DepthDatas,ErrDatas,marker=".",color=colors)
+        if maxcov>0:
+                ax1.set_ylim([0,maxcov])
         ax1.set_xlabel(r"Mean Depth", fontsize=12)
         ax1.set_ylabel("Error rate", fontsize=12)
-        ax1.axhline(y=ErrThrld,color='red', linewidth=1)
         return fig
 
 def LogalleleProb__plot(sortedLogAllelesProb,ProbThrld,title):
@@ -1364,11 +1384,16 @@ def ErrorRate_Density(ErrList):
         Adensity = np.array(density(xs))
         return {'xs':xs,'density':Adensity}
 
-def get_errorratesCov(stats,List_Paralogs):
+def get_errorratesCov(stats,List_Paralogs,onlyParalogs=False):
         ErrorRateCovList={'err':[],'cov':[],'IsPositiv':[],'depth':[],'gscore':[]}
         for indiv,v in stats.items():
                 for ref,w in v.items():
-                        if w['mean cover']>0 and ref not in List_Paralogs:
+                        if onlyParalogs:
+                                b=ref in List_Paralogs
+                        else:
+                                b=ref not in List_Paralogs
+
+                        if w['mean cover']>0 and b:
                                 ErrorRateCovList['err'].append(w['error rate'])
                                 ErrorRateCovList['cov'].append(w['Region Cov'])
                                 ErrorRateCovList['IsPositiv'].append(w['IsPositiv'])
@@ -1442,20 +1467,39 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                         else:
                                 stats_rslt[sname][ref]['IsPositiv'] = False
 
+        THRLD_range = get_threshold_limits(0.1,0.5,config['genotyp_alleleProb_THRLD'])
+
         sortedLogAllelesProb = sorted(LogAllelesProbList,key=itemgetter(0),reverse=True)
         sortedLogParalogsAllelesProbList = sorted(LogParalogsAllelesProbList,key=itemgetter(0),reverse=True)
 
         ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
+        ErrorRateParalogsCovList = get_errorratesCov(stats_rslt,List_Paralogs,True)
         ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
 
         with PdfPages(ErrCovDensityPlot_path) as pdf:
-                pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],config['genotyp_def_ErrorRate'],ErrorRateDensityDatas['xs'],ErrorRateDensityDatas['density']))
-                pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],config['genotyp_def_ErrorRate']))
+                pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],THRLD_range,0.35))
+                pdf.savefig(ErrCov_Density_plots(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['cov'],ErrorRateParalogsCovList['IsPositiv'],THRLD_range,0.35))
+                pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],0.3))
+                pdf.savefig(ErrDepth__plot(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['depth'],ErrorRateParalogsCovList['IsPositiv'],0.3))
                 pdf.savefig(ErrCovDepth_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv']))
                 pdf.savefig(ErrCovScore_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['gscore'],ErrorRateCovList['IsPositiv']))
                 pdf.savefig(LogalleleProb__plot(sortedLogAllelesProb,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for references alleles (exclude paralogs)"))
                 pdf.savefig(LogalleleProb__plot(sortedLogParalogsAllelesProbList,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for paralogs only"))
         return stats_rslt
+
+def get_threshold_limits(maxErr,minCov,alleleProbTHRLD):
+        THRLD_range=[]
+        tmp=0
+        for err in np.arange(0,maxErr,step=0.005):
+                for cov in np.arange(1,minCov,step=-0.01):
+                        alleleP = allele_prob(err,cov)['alleleP']
+                        if alleleP<alleleProbTHRLD:
+                                if cov>tmp:
+                                        THRLD_range.append((err,cov))
+                                        tmp=cov
+                                        break
+        return THRLD_range
+
 
 def first_max(values):
         tmp=(0,0)
@@ -1625,8 +1669,9 @@ def bowtie_align():
                 #unpaired allignment
                 samples = "-U {fastqFiles}".format(fastqFiles=','.join(fastq_list))
 			
-			
-		for reference in References_list.values():
+		references_Names = [v for v in References_list.values() if v not in config['refexclude']]
+
+		for reference in references_Names:
 			aln_name = "Aln_{}_VS_{}".format(read_file[0],reference)
 			aln_path = os.path.join(rslt_path,aln_name)
 			
