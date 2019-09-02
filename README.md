@@ -15,7 +15,7 @@ NGSgenotyp is written with Python 2.7.5 and requires following packages installe
 	   numpy - >= 1.13.1
 	   pysam - >= 0.8.2.1
 
-NGSgenotyp also use embeded following tools:
+NGSgenotyp also use embeded following tools (no need to install them):
 
 	   bowtie - 2-2.2.6
 	   CAP3
