@@ -384,7 +384,70 @@ add "format=paired" when you have paired datas for a sample.
 to prevent files from being split add "nosplit=True"
 When you have paired datas, you should use both parameters at the same time: ....,format=paired,nosplit=True
 ## Databank format
+The databank containing all your references must be a single file in fasta format.
 
+You should not use spaces, commas, shash in your sequences id, use the character "_" instead.
+
+Example:
+
+```
+>CgrSRK46|HaploId=10|gprId=3|specie=Capsella_grandiflora|grpRef=H3010
+ACTCCAAATTTAATCAATCAAATGGATTTTTGTGGCAGAGC... ... ...
+>Carubv10016249_Aly9|Paralog=1
+ATGAGAGGCGCATTACCAAACTCTTACCATTCTTACACTTT... ... ...
+>CgSRK07
+GAGTGGAGAGATAGAGAGATGAGAAGTGAAGGACCAAAC... ... ...
+...
+...
+```
+The description of your sequences must follow this format:
+
+```
+>Sequence_ID|Param1=xxx|Param2=xxx... ...
+```
+
+sequence id must be unique and always be after the sign ">".
+the (optional) parameters must be separated by the "|". There is no precise order in their statement.
+
+To indicate that your reference corresponds to a paralogue you must add the parameter: Paralog=1 (example above with "Carubv10016249_Aly9")
+
+You can specify the species with the parameter (be careful, replace spaces with "_"): specie=xxxxx
+
+The following 3 parameters HaploId, gprId and grpRef are linked:
+
+gprId is the allelic class ranging from 0 to 9
+
+Chaque groupe contient des homologues HaploId dont la numérotation est arbitraire (entier entre 1 et 100)
+HaploId is the homologous identifiant inside allelic class (ranging from 1 to 100).
+
+grpRef uses these 2 informations in the following format: Hghhh (with g=gprId et hhh=HaploId)
+
+### *Example*:
+
+*Table 1.*
+
+|  grpRef |  halleri 	| lyrata  | Capsella grandiflora  |
+|		:-:		|		:-:			|	:-:			|		:-:									|
+|  H0001	|   AhSRK27 |		--		|	CgrSRK40							|
+|  H1001	|   AhSRK01	| AlSRK01	| CgrSRK03 							|
+|  H2001	|   AhSRK03	| AlSRK03	|		--				        	|
+|  H2002	|   AhSRK08	|		--		|	CgrSRK10							|
+|  H2003	|   AhSRK09	| AlSRK14	|   --									|
+
+In the table 1, references AhSRK09 and AlSRK14 have the same grpRef:
+
+They belong to group 2: gprId = 2
+Their sequences are homologous (so they have the same HaploId): HaploId = 3
+ ==> grpRef = H2003
+
+So in the fasta file they will be noted as follows:
+
+```
+>AhSRK09|gprId=2|HaploId=3|grpRef=H2003
+séquence... ...
+>AlSRK14|gprId=2|HaploId=3|grpRef=H2003
+séquence... ...
+```
 ## Basic command line usage for genotyping
 
 
