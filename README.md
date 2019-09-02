@@ -386,27 +386,6 @@ When you have paired datas, you should use both parameters at the same time: ...
 
 ## Basic command line usage for genotyping
 
-using fasta file as reference:
-
-`python kmerRefFilter.py -r reference_sequences.fasta -1 fastq1_R1 fastq2_R1 -2 fastq1_R2 fastq2_R2 -o output_directory`
-
-or using a saved dictionary (previously saved with -p option):
-
-`python kmerRefFilter.py -i saved_dictionary -1 fastq1_R1 fastq2_R1 -2 fastq1_R2 fastq2_R2 -o output_directory`
-
-filtered fastq files are created in output_directory.
-
-### Basic Command line usage on download stream
-
-Fastq files are directly filtered on dowload stream. If the files are compressed in gzip format, use -ugzip option.
-
-example for gz compressed fastq files:
-
-`python kmerRefFilter.py -r reference_sequences.fasta -u1 fastq_url_R1 -u2 fastq_url_R2 -ugzip -o output_directory`
-
-### exclude option (-x)
-
-Need a fasta file as input. Generates a set of kmers, using the fasta file, and next exclude them from the kmer reference dictionary.
 
 ### Contact Information
 Mathieu Genete
