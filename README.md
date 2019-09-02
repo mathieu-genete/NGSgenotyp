@@ -449,7 +449,11 @@ séquence... ...
 séquence... ...
 ```
 ## Basic command line usage for genotyping
-
+Before use demo dataset, edit **reads_list_reduced** file in demo_datas folder. Update demo datas path on the first line (absolute path required)
+In NGSgenotyp folder launch the following command to find genotypes:
+```
+./NGSgenotyp.py genotyp -pdf -v -k -S -o demo_datas/demo_results -i demo_datas/reads_list_reduced -d demo_datas/Ahalleri_SRK_Database.fa
+```
 
 ### Contact Information
 Mathieu Genete
