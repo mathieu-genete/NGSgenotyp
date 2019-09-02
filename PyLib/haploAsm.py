@@ -63,7 +63,7 @@ def run(ArgsVal):
 	
 	parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + __version__)
 	parser.add_argument("-f","--force",help="force",action="store_const", const="-f", default="")
-	parser.add_argument("-i","--interlaced",help="orignals reads files with interlaced forward and reverse paired-end reads",action="store_const", const="-i", default="")
+	parser.add_argument("-i","--concatenated",help="orignals reads files with concatenated forward and reverse paired-end reads",action="store_const", const="-i", default="")
 	parser.add_argument("-p","--paired",help="orignals reads files with paired-end reads forward and reverse files distincts",action="store_const", const="-p", default="")
 	parser.add_argument("-d","--diploid",help="use with diploid highly polymorphic genomes",action="store_const", const="-d", default="")
 	parser.add_argument("-x","--excludeParalogs",help="exclude paralogs from yass results",action="store_const", const="-x", default="")
@@ -134,7 +134,7 @@ def run(ArgsVal):
 	if args.paired:
 		paired = True
 		
-	if args.interlaced:
+	if args.concatenated:
 		interlaced = True
 		paired = False
 		

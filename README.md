@@ -32,6 +32,7 @@ NGSgenotyp also use embeded following tools:
 Create a repository for the pipeline and download it inside:
 ```
 wget https://github.com/mathieu-genete/NGSgenotyp/archive/master.zip
+unzip master.zip
 ```
 
 ## Running NGSgenotyp
@@ -223,7 +224,7 @@ optional arguments:
                         Force error rate threshold - default= see config file
   -S [SPLITREADS], --splitreads [SPLITREADS]
                         split fastq files reads in half use this option if
-                        reads are interlaced - add [nosplit=True] parameter in
+                        reads are concatenated - add [nosplit=True] parameter in
                         reads information file for sample not need to be split
   -o OUTFOLDER, --outfolder OUTFOLDER
                         destination folder (create it if not exist)
@@ -273,7 +274,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -f, --force           force
-  -i, --interlaced      orignals reads files with interlaced forward and
+  -i, --concatenated      orignals reads files with concatenated forward and
                         reverse paired-end reads
   -p, --paired          orignals reads files with paired-end reads forward and
                         reverse files distincts
@@ -358,9 +359,9 @@ optional arguments:
 ## Demo dataset
 Datas format:
 
-      sample DRS032518: interlaces data - use the split option
+      sample DRS032518: concatenated reads - use the split option
       sample DRS032528: paired end datas - if split option is set, add ,format=paired,nosplit=True to the reads list file (see below)
-      sample DRS032540: interlaces data - use the split option
+      sample DRS032540: concatenated reads - use the split option
 
 Expected genotype for all three samples
 
@@ -379,7 +380,7 @@ format for the reads list file:
 
 You can add a comment, only after the first line. The first line must always contain the absolute path to the fastq files folder.
 
-add "format=paried" when you have paired datas for a sample.
+add "format=paired" when you have paired datas for a sample.
 to prevent files from being split add "nosplit=True"
 When you have paired datas, you should use both parameters at the same time: ....,format=paired,nosplit=True
 ## Databank format

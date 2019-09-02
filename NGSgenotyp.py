@@ -99,7 +99,7 @@ def genotyp(ArgsVal):
 	parser.add_argument("-r","--region", help="Region to analyse in sequences <min> <max>",nargs=2)
 	parser.add_argument("-T","--MaxParallelsJobs", help="max number of parallels jobs to run - default= see config file", type=int)
         parser.add_argument("-e","--ErroRateThrld", help="Force error rate threshold - default= see config file", type=float)
-	parser.add_argument("-S","--splitreads", help="split fastq files reads in half use this option if reads are interlaced - add [nosplit=True] parameter in reads information file for sample not need to be split", nargs='?', const=-1, type=int)
+	parser.add_argument("-S","--splitreads", help="split fastq files reads in half use this option if reads are concatenated - add [nosplit=True] parameter in reads information file for sample not need to be split", nargs='?', const=-1, type=int)
 	
 	parser.add_argument("-o","--outfolder", help="destination folder (create it if not exist)", required=True)
 	parser.add_argument("-i","--readsinfo", help="Configuration file with reads informations if reads ares paired add [format=paired] parameter", required=True)
