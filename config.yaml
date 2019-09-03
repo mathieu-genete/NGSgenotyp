@@ -1,6 +1,6 @@
 #NGSgenotyp V1.0.8
 #number of parallels job by defaut
-MaxParallelsJobs: 100
+MaxParallelsJobs: 10
 
 #Maximum graphs per figure for coverage plots
 MaxgraphPerFigure: 6
@@ -41,7 +41,7 @@ data_dir : DB_DATABASES
 refs_catalog: refs_catalog.p
 ref_dir : REF
 sampleQC_dir: QC_SamplesRef
-all_results_dir: Resultats
+all_results_dir: Results
 species_dict : species.yaml
 
 #Log file

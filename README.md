@@ -371,13 +371,14 @@ Expected genotype for all three samples
 
 
 format for the reads list file:
+```
        /path/to/the/fastq/folder
        sample_name_1,fastq_file_1, fastq_file_2,...
        sample_name_2,fastq_Fwd_1,fastq_Rev_1,...,fastq_Fwd_n,fastq_Rev_n,format=paired,nosplit=True
        .
        .
        .
-
+```
 You can add a comment, only after the first line. The first line must always contain the absolute path to the fastq files folder.
 
 add "format=paired" when you have paired datas for a sample.
@@ -449,16 +450,28 @@ séquence... ...
 séquence... ...
 ```
 ## Basic command line usage for genotyping
-Before use demo dataset, edit **reads_list_reduced** file in demo_datas folder. Update demo datas path on the first line (absolute path required)
-In NGSgenotyp folder launch the following command to find genotypes:
+Before use demo dataset, edit **reads_list_reduced** file in demo_datas folder. Update demo datas path on the first line (absolute path required).
+Inside NGSgenotyp folder launch the following command:
 ```
 ./NGSgenotyp.py genotyp -pdf -v -k -S -o demo_datas/demo_results -i demo_datas/reads_list_reduced -d demo_datas/Ahalleri_SRK_Database.fa
-```
 
-### Contact Information
+genotyp => use genotype feature of the pipeline
+-pdf => generate pdf plots coverage informations for each samples
+-v => force NGSgenotyp to be verbose and print progression
+-k => filter raw fastq with kmers dictionnary generated from the references fasta
+-S => reads from SRA are concatenated. Split reads in half for each fastq file and generate 2 fastq file (forward and reverse)
+-o => output folder for the demo_results
+-i => reads list: text file contains fastq files absolute path, samples name and fastq file names (see format for the reads list file)
+-d => reference databank in fasta (see Databank format)
+```
+### outputs
+
+
+## Config files
+## Contact Information
 Mathieu Genete
 
 Email: mathieu.genete@univ-lille.fr
 
-### Licence Agreement
+## Licence Agreement
 This software is covered by GNU General Public License, version 3 (GPL-3.0).
