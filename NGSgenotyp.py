@@ -1293,7 +1293,7 @@ def get_maxMeanCover(stats_rslt,sname):
                maxMeanCover = max([statRef['mean cover'] for statRef in stats_rslt[sname].values()])
         return maxMeanCover
 
-def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,THRLD_range,maxerr=0):
+def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,THRLD_range,title,maxerr=0):
         colorPos = {True:'red',False:'black'}
         colors = [colorPos[v] for v in IsPositiv]
         plt.clf()
@@ -1307,6 +1307,7 @@ def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,THRLD_range,maxerr=0):
         err_THRLD_range = [v[0] for v in THRLD_range]
         cov_THRLD_range = [v[1] for v in THRLD_range]
         ax1.plot(err_THRLD_range,cov_THRLD_range,linestyle=':',color='orange')
+        ax1.set_title(title,fontsize=8)
         if maxerr>0:
                 ax1.set_xlim([0,maxerr])
         ax1.set_ylim([0,1.0])
@@ -1315,7 +1316,7 @@ def ErrCov_Density_plots(ErrDatas,CovDatas,IsPositiv,THRLD_range,maxerr=0):
         ax1.set_xlabel("Error rate", fontsize=12)
         return fig
 
-def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,maxcov=0):
+def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,title,maxcov=0):
         colorPos = {True:'red',False:'black'}
         colors = [colorPos[v] for v in IsPositiv]
         plt.clf()
@@ -1326,6 +1327,7 @@ def ErrDepth__plot(ErrDatas,DepthDatas,IsPositiv,maxcov=0):
         ax1.yaxis.grid(True, linestyle=':',color='lightgray',which='minor')
         ax1.yaxis.grid(True, linestyle='-',color='lightgray',which='major')
         ax1.scatter(DepthDatas,ErrDatas,marker=".",color=colors)
+        ax1.set_title(title,fontsize=8)
         if maxcov>0:
                 ax1.set_ylim([0,maxcov])
         ax1.set_xlabel(r"Mean Depth", fontsize=12)
@@ -1477,10 +1479,10 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
         ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
 
         with PdfPages(ErrCovDensityPlot_path) as pdf:
-                pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],THRLD_range,0.35))
-                pdf.savefig(ErrCov_Density_plots(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['cov'],ErrorRateParalogsCovList['IsPositiv'],THRLD_range,0.35))
-                pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],0.3))
-                pdf.savefig(ErrDepth__plot(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['depth'],ErrorRateParalogsCovList['IsPositiv'],0.3))
+                pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],THRLD_range,"Error rates and coverage metrics scatterplots for sample",0.35))
+                pdf.savefig(ErrCov_Density_plots(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['cov'],ErrorRateParalogsCovList['IsPositiv'],THRLD_range,"Error rates and coverage metrics scatterplots for paralogous",0.35))
+                pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],"Error rates and mean reads depth metrics scatterplots for samples",0.3))
+                pdf.savefig(ErrDepth__plot(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['depth'],ErrorRateParalogsCovList['IsPositiv'],"Error rates and mean reads depth metrics scatterplots for paralogous",0.3))
                 pdf.savefig(ErrCovDepth_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv']))
                 pdf.savefig(ErrCovScore_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['gscore'],ErrorRateCovList['IsPositiv']))
                 pdf.savefig(LogalleleProb__plot(sortedLogAllelesProb,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for references alleles (exclude paralogs)"))
