@@ -387,7 +387,7 @@ When you have paired datas, you should use both parameters at the same time: ...
 ## Databank format
 The databank containing all your references must be a single file in fasta format.
 
-You should not use spaces, commas, shash in your sequences id, use the character "_" instead.
+You should not use spaces, commas, slash in your sequences id, use the character "_" instead.
 
 Example:
 
