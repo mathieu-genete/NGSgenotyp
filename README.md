@@ -418,7 +418,6 @@ The following 3 parameters HaploId, gprId and grpRef are linked:
 
 gprId is the allelic class ranging from 0 to 9
 
-Chaque groupe contient des homologues HaploId dont la numérotation est arbitraire (entier entre 1 et 100)
 HaploId is the homologous identifiant inside allelic class (ranging from 1 to 100).
 
 grpRef uses these 2 informations in the following format: Hghhh (with g=gprId et hhh=HaploId)
