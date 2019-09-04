@@ -438,6 +438,7 @@ grpRef uses these 2 informations in the following format: Hghhh (with g=gprId et
 In the table 1, hortologous references AhSRK09 (*A. halleri*) and AlSRK14 (*A. lyrata*) have the same grpRef:
 
 They belong to group 2 (allelic class): gprId = 2
+
 Because they ar hortologous, they have the same HaploId: HaploId = 3
  ==> grpRef = H2003
 
