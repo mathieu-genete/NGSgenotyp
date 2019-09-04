@@ -433,7 +433,7 @@ grpRef uses these 2 informations in the following format: Hghhh (with g=gprId et
 |  H1001	|   AhSRK01	| AlSRK01	| CgrSRK03 							|
 |  H2001	|   AhSRK03	| AlSRK03	|		--				        	|
 |  H2002	|   AhSRK08	|		--		|	CgrSRK10							|
-|  H2003	|   AhSRK09	| AlSRK14	|   --									|
+|  **_H2003_**	|   **_AhSRK09_**	| **_AlSRK14_**	|   --									|
 
 In the table 1, hortologous references AhSRK09 (*A. halleri*) and AlSRK14 (*A. lyrata*) have the same grpRef:
 
