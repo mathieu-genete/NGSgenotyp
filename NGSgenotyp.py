@@ -50,7 +50,7 @@ plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.4"
+__version__="v1.4.1"
 AppName = "NGSgenotyp"
 
 config = None
@@ -96,6 +96,7 @@ def genotyp(ArgsVal):
 	
 	parser.add_argument("-q","--samplesqc", action="store_const", const="-q", default="", help="samples quality control only")
 	parser.add_argument("-s","--statsonly", action="store_const", const="-s", default="", help="do stats only")
+	parser.add_argument("-sh","--sharedreads", action="store_const", const=True, default=False, help="generates shared reads file")
 	parser.add_argument("-r","--region", help="Region to analyse in sequences <min> <max>",nargs=2)
 	parser.add_argument("-T","--MaxParallelsJobs", help="max number of parallels jobs to run - default= see config file", type=int)
         parser.add_argument("-e","--ErroRateThrld", help="Force error rate threshold - default= see config file", type=float)
@@ -618,7 +619,7 @@ def generateXlsSharedReads(ShReadsdict, xls_save_file, picklestats_list):
 	workbook = xlwt.Workbook()
 	
 	for k1,sample in sorted(ShReadsdict.items(),key=itemgetter(0)):
-		if len(sample.keys())>0:
+		if len(sample.keys())>0 and len(sample.keys())<255:
 			if len(k1)>31:
 				stdout_print("Shared reads: sheet name lenght '{}' to long truncate to '{}'".format(k1,k1[:31]))
 			sheet = workbook.add_sheet(k1[:31])
@@ -1221,7 +1222,8 @@ def samtools_SortIndexStats():
 	
 	generateXlsStatsFromDict(stats_rslt, ReadsCounts, headers, xlsstat_path)
 	
-	shared_reads(stats_rslt)
+        if args.sharedreads:
+                shared_reads(stats_rslt)
 	
 	msg = "stats on {} alignements".format(str(nbaln))
 	stdout_print(msg)
