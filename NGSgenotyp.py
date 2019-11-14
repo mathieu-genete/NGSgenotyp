@@ -1471,14 +1471,15 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                         else:
                                 stats_rslt[sname][ref]['IsPositiv'] = False
 
-        THRLD_range = get_threshold_limits(0.1,0.5,config['genotyp_alleleProb_THRLD'])
+        THRLD_range = get_threshold_limits(0.2,0.5,config['genotyp_alleleProb_THRLD'])
 
         sortedLogAllelesProb = sorted(LogAllelesProbList,key=itemgetter(0),reverse=True)
         sortedLogParalogsAllelesProbList = sorted(LogParalogsAllelesProbList,key=itemgetter(0),reverse=True)
 
         ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
         ErrorRateParalogsCovList = get_errorratesCov(stats_rslt,List_Paralogs,True)
-        ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
+        #removed 14/11/2019
+        #ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
 
         with PdfPages(ErrCovDensityPlot_path) as pdf:
                 pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],THRLD_range,"Error rates and coverage metrics scatterplots for sample",0.35))
