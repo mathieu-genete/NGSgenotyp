@@ -4,6 +4,12 @@
 import os
 import sys
 
+#verify python version
+python_version=sys.version_info
+if python_version[0]>2:
+        print("You use python {}.{}.{} -- NGSgenotyp require Python 2.7".format(python_version[0],python_version[1],python_version[2]))
+        sys.exit(1520)
+
 AppPath = os.path.realpath(__file__)
 App_Folder = AppPath[:AppPath.rfind('/')]
 tools_folder = os.path.join(App_Folder,'TOOLS')
@@ -68,9 +74,8 @@ fastqc_path = ''
 #*************************
 
 def genotyp(ArgsVal):
-
 	global config
-        global fastqParams
+	global fastqParams
 	global args
 	global HomoParaFromRef
 	global StderrPaths
@@ -91,7 +96,7 @@ def genotyp(ArgsVal):
 	parser.add_argument("-f", "--force", action="store_const", const="-f", default="")
 	parser.add_argument("-c", "--checks", help=argparse.SUPPRESS, action="store_const", const="-c", default="")
 	parser.add_argument("-k", "--kmerfilter", help="filtering fastq raw data with kmers dictionnary generated from references sequences. Should be use if your input fastq are not yet filtered (significatively reduces compute time)", action="store_const", const="-k", default="")
-        parser.add_argument("-ks","--kmerSize", help="kmer size for kmer filtering - default = 20", type=int, default=20)
+	parser.add_argument("-ks","--kmerSize", help="kmer size for kmer filtering - default = 20", type=int, default=20)
 	parser.add_argument("-pdf", "--pdfreports",help="generate PDF reports (can take long time)", action="store_const", const="-pdf", default="")
 	
 	parser.add_argument("-q","--samplesqc", action="store_const", const="-q", default="", help="samples quality control only")
@@ -99,7 +104,7 @@ def genotyp(ArgsVal):
 	parser.add_argument("-sh","--sharedreads", action="store_const", const=True, default=False, help="generates shared reads file")
 	parser.add_argument("-r","--region", help="Region to analyse in sequences <min> <max>",nargs=2)
 	parser.add_argument("-T","--MaxParallelsJobs", help="max number of parallels jobs to run - default= see config file", type=int)
-        parser.add_argument("-e","--ErroRateThrld", help="Force error rate threshold - default= see config file", type=float)
+	parser.add_argument("-e","--ErroRateThrld", help="Force error rate threshold - default= see config file", type=float)
 	parser.add_argument("-S","--splitreads", help="split fastq files reads in half use this option if reads are concatenated - add [nosplit=True] parameter in reads information file for sample not need to be split", nargs='?', const=-1, type=int)
 	
 	parser.add_argument("-o","--outfolder", help="destination folder (create it if not exist)", required=True)
@@ -118,12 +123,12 @@ def genotyp(ArgsVal):
 	config = yaml.load(open(config_file))
 
         #Force error rate threshold
-        if args.ErroRateThrld:
+	if args.ErroRateThrld:
                 config['genotyp_def_ErrorRate']=args.ErroRateThrld
 
-        config['refexclude']=[]
+	config['refexclude']=[]
 
-        if args.refexclude:
+	if args.refexclude:
                 if os.path.exists(args.refexclude):
                         tmp=[]
                         exfile=open(args.refexclude,'r')
@@ -188,13 +193,13 @@ def genotyp(ArgsVal):
 	else:
 		bowtie2_path = ''
 
-        if config['fastqc']!=None:
+	if config['fastqc']!=None:
 		fastqc_path = os.path.join(App_Folder,config['fastqc'])
 		addTextToLogFile("USE fastqc : {}".format(fastqc_path))
 	else:
 		fastqc_path = ''
         
-        if len(config['refexclude'])>0:
+	if len(config['refexclude'])>0:
                 addTextToLogFile("References to exluce : {}".format(",".join(config['refexclude'])))
 
 	#Database fasta file
@@ -235,8 +240,8 @@ def genotyp(ArgsVal):
 				config['reads_dir'] = splitedReads_Config['reads_dir']
 				config['reads_files'] = splitedReads_Config['reads_files']
 
-                        finalReadsDic={'reads_dir':config['reads_dir'],'reads_files':config['reads_files']}
-                        create_YamlFromDict(os.path.join(config['outfolder'],config['finalReads_yaml']), finalReadsDic)
+			finalReadsDic={'reads_dir':config['reads_dir'],'reads_files':config['reads_files']}
+			create_YamlFromDict(os.path.join(config['outfolder'],config['finalReads_yaml']), finalReadsDic)
 
 			#Create fasta with ref and ref table correspondances and quality control for references
 			stdout_print("Split fasta...")
@@ -276,8 +281,8 @@ def genotyp(ArgsVal):
 	
 	totalTime = time.time() - startTime
 	
-        endMessage = "-- ENDED IN {} --".format(time.strftime('%Hh%Mm%Ss', time.gmtime(totalTime)))
-        stdout_print(endMessage)
+	endMessage = "-- ENDED IN {} --".format(time.strftime('%Hh%Mm%Ss', time.gmtime(totalTime)))
+	stdout_print(endMessage)
 	addTextToLogFile(endMessage)
 	
 #----- END OF MAIN WORKFLOW -----
@@ -318,7 +323,7 @@ def split_reads(cutpos,fastqParams):
 	
 	cutpos_str = ""
 
-        extList=['FASTQ','FQ']
+	extList=['FASTQ','FQ']
 
 	
 	if cutpos>0:
@@ -327,12 +332,12 @@ def split_reads(cutpos,fastqParams):
 	for k,reads in reads_files.items():	
 		tmp = []		
 		tmp.append(reads[0])
-                params=fastqParams[reads[0]]
-                NoSplit=False
-                if "nosplit" in params.keys():
+		params=fastqParams[reads[0]]
+		NoSplit=False
+		if "nosplit" in params.keys():
                         NoSplit=True
 		for fread in reads[1:]:
-                        readFile = os.path.join(reads_dir,fread)
+			readFile = os.path.join(reads_dir,fread)
 			if "_RSplit" not in fread and not NoSplit:
 				cmd = "{pth}/splitFastq_v1/splitFastq{ct} -o {out} {fq} >>{log}".format(ct=cutpos_str, pth=tools_folder,out=output,fq=readFile,log=os.path.join(log_folder,"splitFastq_{dt}.txt".format(dt=dt)))
 				target = os.path.join(output,"{}_R1_RSplit.fastq".format(remove_fileExt(fread, extList)))
@@ -343,7 +348,7 @@ def split_reads(cutpos,fastqParams):
 				
 				if not os.path.exists(target):
 					jblst.add_a_job(cmd,"splitFastq {}".format(fread),target)
-                        elif NoSplit:
+			elif NoSplit:
                                 stdout_print("[{}] nosplit parameter for {}".format(reads[0],fread),True)
                                 nosplitFname = "{}_RSplit.fastq".format(remove_fileExt(fread, extList))
                                 slinkName = os.path.join(output,nosplitFname)
@@ -414,16 +419,16 @@ def Run_kmerRefFilter(kmerSize):
 
 	NbrFilesToFilter = 0
 
-        extList=['FASTQ','FQ']
+	extList=['FASTQ','FQ']
 
 	for k,reads in reads_files.items():	
 		tmp = []
 		idName = reads[0]
-                freadList = reads[1:]
+		freadList = reads[1:]
 		tmp.append(idName)
-                parms = fastqParams[idName]
+		parms = fastqParams[idName]
                 
-                if 'format' in parms.keys() and parms['format']=='paired' and len(freadList)%2==0:
+		if 'format' in parms.keys() and parms['format']=='paired' and len(freadList)%2==0:
                         for i in range(0,len(freadList),2):
                                 fwdread = freadList[i]
                                 revread = freadList[i+1]
@@ -449,7 +454,7 @@ def Run_kmerRefFilter(kmerSize):
                                         NbrFilesToFilter += 2
                                         if not os.path.exists(target):
                                                 jblst.add_a_job(cmd,"kmerRefFilter paired {} {}".format(fwdread,revread),target)
-                else:
+		else:
 
                         for fread in freadList:
                                 if "_filtered" not in fread:
@@ -472,7 +477,7 @@ def Run_kmerRefFilter(kmerSize):
 		filtered_reads['reads_files'][k] = tmp
 
 	#stdout_print("{} fastq files to filter".format(jblst.get_SizeOfJoblist()),True)
-        stdout_print("{} fastq files to filter".format(NbrFilesToFilter),True)
+	stdout_print("{} fastq files to filter".format(NbrFilesToFilter),True)
 	
 	dbfile = os.path.basename(config['ref_file'])
 	dbname = dbfile[:dbfile.rfind('.')]
@@ -510,20 +515,20 @@ def check_fastqFiles():
 	reads_files = config['reads_files']
 	reads_dir = config['reads_dir']
 	
-        url=False
+	url=False
 
 	for read in reads_files.values():
 		for fq in read[1:]:
-                        if is_url(fq):
-                                addTextToLogFile("{} is URL".format(fq))
-                                url=True
+			if is_url(fq):
+				addTextToLogFile("{} is URL".format(fq))
+				url=True
                                 #if not check_url_exists(fq):
                                 #        errormsg="ERROR: \"{}\" URL not exists".format(fq)
                                 #        exitProg(errormsg)  
-                        else:
-                                if not os.path.exists(os.path.join(reads_dir,fq)):
-                                        errormsg="ERROR: \"{}\" not found".format(os.path.join(reads_dir,fq))
-                                        exitProg(errormsg)
+			else:
+				if not os.path.exists(os.path.join(reads_dir,fq)):
+					errormsg="ERROR: \"{}\" not found".format(os.path.join(reads_dir,fq))
+					exitProg(errormsg)
 				
 			if args.kmerfilter:
 			
@@ -535,11 +540,11 @@ def check_fastqFiles():
 				if not check_FileExtensions(fq,['fastq']):
 					errormsg="ERROR: \"{}\" file extension should be .fastq".format(fq)
 					exitProg(errormsg)
-        return {'url':url}	
+	return {'url':url}	
 	
 def stdout_print(txt, printInLog=False):
 	if args.tinyverbose:
-		print txt
+		print(txt)
 	if printInLog:
 		addTextToLogFile(txt)
 
@@ -724,7 +729,7 @@ def ScatterPlot_ERate_RegionCov(out_pdf,picklestats_list):
 	
 	region =''
         
-        pointColor={True:{True:'blue',False:'blue'},False:{True:'red',False:'black'}}
+	pointColor={True:{True:'blue',False:'blue'},False:{True:'red',False:'black'}}
 	
 	if args.region:
 		region = "(from {rmin} To {rmax} bp)".format(rmin=args.region[0],rmax=args.region[1])
@@ -736,22 +741,22 @@ def ScatterPlot_ERate_RegionCov(out_pdf,picklestats_list):
 			ErrRate = [v['error rate'] for i,v in ref.items() if v['mean cover']>0]
 			Colors = [pointColor[v['IsParalog']][v['IsPositiv']] for i,v in ref.items() if v['mean cover']>0]
 
-                        plt.clf()                                
-                        fig, ax = plt.subplots()
-                        ax.set_ylim([0,max(RegionCov)*(1+10.0/100.0)])
-                        ax.set_xlim([0,max(ErrRate)*(1+10.0/100.0)])
+			plt.clf()
+			fig, ax = plt.subplots()
+			ax.set_ylim([0,max(RegionCov)*(1+10.0/100.0)])
+			ax.set_xlim([0,max(ErrRate)*(1+10.0/100.0)])
 
-                        plt.scatter(ErrRate,RegionCov,color=Colors,marker='x')
-                        ax.axvline(x=config['genotyp_def_ErrorRate'],color='red', linewidth=0.5)
-                        plt.title("Sample {title} {region}".format(title=sample,region=region))
-                        plt.xlabel('Error rate',fontsize=12)
-                        plt.ylabel('Region coverage',fontsize=12)
-                        red_patch = mpatches.Patch(color='red', label='positiv samples')
-                        blue_patch = mpatches.Patch(color='blue', label='paralogs')
-                        black_patch = mpatches.Patch(color='black', label='negativ samples')
-                        plt.legend(handles=[red_patch,black_patch,blue_patch],loc=1,framealpha=0.5,fontsize=6)
-                        pdf.savefig(plt.gcf())
-                        plt.close('all')
+			plt.scatter(ErrRate,RegionCov,color=Colors,marker='x')
+			ax.axvline(x=config['genotyp_def_ErrorRate'],color='red', linewidth=0.5)
+			plt.title("Sample {title} {region}".format(title=sample,region=region))
+			plt.xlabel('Error rate',fontsize=12)
+			plt.ylabel('Region coverage',fontsize=12)
+			red_patch = mpatches.Patch(color='red', label='positiv samples')
+			blue_patch = mpatches.Patch(color='blue', label='paralogs')
+			black_patch = mpatches.Patch(color='black', label='negativ samples')
+			plt.legend(handles=[red_patch,black_patch,blue_patch],loc=1,framealpha=0.5,fontsize=6)
+			pdf.savefig(plt.gcf())
+			plt.close('all')
 
 
 def ScatterPlot_HomoPara(out_pdf,picklestats_list):
@@ -953,14 +958,14 @@ def plotDephCoverage(depthCov, pp, title):
 			iqr = value['iqr']
 			riqr = value['riqr']
 			rmed = value['rmed']
-                        IsParalog = value['IsParalog']
-                        IsPositiv = value['IsPositiv']
+			IsParalog = value['IsParalog']
+			IsPositiv = value['IsPositiv']
 		
-                        if IsParalog:
+			if IsParalog:
                                 textColor='orange'
-                        elif not IsParalog and IsPositiv:
+			elif not IsParalog and IsPositiv:
                                 textColor='green'
-                        else:
+			else:
                                 textColor='black'
 
 			maxfdepth = int(max(fydepth))
@@ -1031,10 +1036,10 @@ def bamPlotCoverage(AllBamDepthCoverage):
 	if config['ERate_MeanCov_PDF']:
                 ScatterPlot_ERate_MeanCov(os.path.join(dir_pdfout,"ErrMeanCov_plot.pdf"),picklestats_list)
 	
-        if config['Group_ErrMeanCov_PDF']:
+	if config['Group_ErrMeanCov_PDF']:
                 ScatterPlot_HomoPara(os.path.join(dir_pdfout,"Group_ErrMeanCov_plot.pdf"),picklestats_list)
 
-        if config['ErrRegionCov_PDF']:
+	if config['ErrRegionCov_PDF']:
 	        ScatterPlot_ERate_RegionCov(os.path.join(dir_pdfout,"ErrRegionCov_plot.pdf"),picklestats_list)
 
 	region =''
@@ -1100,7 +1105,7 @@ def samtools_SortIndexStats():
 	
 	xlsstat_filename = str(config['outfolder']).rstrip('/')
 
-        ErrCovDensityPlot_path = os.path.join(dir_allResults,"ErrCovDepth_plot.pdf")
+	ErrCovDensityPlot_path = os.path.join(dir_allResults,"ErrCovDepth_plot.pdf")
 	
 	rfind_fn = xlsstat_filename.rfind('/')
 	
@@ -1133,7 +1138,7 @@ def samtools_SortIndexStats():
 		
 		readsNbr = sum(ReadsCounts[read_file[0]].values())
 		
-                references_Names = [v for v in References_list.values() if v not in config['refexclude']]
+		references_Names = [v for v in References_list.values() if v not in config['refexclude']]
 
 		for reference in references_Names:
 		
@@ -1189,19 +1194,19 @@ def samtools_SortIndexStats():
 					stats_rslt [read_file[0]][reference]['Norm IQR'] = float(rslt_BDC['riqr'])
 					stats_rslt [read_file[0]][reference]['Norm med'] = float(rslt_BDC['rmed'])
 					stats_rslt [read_file[0]][reference]['Region Cov'] = round(float(rslt_BDC['pSeqCov']),3)
-                                        stats_rslt [read_file[0]][reference]['gscore'] = 0
-                                        stats_rslt [read_file[0]][reference]['Warnings'] = []
+					stats_rslt [read_file[0]][reference]['gscore'] = 0
+					stats_rslt [read_file[0]][reference]['Warnings'] = []
 					AllBamDepthCoverage[aln_name] = (rslt_BDC)
 						
 	stats_rslt = analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path)
 
-        generatePutativeAllelesTXTFile(outTXT,stats_rslt)
+	generatePutativeAllelesTXTFile(outTXT,stats_rslt)
 
 	create_PickleFromDict(picklestat_path,stats_rslt)
 	
 	headers.append('RefLen')
 	headers.append('mean cover')
-        headers.append('NormDepth')
+	headers.append('NormDepth')
 	headers.append('cov median')
 	headers.append('cov IQR')
 	headers.append('Norm IQR')
@@ -1209,12 +1214,12 @@ def samtools_SortIndexStats():
 	headers.append('max depth')
 	headers.append('Region Cov')
 	headers.append('gscore')
-        headers.append('Warnings')
+	headers.append('Warnings')
 	
 	headers = list(set(headers))
 	
 	#does config already contain headers	
-        if ('result_stats_headers' in config):
+	if ('result_stats_headers' in config):
                 headers = config['result_stats_headers']
 		
 	if args.region:
@@ -1222,7 +1227,7 @@ def samtools_SortIndexStats():
 	
 	generateXlsStatsFromDict(stats_rslt, ReadsCounts, headers, xlsstat_path)
 	
-        if args.sharedreads:
+	if args.sharedreads:
                 shared_reads(stats_rslt)
 	
 	msg = "stats on {} alignements".format(str(nbaln))
@@ -1274,7 +1279,7 @@ def calculIntegrale(f,a,b):
                         s += (stepVal/6.0)*(f(x)+4*f((x+x+stepVal)/2.0)+f(x+stepVal))
                 return s
         else:
-                print "f is not a function"
+                print("f is not a function")
 
 def get_ErrProb(err):
         return calculIntegrale(loi_NormalFixed,err,1)
@@ -1408,17 +1413,17 @@ def get_errorratesCov(stats,List_Paralogs,onlyParalogs=False):
 def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 	
 	List_Paralogs = Load_Paralogs()
-        allele_prob_THRLD = float(config['genotyp_alleleProb_THRLD'])
-        LogAllelesProbList=[]
-        LogParalogsAllelesProbList=[]
+	allele_prob_THRLD = float(config['genotyp_alleleProb_THRLD'])
+	LogAllelesProbList=[]
+	LogParalogsAllelesProbList=[]
 
 	for sname, values in stats_rslt.items():
 		for ref, statRef in values.items():
 
-                        if stats_rslt[sname][ref]['RefLen']<config['seq_min_len']:
-                                stats_rslt[sname][ref]['Warnings'].append(config['Warn_refLen'])
+			if stats_rslt[sname][ref]['RefLen']<config['seq_min_len']:
+				stats_rslt[sname][ref]['Warnings'].append(config['Warn_refLen'])
 
-                        HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
+			HomoParaInfo = get_HomoPara_Parameters(ref, HomoParaFromRef)
 			stats_rslt[sname][ref]['Group ID'] = str(HomoParaInfo['grpRef'])
 
 			stats_rslt[sname][ref]['IsPositiv'] = False
@@ -1430,58 +1435,58 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
 				stats_rslt[sname][ref]['IsParalog'] = False
 
                 #NormDepth calculation
-                parDepth = np.array([v['mean cover'] for v in values.values() if (v['IsParalog'] and v['error rate']<config['genotyp_def_ErrorRate'] and v['mean cover']>0)])
-                if len(parDepth)>0:
+		parDepth = np.array([v['mean cover'] for v in values.values() if (v['IsParalog'] and v['error rate']<config['genotyp_def_ErrorRate'] and v['mean cover']>0)])
+		if len(parDepth)>0:
                         parMedDepth = np.median(parDepth)
 
-                parCov = np.array([v['Region Cov'] for v in values.values() if (v['IsParalog'] and v['error rate']<config['genotyp_def_ErrorRate'] and v['mean cover']>0)])
-                if len(parCov)>0:
+		parCov = np.array([v['Region Cov'] for v in values.values() if (v['IsParalog'] and v['error rate']<config['genotyp_def_ErrorRate'] and v['mean cover']>0)])
+		if len(parCov)>0:
                         parMedCov = np.median(parCov)
 
                 #Allele probability calculation
-                for ref, statRef in values.items():
-                        if config['normalized_cov']:
-                                covValue = statRef['Region Cov']*(1.0/float(parMedCov))
-                        else:
-                                covValue = statRef['Region Cov']
+		for ref, statRef in values.items():
+			if config['normalized_cov']:
+				covValue = statRef['Region Cov']*(1.0/float(parMedCov))
+			else:
+				covValue = statRef['Region Cov']
 
-                        AlleleProb = allele_prob(statRef['error rate'],covValue)
-                        stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
-                        if AlleleProb['alleleP']>0:
-                                log10AlleleP = math.log10(AlleleProb['alleleP'])
-                        else:
-                                log10AlleleP = 0                                
-                        stats_rslt[sname][ref]['LOGalleleProb'] = log10AlleleP
+			AlleleProb = allele_prob(statRef['error rate'],covValue)
+			stats_rslt[sname][ref]['alleleProb'] = AlleleProb['alleleP']
+			if AlleleProb['alleleP']>0:
+				log10AlleleP = math.log10(AlleleProb['alleleP'])
+			else:
+				log10AlleleP = 0                                
+			stats_rslt[sname][ref]['LOGalleleProb'] = log10AlleleP
 			stats_rslt[sname][ref]['gscore'] = AlleleProb['alleleP']
 			stats_rslt[sname][ref]['errProb'] = AlleleProb['errP']
 			stats_rslt[sname][ref]['covProb'] = AlleleProb['covP']
 
-                        if len(parDepth)>0:
+			if len(parDepth)>0:
                                 statRef['NormDepth']= statRef['mean cover']/parMedDepth
-                        else:
+			else:
                                 statRef['NormDepth']= statRef['mean cover']
 
-                LogAllelesProbList = LogAllelesProbList + [(v['alleleProb'],v['LOGalleleProb']) for v in values.values() if (v['alleleProb']>0  and not v['IsParalog'])]
-                LogParalogsAllelesProbList = LogParalogsAllelesProbList + [(v['alleleProb'],v['LOGalleleProb']) for v in values.values() if (v['alleleProb']>0 and v['IsParalog'])]
+		LogAllelesProbList = LogAllelesProbList + [(v['alleleProb'],v['LOGalleleProb']) for v in values.values() if (v['alleleProb']>0  and not v['IsParalog'])]
+		LogParalogsAllelesProbList = LogParalogsAllelesProbList + [(v['alleleProb'],v['LOGalleleProb']) for v in values.values() if (v['alleleProb']>0 and v['IsParalog'])]
 
                 #define putatives alleles
-                for ref, statRef in values.items():
+		for ref, statRef in values.items():
                         if (stats_rslt[sname][ref]['alleleProb']>=config['genotyp_alleleProb_THRLD']):
                                 stats_rslt[sname][ref]['IsPositiv'] = True
                         else:
                                 stats_rslt[sname][ref]['IsPositiv'] = False
 
-        THRLD_range = get_threshold_limits(0.2,0.5,config['genotyp_alleleProb_THRLD'])
+	THRLD_range = get_threshold_limits(0.2,0.5,config['genotyp_alleleProb_THRLD'])
 
-        sortedLogAllelesProb = sorted(LogAllelesProbList,key=itemgetter(0),reverse=True)
-        sortedLogParalogsAllelesProbList = sorted(LogParalogsAllelesProbList,key=itemgetter(0),reverse=True)
+	sortedLogAllelesProb = sorted(LogAllelesProbList,key=itemgetter(0),reverse=True)
+	sortedLogParalogsAllelesProbList = sorted(LogParalogsAllelesProbList,key=itemgetter(0),reverse=True)
 
-        ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
-        ErrorRateParalogsCovList = get_errorratesCov(stats_rslt,List_Paralogs,True)
+	ErrorRateCovList = get_errorratesCov(stats_rslt,List_Paralogs)
+	ErrorRateParalogsCovList = get_errorratesCov(stats_rslt,List_Paralogs,True)
         #removed 14/11/2019
         #ErrorRateDensityDatas = ErrorRate_Density(ErrorRateCovList['err'])
 
-        with PdfPages(ErrCovDensityPlot_path) as pdf:
+	with PdfPages(ErrCovDensityPlot_path) as pdf:
                 pdf.savefig(ErrCov_Density_plots(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['IsPositiv'],THRLD_range,"Error rates and coverage metrics scatterplots for sample",0.35))
                 pdf.savefig(ErrCov_Density_plots(ErrorRateParalogsCovList['err'],ErrorRateParalogsCovList['cov'],ErrorRateParalogsCovList['IsPositiv'],THRLD_range,"Error rates and coverage metrics scatterplots for paralogous",0.35))
                 pdf.savefig(ErrDepth__plot(ErrorRateCovList['err'],ErrorRateCovList['depth'],ErrorRateCovList['IsPositiv'],"Error rates and mean reads depth metrics scatterplots for samples",0.3))
@@ -1490,7 +1495,7 @@ def analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path):
                 pdf.savefig(ErrCovScore_plot3d(ErrorRateCovList['err'],ErrorRateCovList['cov'],ErrorRateCovList['gscore'],ErrorRateCovList['IsPositiv']))
                 pdf.savefig(LogalleleProb__plot(sortedLogAllelesProb,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for references alleles (exclude paralogs)"))
                 pdf.savefig(LogalleleProb__plot(sortedLogParalogsAllelesProbList,config['genotyp_alleleProb_THRLD'],"Sorted Allele probability for paralogs only"))
-        return stats_rslt
+	return stats_rslt
 
 def get_threshold_limits(maxErr,minCov,alleleProbTHRLD):
         THRLD_range=[]
@@ -1514,23 +1519,23 @@ def first_max(values):
         return tmp
              
 def generatePutativeAllelesTXTFile(outTXT,stats_rslt):
-        out=""
-        fout = open(outTXT,'w')
-        pAlleles = {}
-        for sname in sorted(stats_rslt.keys()):
-                values = stats_rslt[sname]
-                pAlleles[sname]=[]
+	out=""
+	fout = open(outTXT,'w')
+	pAlleles = {}
+	for sname in sorted(stats_rslt.keys()):
+		values = stats_rslt[sname]
+		pAlleles[sname]=[]
 		for ref, statRef in values.items():
                         if stats_rslt[sname][ref]['IsPositiv'] and not stats_rslt[sname][ref]['IsParalog']:
                                 pAlleles[sname].append(ref)
-        refList=[]
-        for ref in pAlleles.values():
+	refList=[]
+	for ref in pAlleles.values():
                 refList = refList + ref
-        refList = sorted(list(set(refList)))
+	refList = sorted(list(set(refList)))
         
-        out+="Sample\t{}\tNb Alleles\n".format("\t".join(refList))
-        allelesSum={}
-        for sample in sorted(pAlleles.keys()):
+	out+="Sample\t{}\tNb Alleles\n".format("\t".join(refList))
+	allelesSum={}
+	for sample in sorted(pAlleles.keys()):
                 refsample=pAlleles[sample]
                 isRef = []
                 for ref in refList:
@@ -1543,13 +1548,13 @@ def generatePutativeAllelesTXTFile(outTXT,stats_rslt):
                                 isRef.append('0')
                 out+="{}\t{}\t{}\n".format(sample,"\t".join(isRef),sum([int(v) for v in isRef]))
 
-        sumAlleles=[]
-        for ref in refList:
+	sumAlleles=[]
+	for ref in refList:
                 sumAlleles.append(str(allelesSum[ref]))
-        out+="sum\t{}".format("\t".join(sumAlleles))
+	out+="sum\t{}".format("\t".join(sumAlleles))
 
-        fout.write(out)
-        fout.close()
+	fout.write(out)
+	fout.close()
 
 def generateXlsStatsFromDict(statdict, ReadsCounts, headers, xls_save_file):
 	
@@ -1567,7 +1572,7 @@ def generateXlsStatsFromDict(statdict, ReadsCounts, headers, xls_save_file):
 	fileNbr = 1
 
 	for k1 in sorted(statdict.keys()):
-                sample = statdict[k1]
+		sample = statdict[k1]
 		if len(k1)>31:
 			stdout_print("Stats xls file: sheet name lenght '{}' to long truncate to '{}'".format(k1,k1[:31]))
 		sheet = workbook.add_sheet(k1[:31])
@@ -1579,7 +1584,7 @@ def generateXlsStatsFromDict(statdict, ReadsCounts, headers, xls_save_file):
 		
 		row=0
 		col=1
-                xlsTitles = config['xls_headers_titles']
+		xlsTitles = config['xls_headers_titles']
 		for h in headers:
 			sheet.write(row,col,xlsTitles[h],hstyle)
 			col += 1
@@ -1601,19 +1606,19 @@ def generateXlsStatsFromDict(statdict, ReadsCounts, headers, xls_save_file):
 				sheet.write(row,0,ref,cstyle)
 				col = 1
 				for h in headers:
-                                        cellContent = statRef[h]
-                                        if isinstance(cellContent,list):
-                                                cellContent = ",".join(cellContent)
+					cellContent = statRef[h]
+					if isinstance(cellContent,list):
+						cellContent = ",".join(cellContent)
 					sheet.write(row,col,cellContent,cstyle)
 					col += 1
 				row += 1
-                if(sheetNbr%config['MaxSheetNbr']==0):
+		if(sheetNbr%config['MaxSheetNbr']==0):
                         remove_File("{}_{}.xls".format(saveName,fileNbr))
                         workbook.save("{}_{}.xls".format(saveName,fileNbr))
                         fileNbr += 1
                         workbook = xlwt.Workbook()
                         sheetNbr = 0
-        if(sheetNbr>0):
+	if(sheetNbr>0):
                 remove_File("{}_{}.xls".format(saveName,fileNbr))
                 workbook.save("{}_{}.xls".format(saveName,fileNbr))
                         
@@ -1667,12 +1672,12 @@ def bowtie_align():
 		rslt_path = os.path.join(dir_results,read_file[0])
 		dirFile_exist(rslt_path,1)
 		
-                fastq_list = []
-                for filename in read_file[1:]:
+		fastq_list = []
+		for filename in read_file[1:]:
                         fastq_list.append(os.path.join(config['reads_dir'],filename))
 		
                 #unpaired allignment
-                samples = "-U {fastqFiles}".format(fastqFiles=','.join(fastq_list))
+		samples = "-U {fastqFiles}".format(fastqFiles=','.join(fastq_list))
 			
 		references_Names = [v for v in References_list.values() if v not in config['refexclude']]
 
@@ -1684,7 +1689,7 @@ def bowtie_align():
 			
 			dirFile_exist(aln_path,1)
 			
-                        mapped_unmapped_out = "--al {mapped}".format(mapped=os.path.join(aln_path, "mapped_{}".format(aln_name)))
+			mapped_unmapped_out = "--al {mapped}".format(mapped=os.path.join(aln_path, "mapped_{}".format(aln_name)))
 			
 			cmd = "{bpath}bowtie2 {params} -x {RefIndex} {samples} {map_unmap} 2>{err_bowtie} | {path}samtools view -S -b -F 0x4 - > {bamFile}".format(bpath=bowtie2_path,path=samtools_path,params=params,RefIndex=os.path.join(dir_IndexRef,reference),samples=samples, map_unmap=mapped_unmapped_out, err_bowtie=os.path.join(aln_path, "stderr_{}".format(aln_name)), bamFile=os.path.join(aln_path, "{}.bam".format(aln_name)))
 			
@@ -1774,7 +1779,7 @@ def progress_FastqFilter(FilesNbr):
 		progstr = "="*int(percent/2)+" "*(50-int(percent/2))
 		
 		printProgress("Kmer Filter progress: [{}] {}%".format(progstr,percent))
-	print ""
+	print("")
 
 def progress_StderrFiles():
 	c=0
@@ -1802,7 +1807,7 @@ def progress_StderrFiles():
 			str_estime = ""
 			
 		printProgress("Alignments progress: [{}] {}%{}".format(progstr,percent,str_estime))
-	print ""
+	print("")
 
 def bowtie_index():
 
@@ -1905,7 +1910,7 @@ def samples_quality_cont():
 		for filename in fastq_files:
 			if is_url(filename):
                                 stdout_print("\tNO FASTQC FOR URL: {}".format(filename),True)
-                        else:
+			else:
                                 outputdir = os.path.join(dir_results,k)
                                 target = os.path.join(outputdir,"{}_fastqc.html".format(filename[:filename.find('.')]))
                                 cmd = "{pth}fastqc -o {output} {fastqfile} 2>> {stderr} 1>> {stdout}".format(output=outputdir,fastqfile=os.path.join(dir_reads, filename),stderr=fastQC_stderr,stdout=fastQC_stdout,pth=fastqc_path)
@@ -2104,7 +2109,7 @@ def split_fasta(IsRefInCatalog):
 					seq_info[NewRef_id]['fragments']['F'+str(n_fragment)]['pos'] = pos_cont
 					seq_info[NewRef_id]['fragments']['F'+str(n_fragment)]['len'] = len(cont)
 					seq_info[NewRef_id]['fragments']['F'+str(n_fragment)]['GC'] = round(SeqUtils.GC(cont),1)
-                                        seq_info[NewRef_id]['fragments']['F'+str(n_fragment)]['ShEntropy'] = get_ShannonEntropy(cont)
+					seq_info[NewRef_id]['fragments']['F'+str(n_fragment)]['ShEntropy'] = get_ShannonEntropy(cont)
 			
 					seq_info[NewRef_id]['fragments']['F'+str(n_fragment)]['bases_count'] = dict()
 			
@@ -2195,10 +2200,10 @@ def load_HomoParaFromRef():
 	HomoParaFromRef_AddGrpColor()
 
 def getSpecieFromSeqName(seqName, species_dict):
-        if type(species_dict) is dict:
-                for k in species_dict.keys():
-                        if seqName.find(k)==0:
-                                return species_dict[k]
+	if type(species_dict) is dict:
+		for k in species_dict.keys():
+			if seqName.find(k)==0:
+				return species_dict[k]
 	
 	return 'Other'
 	
@@ -2628,18 +2633,18 @@ def databases_list(ArgsVal):
 						pickle.dump(catalog,cf)
 						cf.close()
 						shutil.rmtree(os.path.join(config['data_dir'],args.removedb), ignore_errors=True)
-						print "{} deleted\n\n".format(args.removedb)
+						print("{} deleted\n\n".format(args.removedb))
 			if not dbfound:
-				print "database \'{}\' not found... \n".format(args.removedb)
+				print("database \'{}\' not found... \n".format(args.removedb))
 		
-		print "\n-- List of available databases -- \n"
-		print "type database name after -d option in genotyp feature\n"
-		print "{} database(s) found:".format(len(catalog))
+		print("\n-- List of available databases -- \n")
+		print("type database name after -d option in genotyp feature\n")
+		print("{} database(s) found:".format(len(catalog)))
 		
 		for v in catalog.values():
-			print "-\t{}\n".format(v)
+			print("-\t{}\n".format(v))
 	else:
-		print "Catalog file not found. It while be created after first use"
+		print("Catalog file not found. It while be created after first use")
 
 def change_MaxJobConfig(ArgsVal):
 	
@@ -2670,14 +2675,14 @@ def change_MaxJobConfig(ArgsVal):
 			with open(yamlOutput_file, 'w') as yaml_file:
 				yaml.dump(config, yaml_file, default_flow_style=False)
 				
-			print "MaxParallelJobs changed from {} to {}".format(oldvalue,config['MaxParallelJobs'])
+			print("MaxParallelJobs changed from {} to {}".format(oldvalue,config['MaxParallelJobs']))
 		else:
-			print "MaxParallelJobs already to {}".format(oldvalue)
+			print("MaxParallelJobs already to {}".format(oldvalue))
 	else:
-		print "'{}' NOT FOUND. You can specifie a location by using -u option (see help)".format(yamlOutput_file)
+		print("'{}' NOT FOUND. You can specifie a location by using -u option (see help)".format(yamlOutput_file))
 	
 def show_program_version():
-	print "{} {}".format(AppName,__version__)
+	print("{} {}".format(AppName,__version__))
 
 #Use splitFastq library, see C source in TOOLS directory
 def run_splitFastq(ArgsVal):
@@ -2742,12 +2747,12 @@ def RapidFastQC(ArgsVal):
 
 def SraGetDatas(ArgsVal):
 	import sra_getmeta
-        db_argPath('-F',ArgsVal)
+	db_argPath('-F',ArgsVal)
 	sra_getmeta.run(ArgsVal)
 
 def RunHaploAsm(ArgsVal):
 	import haploAsm
-        db_argPath('-db',ArgsVal)
+	db_argPath('-db',ArgsVal)
 	haploAsm.run(ArgsVal)
 
 def RunGraphs_genotyp(ArgsVal):
@@ -2779,13 +2784,13 @@ def db_argPath(argOpt,ArgsVal):
 	
 #Show help message for NGSgenotyp
 def show_help(ProgFeatures):
-	print "usage: {} [feature]\n".format(AppName)
-	print "features list:"
+	print("usage: {} [feature]\n".format(AppName))
+	print("features list:")
 	maxLength = max([len(k) for k in ProgFeatures.keys()])
 	
 	for feature,value in ProgFeatures.items():
 		featureTitle = "{}{}".format(feature," "*(maxLength - len(feature)))
-		print "\t{}\t-- {}\n".format(featureTitle,value['description'])
+		print("\t{}\t-- {}\n".format(featureTitle,value['description']))
 
 
 #=================================================================================================================================
@@ -2853,11 +2858,11 @@ if	__name__ == '__main__':
 			elif choice == 10:
 				RunGraphs_genotyp(sys.argv[2:])
 
-                        elif choice == 11:
+			elif choice == 11:
 				RunExtractFromFasta(sys.argv[2:])
 
 		else:
-			print "{} : unknown feature\n".format(func)
+			print("{} : unknown feature\n".format(func))
 			show_help(ProgFeatures)
 	else:
 		show_help(ProgFeatures)
