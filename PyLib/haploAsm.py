@@ -24,7 +24,7 @@ from ete3 import Tree, TreeStyle, TextFace
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 AppName = "haploAsm"
 
 args = None
@@ -68,6 +68,7 @@ def run(ArgsVal):
 	parser.add_argument("-d","--diploid",help="use with diploid highly polymorphic genomes",action="store_const", const="-d", default="")
 	parser.add_argument("-x","--excludeParalogs",help="exclude paralogs from yass results",action="store_const", const="-x", default="")
 	parser.add_argument("-y","--phylotree",help="generate phylogenetic tree",action="store_const", const="-y", default="")
+        parser.add_argument("-yx","--excludeParaPhylo",help="exclude paralogs from phylogeny trees",action="store_const", const=True, default=False)
 
 	parser.add_argument("-t","--threaded",help="define threads number used for phylogeny. By default 10%% of cpu numbers",type=int)	
 	parser.add_argument("-st","--spadesThreads",help="define threads number used for spades. By default 50%% of cpu numbers",type=int)	
@@ -141,9 +142,12 @@ def run(ArgsVal):
         readsInfoFilFQ_filename = args.filteredFQ
 	
 	ref_database = args.refdatabase
-	
 	print "database: {}\n".format(ref_database)
-	
+
+        paralogs_List = get_paralogs_list(ref_database)
+        if args.excludeParaPhylo:
+                addTextToLogFile("Remove Paralogs on phylogenetics trees : {}".format(" ".join(paralogs_List)))
+
 	if not os.path.exists(outfolder):
 		os.mkdir(outfolder)
 			
@@ -189,7 +193,7 @@ def run(ArgsVal):
 
         thrdPhyList = []
 	for IndivName,Refs in AlignSelect.items():
-                t1 = launch_analyse(IndivName,Refs,outfolder,BWTResult_Folder,ReadsFilFQPath,ReadsFilFQInfos,interlaced,paired,ref_database)
+                t1 = launch_analyse(IndivName,Refs,outfolder,BWTResult_Folder,ReadsFilFQPath,ReadsFilFQInfos,interlaced,paired,ref_database,paralogs_List)
                 if t1:
                         thrdPhyList.append(t1)
         
@@ -235,7 +239,12 @@ def run(ArgsVal):
                         else:
                                 seqName = id
 
-                        AllTruncContigsFasta += ">{}_length_{}\n{}\n".format(seqName,len(seq),seq)
+                        if args.excludeParaPhylo:
+                                if seqName not in paralogs_List:
+                                        AllTruncContigsFasta += ">{}_length_{}\n{}\n".format(seqName,len(seq),seq)
+                        else:
+                                AllTruncContigsFasta += ">{}_length_{}\n{}\n".format(seqName,len(seq),seq)
+
                 AllTruncContigsFileName = os.path.join(outfolder,"AllTruncContigsRefs.fasta")
                 AllTruncContigsFile = open(AllTruncContigsFileName,"w")
                 AllTruncContigsFile.write(AllTruncContigsFasta)
@@ -246,6 +255,16 @@ def run(ArgsVal):
                         Pylo_From_Fasta(AllTruncContigsFileName,outfolder)
 
         addTextToLogFile("-- ENDED --")
+
+def get_paralogs_list(ref_database):
+        paralogsList=[]
+        fastaF=SeqIO.parse(ref_database,'fasta')
+        for rec in fastaF:
+                idseq=str(rec.id)
+                refname=idseq.split("|")[0]
+                if "Paralog=1" in idseq:
+                        paralogsList.append(refname)
+        return paralogsList
 
 def path_InConfig(configKey,App_Folder):
         if config[configKey]!=None:
@@ -487,7 +506,7 @@ def get_readsConfigs(readsInfo_filename):
 	
 	return ReadsPath,ReadsInfos
 	
-def launch_analyse(IndivName,Refs,outfolder,BWTResult_Folder,ReadsFilFQPath,ReadsFilFQInfos,interlaced,paired,ref_database):
+def launch_analyse(IndivName,Refs,outfolder,BWTResult_Folder,ReadsFilFQPath,ReadsFilFQInfos,interlaced,paired,ref_database,paralogs_List):
 
 	outIndivFolder = os.path.join(outfolder,IndivName)
 	
@@ -797,7 +816,7 @@ def launch_analyse(IndivName,Refs,outfolder,BWTResult_Folder,ReadsFilFQPath,Read
                 contig_quality(IndivName,outfolder,orientedOutFastaContigsFilename,ALL_filtered_fileName,FWD_filtered_fileName,REV_filtered_fileName,interlaced,paired)
 
                 if args.phylotree:
-                        t1 = threading.Thread(target=phylogenetic_tree,args=(IndivName,outfolder,truncatedOutFastaContigsFilename,list(set(contigsAligned)),ref_database,))
+                        t1 = threading.Thread(target=phylogenetic_tree,args=(IndivName,outfolder,truncatedOutFastaContigsFilename,list(set(contigsAligned)),ref_database,paralogs_List,))
                         t1.setDaemon(True)
                         return t1
 	else:
@@ -1118,7 +1137,7 @@ def getFrequence(data,excludeZero=False):
 	
 	return [unique, counts]
 		
-def phylogenetic_tree(IndivName,outfolder,orientedOutFastaContigsFilename,contigsAligned,ref_database):
+def phylogenetic_tree(IndivName,outfolder,orientedOutFastaContigsFilename,contigsAligned,ref_database,paralogs_List):
         addTextToLogFile("Phylogenetic tree for {}".format(IndivName))
         IndivFloder = os.path.join(outfolder,IndivName)
 	phylOutFolder = os.path.join(IndivFloder,"{}_phylogeny".format(IndivName))
@@ -1143,7 +1162,11 @@ def phylogenetic_tree(IndivName,outfolder,orientedOutFastaContigsFilename,contig
 
                 seq = str(rec.seq)
 
-                phyloFasta += ">{}\n{}\n".format(seqId,seq)
+                if args.excludeParaPhylo:
+                        if seqId not in paralogs_List:
+                                phyloFasta += ">{}\n{}\n".format(seqId,seq)
+                else:
+                        phyloFasta += ">{}\n{}\n".format(seqId,seq)
 
         contigFasta = SeqIO.parse(orientedOutFastaContigsFilename,"fasta")
         
