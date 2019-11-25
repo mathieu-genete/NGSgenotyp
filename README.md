@@ -194,10 +194,10 @@ optional arguments:
 ```
 ### NGSgenotyp genotyp
 ```
-usage: NGSgenotyp genotyp [-h] [-V] [-v] [-f] [-k] [-ks KMERSIZE] [-pdf] [-q] [-s]
-                          [-r REGION REGION] [-T MAXPARALLELSJOBS] [-e ERRORATETHRLD]
-                          [-S [SPLITREADS]] -o OUTFOLDER -i READSINFO -d REFDATABASE
-                          [-x REFEXCLUDE] [--config CONFIG]
+usage: NGSgenotyp genotyp [-h] [-V] [-v] [-f] [-k] [-ks KMERSIZE] [-pdf] [-q] [-s] [-sh]
+               [-r REGION REGION] [-T MAXPARALLELSJOBS] [-e ERRORATETHRLD]
+               [-S [SPLITREADS]] -o OUTFOLDER -i READSINFO -d REFDATABASE
+               [-x REFEXCLUDE] [--config CONFIG]
 
 genotyping pipeline
 
@@ -215,6 +215,7 @@ optional arguments:
   -pdf, --pdfreports    generate PDF reports (can take long time)
   -q, --samplesqc       samples quality control only
   -s, --statsonly       do stats only
+  -sh, --sharedreads    generates shared reads file
   -r REGION REGION, --region REGION REGION
                         Region to analyse in sequences <min> <max>
   -T MAXPARALLELSJOBS, --MaxParallelsJobs MAXPARALLELSJOBS
@@ -224,8 +225,9 @@ optional arguments:
                         Force error rate threshold - default= see config file
   -S [SPLITREADS], --splitreads [SPLITREADS]
                         split fastq files reads in half use this option if
-                        reads are concatenated - add [nosplit=True] parameter in
-                        reads information file for sample not need to be split
+                        reads are concatenated - add [nosplit=True] parameter
+                        in reads information file for sample not need to be
+                        split
   -o OUTFOLDER, --outfolder OUTFOLDER
                         destination folder (create it if not exist)
   -i READSINFO, --readsinfo READSINFO
@@ -262,11 +264,11 @@ optional arguments:
 ```
 ### NGSgenotyp haploAsm
 ```
-usage: NGSgenotyp haploAsm [-h] [-v] [-f] [-i] [-p] [-d] [-x] [-y] [-t THREADED]
-                            [-st SPADESTHREADS] -db REFDATABASE [-k KMERSIZE] -o OUTPUTDIR
-                            [-l INDIVLIST] [-m CONTIGMINLEN] [-M CONTIGMAXLEN]
-                            [-mdc MAXDISTCONTIGS] -filFQ FILTEREDFQ -s SAMVIEWSTATS
-                            [--config CONFIG]
+usage: NGSgenotyp haploAsm [-h] [-v] [-f] [-i] [-p] [-d] [-x] [-y] [-yx] [-t THREADED]
+                [-st SPADESTHREADS] -db REFDATABASE [-k KMERSIZE] -o OUTPUTDIR
+                [-l INDIVLIST] [-m CONTIGMINLEN] [-M CONTIGMAXLEN]
+                [-mdc MAXDISTCONTIGS] -filFQ FILTEREDFQ -s SAMVIEWSTATS
+                [--config CONFIG]
 
 NGSgenotyp Haplotyp Assembly
 
@@ -274,7 +276,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -f, --force           force
-  -i, --concatenated      orignals reads files with concatenated forward and
+  -i, --concatenated    orignals reads files with concatenated forward and
                         reverse paired-end reads
   -p, --paired          orignals reads files with paired-end reads forward and
                         reverse files distincts
@@ -282,6 +284,8 @@ optional arguments:
   -x, --excludeParalogs
                         exclude paralogs from yass results
   -y, --phylotree       generate phylogenetic tree
+  -yx, --excludeParaPhylo
+                        exclude paralogs from phylogeny trees
   -t THREADED, --threaded THREADED
                         define threads number used for phylogeny. By default
                         10% of cpu numbers
