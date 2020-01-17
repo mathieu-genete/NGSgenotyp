@@ -792,7 +792,8 @@ def kmerRefFilter(ArgsVal):
 
         
         stderr_print(TitleFrame("kmer statistics generation"))
-        kmuse=sum([1 for km in dicReads if km in kmerstats.keys()])
+        #kmuse=sum([1 for km in dicReads if km in kmerstats.keys()])
+        kmuse=len(kmerstats.keys())
 
         if args.kmerstats:
                 dt=datetime.now().strftime("%d_%m_%Y-%H_%M_%S")
