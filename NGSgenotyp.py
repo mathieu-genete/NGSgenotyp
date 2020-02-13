@@ -56,7 +56,7 @@ plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.4.1"
+__version__="v1.4.2"
 AppName = "NGSgenotyp"
 
 config = None
@@ -1942,7 +1942,12 @@ def get_paramsFromSeqID(seqID):
 			kv = p.split("=")
 			if len(kv)==2:
 				params[kv[0]]=kv[1]
-		
+
+        #Compatibility for DB with no gprId in fasta parameters
+	if 'gprId' not in params.keys() and 'grpRef' in params.keys():
+                grp=params['grpRef'][1]
+                params['gprId']=grp
+
 	return tabID[0],params
 
 def HomoParaFromRef_AddGrpColor():
