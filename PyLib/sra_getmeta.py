@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 # ref: https://www.ncbi.nlm.nih.gov/books/NBK242621/
@@ -18,8 +18,9 @@ import subprocess
 import urllib2
 import time
 import signal
+from datetime import datetime
 
-__version__ = "v1.3"
+__version__ = "v1.4"
 
 args = None
 UseLocalSraToolKit = False
@@ -46,15 +47,23 @@ def run(ArgsVal):
 	parser.add_argument("-o","--CSVoutputfile", help="csv output file")
         parser.add_argument("-x","--addfilter", help="download data wich correspond to filer: header=value")
 	parser.add_argument("-F","--filterFromRef", help="directly filter reads while download with reference")
-
+	parser.add_argument("-ks","--kmerSize", help="kmer size for kmer filtering - default = 20", type=int, default=20)
+	parser.add_argument("-mk","--minMatchKeepSeq", help="minimum number of ref reads matched to keep fastq read -- default=1",default=1, type=int)
+	parser.add_argument("-z","--minShEntropy", help="minimum Shannon Entropy for kmers (0 to 2.0)-- defaut=0.8",default=0.8, type=float)
+	parser.add_argument("-q","--maxratioAmbigous", help="maximum ambigous bases accepted in kmers in %% -- defaut=0.2",default=0.2, type=float)
 	args = parser.parse_args(ArgsVal)
 		
+	kmersize=args.kmerSize
+        minMatchKeepSeq=args.minMatchKeepSeq
+        minShEntropy=args.minShEntropy
+        maxratioAmbigous=args.maxratioAmbigous
+
 	query = args.sraquery
-	
 	destdir = args.destdir
         absdestDir = os.path.abspath(destdir)
 
-        outRawFileName = os.path.join(destdir,"raw_data_list")
+        launch_datetime=datetime.now().strftime("%d_%m_%Y-%H_%M_%S")
+        outRawFileName = os.path.join(destdir,"raw_data_list_{}".format(launch_datetime))
 	proclist = []
 	
         noCacheConfiguration()
@@ -71,8 +80,10 @@ def run(ArgsVal):
 	
 	if args.CSVoutputfile:
 		outcsv = args.CSVoutputfile
+                if ".csv" not in outcsv:
+                        outcsv="{}.csv".format(outcsv)
 	else:
-		outcsv = "SRAs_Metadatas.csv"
+		outcsv = "SRAs_Metadatas_{}.csv".format(launch_datetime)
 	
 	if query: #and query[:3].upper() in ["SRA","SRP","SRX","DRA","DRP","DRX","PRJ","ERA","ERP","ERX"]:
 		csvrslt = GetFrom_URL(metadataURL.format(qry=query))
@@ -101,7 +112,7 @@ def run(ArgsVal):
                         if args.filterFromRef:
                                 tmpMD['Fastq File'] = "{}_filtered.fastq".format(tmpMD['Run'])
                         else:
-                                tmpMD['Fastq File'] = "{}.fastq".format(tmpMD['Run'])
+                                tmpMD['Fastq File'] = "{}.fastq.gz".format(tmpMD['Run'])
 			MetadataList[SRANbr] = tmpMD
 			n += 1
 		else:
@@ -122,7 +133,7 @@ def run(ArgsVal):
 	totalSize_MB = sum(int(v['size_MB']) for v in MetadataList.values())
 	
         if args.filterFromRef:
-                print "Filtering fastq with '{}'\n".format(os.path.basename(args.filterFromRef))
+                print "Filtering fastq with '{}' -- kmers size = {}\n".format(os.path.basename(args.filterFromRef),kmersize)
         else:
                 print "about {} MB while be downloaded\n".format(totalSize_MB)
 	
@@ -150,7 +161,7 @@ def run(ArgsVal):
                                 outRawFile[val['SampleName']]=[]
                         outRawFile[val['SampleName']].append(val['Fastq File'])
 
-                        proc = downloadFastqFromSRA(destdir, val['Run'])
+                        proc = downloadFastqFromSRA(destdir, val['Run'],kmersize,minMatchKeepSeq,minShEntropy,maxratioAmbigous)
                         proclist.append([proc, val['Run']])
 	
 	if len(ErrorSRA)>0:
@@ -197,6 +208,9 @@ def waitProcTermination(proclist,destdir):
 	if not args.metaDataOnly:
                 sraTerminatedLog = os.path.join(destdir,"sra_getmeta_terminated")
 		procTermn = 0
+                if os.path.exists(sraTerminatedLog):
+                        os.remove(sraTerminatedLog)
+
 		os.mknod(sraTerminatedLog)
 		while procTermn < len(proclist):
 		
@@ -267,7 +281,7 @@ def dict_metadataLine(headers,values):
 
 	return rslt
 
-def downloadFastqFromSRA(destinationFolder, Run):
+def downloadFastqFromSRA(destinationFolder, Run ,kmersize,minMatchKeepSeq,minShEntropy,maxratioAmbigous):
 
 	if not args.metaDataOnly:
 			
@@ -290,7 +304,7 @@ def downloadFastqFromSRA(destinationFolder, Run):
                         destFold = destinationFolder
 
                 if args.filterFromRef:
-                        cmd = "{stkpath}fastq-dump -Z {qry} | {appfld}/kmerRefFilter.py -r {ref} -s {qry} -o {outf} 2>> {outf}/kmerRefilter_stdout".format(stkpath=cmdFld,qry=Run, outf=destFold, appfld=App_Folder,ref=args.filterFromRef)
+                        cmd = "{stkpath}fastq-dump -Z {qry} | {appfld}/kmerRefFilter.py -k {kmsize} -m {minMatch} -z {minSh} -q {maxratio} -r {ref} -s {qry} -o {outf} 2>> {outf}/kmerRefilter_stdout".format(stkpath=cmdFld,qry=Run, outf=destFold, appfld=App_Folder,ref=args.filterFromRef,kmsize=kmersize,minMatch=minMatchKeepSeq,minSh=minShEntropy,maxratio=maxratioAmbigous)
                 else:
                         cmd = "{stkpath}fastq-dump --gzip -O {outf} {qry}".format(stkpath=cmdFld,qry=Run, outf=destFold)
 		proc = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
