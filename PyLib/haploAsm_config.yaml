@@ -1,4 +1,4 @@
-#halpoAsm v1.0.0
+#halpoAsm v1.0.2
 #tools relative path
 spades: ../TOOLS/SPAdes-3.11.0/bin/
 quast: ../TOOLS/quast-4.5/
@@ -22,4 +22,10 @@ maxDistContigs: 0.3
 
 qualInsertSizeDevFactor: 1.5
 
-IDgroupColors: {'0':"#F5F6CE",'1':"#BCF5A9",'2':"#A9F5F2",'3':"#BCA9F5",'4':"#F9C2C2",'5':"#EDEF70",'6':"#ADF5E5",'7':"#EBBBF2"}
+#IDgroupBackColors: {'0':"#F5F6CE",'1':"#BCF5A9",'2':"#A9F5F2",'3':"#BCA9F5",'4':"#F9C2C2",'5':"#EDEF70",'6':"#ADF5E5",'7':"#EBBBF2"}
+
+Color_leafs_ID: True
+IDgroupColors: {'0':"#336600",'1':"#003366",'2':"#660066",'3':"#800000",'4':"#CC9900",'5':"#FF3399",'6':"#0099FF",'7':"#33CC33"}
+Show_HaploID: False
+Show_groups_final_Phylo: True
+Color_groups_final_Phylo: True

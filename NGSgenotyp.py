@@ -56,7 +56,7 @@ plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.4.2"
+__version__="v1.4.3"
 AppName = "NGSgenotyp"
 
 config = None
@@ -1943,10 +1943,20 @@ def get_paramsFromSeqID(seqID):
 			if len(kv)==2:
 				params[kv[0]]=kv[1]
 
-        #Compatibility for DB with no gprId in fasta parameters
-	if 'gprId' not in params.keys() and 'grpRef' in params.keys():
-                grp=params['grpRef'][1]
-                params['gprId']=grp
+        #Compatibility for DB with no gprId and HaploId in fasta parameters
+        #And the new grpRef format: HGG-XXXX with G the group (0 to inf.) and XXXX the haploid id (0 to inf.)
+        #modif 31032020
+	if 'grpRef' in params.keys():
+                grpRef=params['grpRef']
+                if "-" not in grpRef:
+                        params['gprId']=int(grpRef[1])
+                        params['HaploId']=int(grpRef[2:])
+                        params['HaploLetter']=grpRef[0]
+                else:
+                        grpRefSplit=grpRef.split("-")
+                        params['gprId']=int(grpRefSplit[0][1:])
+                        params['HaploId']=int(grpRefSplit[1])
+                        params['HaploLetter']=grpRefSplit[0][0]
 
 	return tabID[0],params
 

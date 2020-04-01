@@ -24,7 +24,7 @@ from ete3 import Tree, TreeStyle, TextFace
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 AppName = "haploAsm"
 
 args = None
@@ -252,7 +252,7 @@ def run(ArgsVal):
 
                 if len(AlignSelect.keys())>1:
                         addTextToLogFile("Launch phylogeny for ALL contigs")
-                        Pylo_From_Fasta(AllTruncContigsFileName,outfolder)
+                        Pylo_From_Fasta(AllTruncContigsFileName,outfolder,ref_database)
 
         addTextToLogFile("-- ENDED --")
 
@@ -272,7 +272,7 @@ def path_InConfig(configKey,App_Folder):
         else:
                 return ''
 
-def Pylo_From_Fasta(inFasta,outfolder):
+def Pylo_From_Fasta(inFasta,outfolder,ref_database):
 
         MuscleFilename = os.path.join(outfolder,"MUSCLE_AllContigsRef.fasta")
         PhylipFilename = os.path.join(outfolder,"MUSCLE_AllContigsRef.phy")
@@ -294,10 +294,11 @@ def Pylo_From_Fasta(inFasta,outfolder):
                 outname = "AllContigs_Phylo"
 
                 if checkX11():
-                        DrawSimplePhyloTree(treefileName,outname,outfolder)
+                        DrawSimplePhyloTree(treefileName,outname,outfolder,ref_database)
 
-def DrawSimplePhyloTree(treefileName,outName,outFolder):
-
+def DrawSimplePhyloTree(treefileName,outName,outFolder,ref_database):
+        refID = get_refID(ref_database)
+        colorsID=config['IDgroupColors']
         t = Tree(treefileName)
         ts = TreeStyle()
         ts.scale = 500
@@ -310,9 +311,21 @@ def DrawSimplePhyloTree(treefileName,outName,outFolder):
                         name_face = TextFace(leaf.name, fgcolor="red")
                 else:
                         name_face = TextFace(leaf.name, fgcolor="black")
-
                 leaf.add_face(name_face, column=0, position='branch-right')
 
+                alleleName=str(leaf.name).split("_length_")[0]
+                if alleleName in refID.keys():
+                        if config['Show_groups_final_Phylo'] and 'gprId' in refID[alleleName].keys():
+                                leafTxt=" - Grp {}".format(refID[alleleName]['gprId'])
+                        elif config['Show_groups_final_Phylo'] and 'Paralog' in refID[alleleName].keys():
+                                leafTxt=" - Paralog"
+                        else:
+                                leafTxt=""
+                        if config['Color_groups_final_Phylo'] and 'gprId' in refID[alleleName].keys() and refID[alleleName]['gprId'] in colorsID.keys():
+                                colorGrp=colorsID[refID[alleleName]['gprId']]
+                        else:
+                                colorGrp='grey'
+                        leaf.add_face(TextFace(leafTxt, fgcolor=colorGrp), column=1, position='branch-right')
         render_Phylo(os.path.join(outFolder,outName),t,ts)
 
 def DrawPhyloTree(ref_database,indivName,treefileName,yass_contigsFileName,yass_contigsTruncFileName,outFolder):
@@ -322,7 +335,7 @@ def DrawPhyloTree(ref_database,indivName,treefileName,yass_contigsFileName,yass_
 
     refID = get_refID(ref_database)
     groupIds = get_GroupIds(refID)
-    colorId=config['IDgroupColors']
+    #colorId=config['IDgroupBackColors']
     paralogColor="#D8D8D8"
     outContigs = open(os.path.join(outFolder,"Contigs_candidates.txt"),"w")
     fastaContigs = open(os.path.join(outFolder,"Contigs_candidates.fasta"),"w")
@@ -343,7 +356,9 @@ def DrawPhyloTree(ref_database,indivName,treefileName,yass_contigsFileName,yass_
 
     for gId in groupIds:
         vals=[str(gId)]+contigId
-        keep_nodes = list(set(Group_Monophyl(t,vals,colorId[gId])+keep_nodes))
+        #modif du 01/04/2020
+        #keep_nodes = list(set(Group_Monophyl(t,vals,colorId[gId])+keep_nodes))
+        keep_nodes = list(set(Group_Monophyl(t,vals)+keep_nodes))
 
     
     paralog_nodes = list(set(Group_Monophyl(t,['P']+contigId,paralogColor)))
@@ -438,7 +453,7 @@ def get_GroupIds(refID):
     groupIds = list()
     for k,v in refID.items():
         if 'gprId' in v.keys():
-            groupIds = list(set([v['gprId']]+groupIds))
+                groupIds = list(set([v['gprId']]+groupIds))
     return groupIds
 
 def Group_Monophyl(inTree,monoValues,color=""):
@@ -461,11 +476,23 @@ def get_refID(ref_database):
     for rec in refDB:
         tmp = str(rec.id).split('|')
         refID[tmp[0]]={v.split('=')[0]:v.split('=')[1] for v in tmp[1:]}
+        if 'grpRef' in refID[tmp[0]].keys():
+                grpRef=refID[tmp[0]]['grpRef']
+                if "-" not in grpRef:
+                        refID[tmp[0]]['gprId']=grpRef[1]
+                        refID[tmp[0]]['HaploId']=str(int(grpRef[2:]))
+                        refID[tmp[0]]['HaploLetter']=grpRef[0]
+
+                else:
+                        grpRefSplit=grpRef.split("-")
+                        refID[tmp[0]]['gprId']=str(int(grpRefSplit[0][1:]))
+                        refID[tmp[0]]['HaploId']=str(int(grpRefSplit[1]))
+                        refID[tmp[0]]['HaploLetter']=grpRefSplit[0][0]
 
     return refID
 
 def leaves_Annotation(inTree,refID):
-
+    colorsID=config['IDgroupColors']
     for leaf in inTree.iter_leaves():
         leaf.add_feature('gprId',"X")
 
@@ -484,7 +511,19 @@ def leaves_Annotation(inTree,refID):
 
         leaf.add_face(name_face, column=0, position='branch-right')
         if leaf.gprId in get_GroupIds(refID):
-            leaf.add_face(TextFace(" - Grp {}".format(leaf.gprId), fgcolor="black"), column=1, position='branch-right')
+                #modif 01/04/2020
+                #leaf.add_face(TextFace(" - Grp {}".format(leaf.gprId), fgcolor="black"), column=1, position='branch-right')
+                if config['Color_leafs_ID'] and leaf.gprId in colorsID.keys():
+                        colGrp=colorsID[leaf.gprId]
+                else:
+                        colGrp="black"
+                
+                if config['Show_HaploID']:
+                        lftxt=" - Grp {} -- id {}".format(leaf.gprId,leaf.HaploId)
+                else:
+                        lftxt=" - Grp {}".format(leaf.gprId)
+
+                leaf.add_face(TextFace(lftxt, fgcolor=colGrp), column=1, position='branch-right')
 
 
 def get_NbrAliveThreads(thrdList):
