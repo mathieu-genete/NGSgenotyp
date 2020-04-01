@@ -396,7 +396,7 @@ You should not use spaces, commas, slash in your sequences id, use the character
 Example:
 
 ```
->CgrSRK46|HaploId=10|gprId=3|specie=Capsella_grandiflora|grpRef=H3010
+>CgrSRK46|specie=Capsella_grandiflora|grpRef=H3-10
 ACTCCAAATTTAATCAATCAAATGGATTTTTGTGGCAGAGC... ... ...
 >Carubv10016249_Aly9|Paralog=1
 ATGAGAGGCGCATTACCAAACTCTTACCATTCTTACACTTT... ... ...
@@ -418,13 +418,11 @@ To indicate that your reference corresponds to a paralogue you must add the para
 
 You can specify the species with the parameter (be careful, replace spaces with "_"): specie=xxxxx
 
-The following 3 parameters HaploId, gprId and grpRef are linked:
+grpRef uses 2 informations in the following format: Hg-h (with g=gprId et h=HaploId)
 
-gprId is the allelic class ranging from 0 to 9
+gprId is the allelic class ranging from 0 to infinite
 
-HaploId is the hortologous identifiant inside allelic class (ranging from 1 to 100), the numbering choice of your HaploId is arbitrary.
-
-grpRef uses these 2 informations in the following format: Hghhh (with g=gprId et hhh=HaploId)
+HaploId is the hortologous identifiant inside allelic class (ranging from 1 to infinite), the numbering choice of your HaploId is arbitrary.
 
 ### *Example*:
 
@@ -432,25 +430,25 @@ grpRef uses these 2 informations in the following format: Hghhh (with g=gprId et
 
 |  grpRef |  halleri 	| lyrata  | Capsella grandiflora  |
 |		:-:		|		:-:			|	:-:			|		:-:									|
-|  H0001	|   AhSRK27 |		--		|	CgrSRK40							|
-|  H1001	|   AhSRK01	| AlSRK01	| CgrSRK03 							|
-|  H2001	|   AhSRK03	| AlSRK03	|		--				        	|
-|  H2002	|   AhSRK08	|		--		|	CgrSRK10							|
-|  **_H2003_**	|   **_AhSRK09_**	| **_AlSRK14_**	|   --									|
+|  H0-1	|   AhSRK27 |		--		|	CgrSRK40							|
+|  H1-1	|   AhSRK01	| AlSRK01	| CgrSRK03 							|
+|  H2-1	|   AhSRK03	| AlSRK03	|		--				        	|
+|  H2-2	|   AhSRK08	|		--		|	CgrSRK10							|
+|  **_H2-3_**	|   **_AhSRK09_**	| **_AlSRK14_**	|   --									|
 
 In the table 1, hortologous references AhSRK09 (*A. halleri*) and AlSRK14 (*A. lyrata*) have the same grpRef:
 
 They belong to group 2 (allelic class): gprId = 2
 
 Because they ar hortologous, they have the same HaploId: HaploId = 3
- ==> grpRef = H2003
+ ==> grpRef = H2-3
 
 So in the fasta file they will be noted as follows:
 
 ```
->AhSRK09|gprId=2|HaploId=3|grpRef=H2003
+>AhSRK09|grpRef=H2-3
 séquence... ...
->AlSRK14|gprId=2|HaploId=3|grpRef=H2003
+>AlSRK14|grpRef=H2-3
 séquence... ...
 ```
 ## Basic command line usage for genotyping
