@@ -11,6 +11,9 @@ from Bio import Seq
 import codecs
 import uuid
 
+__version__ = "0.5"
+AppName = "checkDB"
+
 args=None
 
 def run(ArgsVal):
@@ -18,14 +21,20 @@ def run(ArgsVal):
 
     description = """ NGSgenotyp Check Fasta Database """
     parser = argparse.ArgumentParser(prog="checkDB",description=description)
+    parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + __version__)
     parser.add_argument("-f","--infasta", help="input fasta database file", required = True)
     parser.add_argument("-o","--outputfasta", help="output fasta normalized file")
+    parser.add_argument("-w","--warnshow", help="show warning",action="store_const",const=True,default=False)
     args = parser.parse_args(ArgsVal)
-    file_type(args.infasta)
+    print("=== {} v{} ===\n".format(AppName,__version__))
+    print("input fasta: {}".format(args.infasta))
+    fileOut,ftype,crlf=file_type(args.infasta)
     outencoded=convertToUnix(args.infasta)
     encodedfasta="".join(outencoded)
     fastadict=parse_fasta(encodedfasta)
+    print("\n=> START CHECK")
     analyse_fasta(fastadict)
+    print("=> END")
     if args.outputfasta:
         save_encoded_file(outencoded,args.outputfasta,encod='utf-8')
 
@@ -33,9 +42,15 @@ def analyse_fasta(fastadict):
     NotAllowedChar=[',','.','/',' ',';','#','@']
     DNAalphabet=Seq.IUPAC.IUPACData.ambiguous_dna_values.keys()
     AllowedParameters=['Paralog','specie','grpRef','HaploId','gprId']
+    deprecatedParameters=['HaploId','gprId']
+    warnerr={'E':'ERROR - ','W':'WARNING - '}
+
     #?:{'title':'?','err':[]}
     errorsout={1:{'title':'unsupported characters in sequence id:','err':[]},2:{'title':'unsupported characters in sequence string:','err':[]},3:{'title':'sequence id format','err':[]},4:{'title':'Gene ID duplicates','err':[]}}
     IdList=[]
+
+    print("Sequences number: {}".format(len(fastadict)))
+
     for idnbr,value in fastadict.items():
         #===== search Id errors=====
         idCharERROR=False
@@ -45,7 +60,7 @@ def analyse_fasta(fastadict):
                 positionStr=list("."*len(value['description']))
                 for p in cpos:
                     positionStr[int(p)]="^"
-                lineheader="\n\tid number: {idnb}\t".format(idnb=idnbr)
+                lineheader="\n\t{we}id number: {idnb}\t".format(we=warnerr['E'],idnb=idnbr)
                 errorsout[1]['err'].append("{head}{seqid} -- character: '{ch}' -- position(s): {pos}\n\t{lnh} {posstr}".format(head=lineheader,seqid=value['description'],ch=c,pos=",".join(cpos),posstr="".join(positionStr),lnh=" "*len(lineheader)))
                 idCharERROR=True
         
@@ -54,19 +69,28 @@ def analyse_fasta(fastadict):
         if geneId not in IdList:
             IdList.append(parseID[0])
         else:
-            errorsout[4]['err'].append("\n\tDuplicate found for id: '{}' -- id number: {}".format(geneId,idnbr))
+            errorsout[4]['err'].append("\t{}Duplicate found for id: '{}' -- id number: {}".format(warnerr['E'],geneId,idnbr))
 
         #===== search parametters errors=====
         paramsSTR=parseID[1:]
         for p in paramsSTR:
             tmp=p.split('=')
             if len(tmp)==1 and tmp[0]=="":
-                errorsout[3]['err'].append("\n\tid number: '{}' -- id: {} -- EMPTY parameter: '||'".format(idnbr,geneId))
+                errorsout[3]['err'].append("\t{}id number: '{}' -- id: {} -- EMPTY parameter: '||'".format(warnerr['E'],idnbr,geneId))
             elif len(tmp)==1 or len(tmp)>2:
-                errorsout[3]['err'].append("\n\tid number: '{}' -- id: {} -- param error: {}".format(idnbr,geneId,p))
+                errorsout[3]['err'].append("\t{}id number: '{}' -- id: {} -- param error: {}".format(warnerr['E'],idnbr,geneId,p))
             else:
                 if tmp[0] not in AllowedParameters:
-                    errorsout[3]['err'].append("\n\tid number: '{}' -- id: {} -- paramameter not allowed: {}".format(idnbr,geneId,tmp[0]))
+                    errorsout[3]['err'].append("\t{}id number: '{}' -- id: {} -- paramameter not allowed: {}".format(warnerr['E'],idnbr,geneId,tmp[0]))
+                if tmp[0] in deprecatedParameters and args.warnshow:
+                    errorsout[3]['err'].append("\t{}id number: '{}' -- id: {} -- deprecated parameter: {}".format(warnerr['W'],idnbr,geneId,tmp[0]))
+                if tmp[0]=='grpRef':
+                    grpRefVal=tmp[1]
+                    grpRefSplit=grpRefVal.split("-")
+                    if len(grpRefSplit)==0 or len(grpRefSplit)>2:
+                        errorsout[3]['err'].append("\t{}id number: '{}' -- id: {} -- grpRef value: {}".format(warnerr['E'],idnbr,geneId,grpRefVal))
+                    elif len(grpRefSplit)==1 and len(grpRefVal)==5:
+                        errorsout[3]['err'].append("\t{}id number: '{}' -- id: {} -- grpRef value deprecated use 'Hg-h': {}".format(warnerr['W'],idnbr,geneId,grpRefVal))
 
         #===== search sequences errors=====
         sequence=value['seq']
@@ -74,7 +98,7 @@ def analyse_fasta(fastadict):
 
         for base in SequenceNotAllowedAlphabet:
             bpos=[str(i) for i,ltr in enumerate(sequence) if ltr.upper()==base]
-            errorsout[2]['err'].append("\n\tid number: '{}' -- id: {} -- base '{}' not in allowed alphabet -- position: {} bp".format(idnbr,geneId,base,",".join(bpos)))
+            errorsout[2]['err'].append("\t{}id number: '{}' -- id: {} -- base '{}' not in allowed alphabet -- position: {} bp".format(warnerr['E'],idnbr,geneId,base,",".join(bpos)))
 
     for err in errorsout.values():
         if len(err['err'])>0:
@@ -106,8 +130,7 @@ def file_type(infile):
         if t.upper() in stdout.strip().upper():
             ftype=t
     crlf=("CRLF" in stdout.strip().upper())
-    print(stdout.strip())
-    return ftype,crlf
+    return stdout.strip(),ftype,crlf
 
 def convertToUnix(infile):
     MsDOS_endline='\r\n'

@@ -56,7 +56,7 @@ plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.4.3"
+__version__="v1.4.5"
 AppName = "NGSgenotyp"
 
 config = None
@@ -2656,7 +2656,7 @@ def databases_list(ArgsVal):
 		print("type database name after -d option in genotyp feature\n")
 		print("{} database(s) found:".format(len(catalog)))
 		
-		for v in catalog.values():
+		for v in sorted(catalog.values()):
 			print("-\t{}\n".format(v))
 	else:
 		print("Catalog file not found. It while be created after first use")
@@ -2770,6 +2770,10 @@ def RunHaploAsm(ArgsVal):
 	db_argPath('-db',ArgsVal)
 	haploAsm.run(ArgsVal)
 
+def RunCheckDB(ArgsVal):
+        import checkDB
+        checkDB.run(ArgsVal)
+
 def RunGraphs_genotyp(ArgsVal):
         import graphs_genotyp
         graphs_genotyp.run(ArgsVal)
@@ -2803,7 +2807,8 @@ def show_help(ProgFeatures):
 	print("features list:")
 	maxLength = max([len(k) for k in ProgFeatures.keys()])
 	
-	for feature,value in ProgFeatures.items():
+	for feature in sorted(ProgFeatures.keys(), key=str.lower):
+                value=ProgFeatures[feature]
 		featureTitle = "{}{}".format(feature," "*(maxLength - len(feature)))
 		print("\t{}\t-- {}\n".format(featureTitle,value['description']))
 
@@ -2828,7 +2833,8 @@ if	__name__ == '__main__':
 	,'SRAGetDatas':{'Nbr':8, 'description':"download sequencing data and metadata from SRA number"}\
         ,'haploAsm':{'Nbr':9, 'description':"haplotypes assembly from genotyps mapped reads"}\
         ,'graphs_genotyp':{'Nbr':10, 'description':"draw genotyps score plots in pdf file(s)"}\
-        ,'extractFromFasta':{'Nbr':11, 'description':"extract sequences from multiple haploAsm contigs files"}}
+        ,'extractFromFasta':{'Nbr':11, 'description':"extract sequences from multiple haploAsm contigs files"}\
+        ,'checkDB':{'Nbr':12, 'description':"Check fasta database integrity"}}
 
 	func = None
 	
@@ -2875,6 +2881,9 @@ if	__name__ == '__main__':
 
 			elif choice == 11:
 				RunExtractFromFasta(sys.argv[2:])
+
+                        elif choice == 12:
+				RunCheckDB(sys.argv[2:])
 
 		else:
 			print("{} : unknown feature\n".format(func))
