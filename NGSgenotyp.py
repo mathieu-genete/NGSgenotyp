@@ -56,7 +56,7 @@ plt.switch_backend('agg')
 utils.set_paramFileName('NGSgenotyp')
 
 #Globals variables
-__version__="v1.4.5"
+__version__="v1.4.6"
 AppName = "NGSgenotyp"
 
 config = None
@@ -1115,6 +1115,7 @@ def samtools_SortIndexStats():
 	xlsstat_path = os.path.join(dir_allResults,"Genotyp_Stats_{}.xls".format(xlsstat_filename))
 
 	outTXT = os.path.join(dir_allResults,config['putative_alleles'])
+        outTXTgroups = os.path.join(dir_allResults,config['putative_groups'])
 
 	remove_File(picklestat_path)
 	
@@ -1201,7 +1202,8 @@ def samtools_SortIndexStats():
 	stats_rslt = analyse_StatsResults(stats_rslt,ErrCovDensityPlot_path)
 
 	generatePutativeAllelesTXTFile(outTXT,stats_rslt)
-
+        generatePutativeGroupsTXTFile(outTXTgroups,stats_rslt)
+        
 	create_PickleFromDict(picklestat_path,stats_rslt)
 	
 	headers.append('RefLen')
@@ -1518,6 +1520,45 @@ def first_max(values):
                 if v[1]>tmp[1]: tmp=v
         return tmp
              
+def generatePutativeGroupsTXTFile(outTXTgroups,stats_rslt):
+        pGroups={}
+        out=""
+        with open(outTXTgroups,'w') as outgrp:
+                for sname in sorted(stats_rslt.keys()):
+                        values = stats_rslt[sname]
+                        pGroups[sname]=set()
+                        for ref, statRef in values.items():
+                                if stats_rslt[sname][ref]['IsPositiv'] and not stats_rslt[sname][ref]['IsParalog']:
+                                        if 'Group ID' in stats_rslt[sname][ref].keys() and stats_rslt[sname][ref]['Group ID']!='':
+                                                pGroups[sname].add(stats_rslt[sname][ref]['Group ID'])
+                                        else:
+                                                pGroups[sname].add(ref)
+                grpList=[]
+                for grp in pGroups.values():
+                        grpList = grpList + list(grp)
+                grpList = sorted(list(set(grpList)))
+                
+                out+="Sample\t{}\tNb Groups\n".format("\t".join(grpList))
+                groupSum={}
+                for sample in sorted(pGroups.keys()):
+                        grpsample=pGroups[sample]
+                        isGrp=[]
+                        for grp in grpList:
+                                if grp not in groupSum.keys():
+                                        groupSum[grp]=0
+                                if grp in grpsample:
+                                        isGrp.append('1')
+                                        groupSum[grp]+=1
+                                else:
+                                        isGrp.append('0')
+                        out+="{}\t{}\t{}\n".format(sample,"\t".join(isGrp),sum([int(v) for v in isGrp]))
+
+                sumGroups=[]
+                for grp in grpList:
+                        sumGroups.append(str(groupSum[grp]))
+                out+="sum\t{}".format("\t".join(sumGroups))
+                outgrp.write(out)
+
 def generatePutativeAllelesTXTFile(outTXT,stats_rslt):
 	out=""
 	fout = open(outTXT,'w')

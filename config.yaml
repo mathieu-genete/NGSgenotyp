@@ -1,4 +1,4 @@
-#NGSgenotyp V1.0.8
+#NGSgenotyp V1.4.6
 #number of parallels job by defaut
 MaxParallelsJobs: 10
 
@@ -50,6 +50,7 @@ log_folder : logs
 #results files
 xls_shared_reads: shared_reads.xls
 putative_alleles: putative_alleles.txt
+putative_groups: putative_groups.txt
 MaxSheetNbr: 15
 SortKey: 'gscore'
 sortOrderReverse: True
