@@ -24,7 +24,7 @@ from ete3 import Tree, TreeStyle, TextFace
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 AppName = "haploAsm"
 
 args = None
@@ -285,7 +285,7 @@ def Pylo_From_Fasta(inFasta,outfolder,ref_database):
 
         if fastaToPhylip(MuscleFilename,PhylipFilename):
                 if not os.path.exists("{}_phyml_tree.txt".format(PhylipFilename)) or os.path.getsize("{}_phyml_tree.txt".format(PhylipFilename))==0 or args.force:
-                        cmd = "{path}phyml --quiet -i {phy} -d nt".format(path=phyml_folder,phy=PhylipFilename)
+                        cmd = "{path}phyml --quiet --no_memory_check -i {phy} -d nt".format(path=phyml_folder,phy=PhylipFilename)
                         os.system(cmd)
                 else:
                         addTextToLogFile("Phyml tree already exists -- PASS THIS STEP")
@@ -1234,7 +1234,7 @@ def phylogenetic_tree(IndivName,outfolder,orientedOutFastaContigsFilename,contig
 
         if fastaToPhylip(MuscleFilename,PhylipFilename):
                 if not os.path.exists("{}_phyml_tree.txt".format(PhylipFilename)) or os.path.getsize("{}_phyml_tree.txt".format(PhylipFilename))==0 or args.force:
-                        cmd = "{path}phyml --quiet -i {phy} -d nt".format(path=phyml_folder,phy=PhylipFilename)
+                        cmd = "{path}phyml --quiet --no_memory_check -i {phy} -d nt".format(path=phyml_folder,phy=PhylipFilename)
                         addTextToLogFile("phyml command: {}".format(cmd))
                         os.system(cmd)
                 else:
