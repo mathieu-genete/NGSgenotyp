@@ -20,10 +20,10 @@ import time
 import signal
 from datetime import datetime
 
-__version__ = "v1.4"
+__version__ = "v1.5"
 
 args = None
-UseLocalSraToolKit = False
+UseLocalSraToolKit = True
 
 nohupMode = False
 
@@ -306,9 +306,10 @@ def downloadFastqFromSRA(destinationFolder, Run ,kmersize,minMatchKeepSeq,minShE
                 if args.filterFromRef:
                         cmd = "{stkpath}fastq-dump -Z {qry} | {appfld}/kmerRefFilter.py -k {kmsize} -m {minMatch} -z {minSh} -q {maxratio} -r {ref} -s {qry} -o {outf} 2>> {outf}/kmerRefilter_stdout".format(stkpath=cmdFld,qry=Run, outf=destFold, appfld=App_Folder,ref=args.filterFromRef,kmsize=kmersize,minMatch=minMatchKeepSeq,minSh=minShEntropy,maxratio=maxratioAmbigous)
                 else:
-                        cmd = "{stkpath}fastq-dump --gzip -O {outf} {qry}".format(stkpath=cmdFld,qry=Run, outf=destFold)
+                        #cmd = "{stkpath}fastq-dump --gzip -O {outf} {qry}".format(stkpath=cmdFld,qry=Run, outf=destFold)
+                        cmd = "{stkpath}fastq-dump -Z {qry} | gzip -c > {outf} ".format(stkpath=cmdFld,qry=Run, outf=os.path.join(destFold,"{}.fastq.gz".format(Run)))
 		proc = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-		
+
 		return proc
 		
 	return None
