@@ -26,6 +26,52 @@ The NCBI SRA Software Development Kit
 Contact: sra@ncbi.nlm.nih.gov
 
 
+NCBI Release: SRA Toolkit 2.10.9
+December 16, 2020
+
+  align, vdb: fixed situation where network access could drastically slow down reading references
+  fasterq-dump: better recognizes pacbio-runs
+  fasterq-dump: ignore .sra-extension of input-filename in output-filename
+  fasterq-dump: non-zero return-code if no arguments given
+  fastq-dump: fasta parameter will complain about invalid argument
+  kar: added availability to open remote files on cloud
+  kns, sra-tools, vdb: added a loop to retry failed connections when fetching SRA files
+  latf-load: added an option to drop read names (--no-readnames), preserve them by default
+  prefetch: support of ETL - BQS (synthesized quality) runs
+  sra-docker: documentation for toolkit docker
+  sratools: driver tool passes all arguments to the driven tool
+  sratools: fixed bug that prevented the `concatenate-reads` option from working
+  sratools: fixed typo `split-e` for option `split-3`
+  sratools: tools can be executed with no arguments
+  sratools: transport option is now deprecated and silently ignored
+  sratools: verbosity argument is passed on to driven tool
+  vdb-config: added a new option to force use of full qualities 
+  vfs: allow to find local files when remote repository is disabled
+  vfs: call SDL service when resolving runs and reference sequences
+
+
+NCBI Release: SRA Toolkit 2.10.8
+June 25, 2020
+
+  kdbmeta: allow to work with remote runs
+  prefetch: print error message when cannot resolve reference sequence
+  vfs, prefetch: download encrypted phenotype files with encrypted extension
+  kdb, vdb, vfs, sra-tools: fixed bug preventing use of path to directory created by prefetch if it ends with '/'
+  kproc, fasterq-dump: fixed problem with seg-faults caused by too small stack used by threads
+  vfs, sra-tools, ngs-tools: report an error when file was encrypted for a different ngc file
+
+
+NCBI Release: SRA Toolkit 2.10.8
+June 24, 2020
+  sratools, sra-tools: fixed issue with some runs not working correctly and fixed typo in fasterq-dump command line
+
+
+NCBI Release: SRA Toolkit 2.10.7
+May 22, 2020
+  sratools, sra-tools: fixed issue with some runs not working correctly and fixed typo in fasterq-dump command line
+  kns, ngs-tools, sra-tools: added new header to HTTP requests to communicate VDB version
+
+
 NCBI Release: SRA Toolkit 2.10.6
 May 15, 2020
   align, sra-tools: fixed fetching of reference sequences from cloud
