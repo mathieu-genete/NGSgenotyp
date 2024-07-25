@@ -1,0 +1,59 @@
+#NGSgenotyp V2.0.0
+#number of parallels job by defaut
+MaxParallelsJobs: 20
+
+#allowed_fasta_params: ['Paralog', 'specie', 'grpRef']
+
+#Parameters to define genotyp threshold value
+genotyp_def_ErrorRate: 0.05
+genotyp_alleleProb_THRLD: 0.00001
+
+#parameters for genotyp score calculation
+#logNormal parameters mean (μ) and standard deviation (σ)
+mu : 0.01992734
+sigma : 0.01024804
+
+#exponential distribution
+#here because of distribution, lbda = 1/(1-"expected value") 108.212560
+lbda : 108.212560
+
+#error rate limit for SharedReads xls files
+sharedReads_errorRatelim: 0.1
+
+#Log file
+log_folder : logs
+
+#Pipeline folders V2
+OutFolders:
+  bwt_dirResult: BWT_Results
+  out_splited: FQ_splited
+  out_filtered: FQ_filtered
+  main_results_dir: Results
+  reference_DB_fld: Refs
+  configs_fld: configs
+  bwt_IndexdirResult: Refs/BWT_RefIndexes
+  single_fasta_ref_fld: Refs/Single_Fastas
+  
+#config files name
+index_cfg: bwt2_index.yaml
+KRF_yamlFile: kmerRefFilter_resume.yaml
+readsconfig: complete_readsConfig.yaml
+assembly_config: asm_config.yaml
+
+#reads filenames
+splited_reads: splited_reads.yaml
+
+#results files
+xls_shared_reads: shared_reads.xls
+samtools_stats: samtools_stats.yaml
+SortKey: 'gscore'
+sortOrderReverse: True
+
+
+#Bowtie results
+bwt_IndexdirResult: 'BWT_RefIndexes'
+bwt_build_out: 'bwt-build_out.txt'
+bwt_dirResult: 'BWT_Results'
+
+#Warnings messages list
+Warn_refLen : "Ref. Length"

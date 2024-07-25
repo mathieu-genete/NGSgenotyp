@@ -1,0 +1,78 @@
+{
+  "build": "h166bdaf_1014",
+  "build_number": 1014,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=10.3.0",
+    "libzlib 1.2.11 h166bdaf_1014"
+  ],
+  "extracted_package_dir": "/home/ubuntu/.conda/pkgs/zlib-1.2.11-h166bdaf_1014",
+  "features": "",
+  "files": [
+    "include/zconf.h",
+    "include/zlib.h",
+    "lib/libz.a",
+    "lib/libz.so",
+    "lib/pkgconfig/zlib.pc"
+  ],
+  "fn": "zlib-1.2.11-h166bdaf_1014.tar.bz2",
+  "license": "Zlib",
+  "license_family": "Other",
+  "link": {
+    "source": "/home/ubuntu/.conda/pkgs/zlib-1.2.11-h166bdaf_1014",
+    "type": 1
+  },
+  "md5": "def3b82d1a03aa695bb38ac1dd072ff2",
+  "name": "zlib",
+  "package_tarball_full_path": "/home/ubuntu/.conda/pkgs/zlib-1.2.11-h166bdaf_1014.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/zconf.h",
+        "path_type": "hardlink",
+        "sha256": "77304005ceb5f0d03ad4c37eb8386a10866e4ceeb204f7c3b6599834c7319541",
+        "sha256_in_prefix": "77304005ceb5f0d03ad4c37eb8386a10866e4ceeb204f7c3b6599834c7319541",
+        "size_in_bytes": 16262
+      },
+      {
+        "_path": "include/zlib.h",
+        "path_type": "hardlink",
+        "sha256": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+        "sha256_in_prefix": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+        "size_in_bytes": 96239
+      },
+      {
+        "_path": "lib/libz.a",
+        "path_type": "hardlink",
+        "sha256": "dbbc4ede95b1b93aaa47e2c1e06a347840b19969ef0cc8339237cebe544efce4",
+        "sha256_in_prefix": "dbbc4ede95b1b93aaa47e2c1e06a347840b19969ef0cc8339237cebe544efce4",
+        "size_in_bytes": 150434
+      },
+      {
+        "_path": "lib/libz.so",
+        "path_type": "softlink",
+        "sha256": "14d17481a672298c31e53964dcca3a749960f4eee2da4d268ff55e778e7980b0",
+        "size_in_bytes": 108440
+      },
+      {
+        "_path": "lib/pkgconfig/zlib.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/zlib-split_1648307127480/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
+        "sha256": "8c062049db58832de8272a119d897c4a224cf57e4c0830536bb5fb17daae9451",
+        "sha256_in_prefix": "29a60c6fa05cc9d557120f024855cd1d7a0d5890898841aa43f6ac4ce6644879",
+        "size_in_bytes": 504
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "ccfdb4dcceae8b191ddd4703e7be84eff2ba82b53788d6bb9298e531bae4eaf9",
+  "size": 89692,
+  "subdir": "linux-64",
+  "timestamp": 1648307208744,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/zlib-1.2.11-h166bdaf_1014.tar.bz2",
+  "version": "1.2.11"
+}

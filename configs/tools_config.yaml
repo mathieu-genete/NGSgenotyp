@@ -1,0 +1,31 @@
+#Configuration file for NGSgenotyp tools
+
+#Alignments
+bowtie2:
+  uselocal: True
+  bin_folder: bowtie2-2.4.4-linux-x86_64/
+samtools:
+  uselocal: True
+  bin_folder: samtools-1.13/
+
+#Fastq filtering
+kmerRefFilter:
+  uselocal: True
+  bin_folder: kmerRefFilter-1.5/
+
+#Assembly
+quast:
+  uselocal: True
+  bin_folder: quast-4.5/
+yass:
+  uselocal: True
+  bin_folder: yass_1.14/
+cap3:
+  uselocal: True
+  bin_folder: CAP3/
+muscle:
+  uselocal: True
+  bin_folder: muscle3.8.31/
+phyml:
+  uselocal: True
+  bin_folder: PhyML-3.1/

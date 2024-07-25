@@ -1,0 +1,8 @@
+#define SAMTOOLS_VERSION "1.13"
+#define SAMTOOLS_CC "/eep/softwares/miniconda/bin/x86_64-conda_cos6-linux-gnu-cc"
+#define SAMTOOLS_CPPFLAGS "-DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /eep/softwares/miniconda/include"
+#define SAMTOOLS_CFLAGS "-Wall -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /eep/softwares/miniconda/include"
+#define SAMTOOLS_LDFLAGS "-Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/eep/softwares/miniconda/lib -Wl,-rpath-link,/eep/softwares/miniconda/lib -L/eep/softwares/miniconda/lib"
+#define SAMTOOLS_HTSDIR "htslib-1.13"
+#define SAMTOOLS_LIBS ""
+#define SAMTOOLS_CURSES_LIB "-lncursesw"
