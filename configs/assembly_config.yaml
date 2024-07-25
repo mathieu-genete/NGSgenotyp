@@ -1,0 +1,43 @@
+#NGSgenotyp V2.0.0
+#Assembly configs
+
+OutFolders:
+  assembly_out: Assembly
+  configs_fld: configs
+  
+assembly_config: configs/asm_config.yaml
+
+YASSstep:
+  #dont forget to insert space at the end of yass parameters
+  yass_params: '-E 1e-10 -m 10 -s 6 '
+  Thresholds:
+    #parameters: 'percent_identity', 'alignment_length', 'mismatches', 'gap_openings', 'e-value', 'bit_score', 'ref_length', 'coverage', 'ident_cov', 'contig_depth', 'strand'
+    
+    percent_identity: '>=80.0'
+    coverage: '>=0.5'
+    
+ASMtools:
+  spades:
+    cmdline: "-t {thrds} --careful -k {kmerS} -o . {fastq} > {logf}"
+    options:
+      fwd: "--pe1-1 "
+      rev: "--pe1-2 "
+      single: "--s1 "
+    out_contigs: contigs.fasta
+    kmers: "21,41,81"
+    fastq_sep: " "
+    path: SPAdes-3.11.0/bin/spades.py
+    regex_cov: '(?<=cov_)\d+\.\d+'
+    regex_contig_nbr: '(?<=NODE_)\d+'
+  minia:
+    cmdline: "-nb-cores {thrds} -in {fastq} -out asm_minia > {logf}"
+    options:
+      fwd: ""
+      rev: ""
+      single: ""
+    out_contigs: asm_minia.contigs.fa
+    kmers:
+    fastq_sep: ","
+    path: minia-v3.2.6-bin-Linux/bin/minia
+    regex_cov: '(?<=km:f:)\d+\.\d+'
+    regex_contig_nbr: '\d+'

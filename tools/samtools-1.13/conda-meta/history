@@ -1,0 +1,27 @@
+==> 2022-05-19 09:36:42 <==
+# cmd: /opt/miniconda3/bin/conda create -n samtools-1.13 samtools=1.13
+# conda version: 4.10.3
++bioconda/linux-64::htslib-1.13-h9093b5e_0
++bioconda/linux-64::samtools-1.13-h8c37831_0
++conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge
++conda-forge/linux-64::_openmp_mutex-4.5-2_gnu
++conda-forge/linux-64::bzip2-1.0.8-h7f98852_4
++conda-forge/linux-64::c-ares-1.18.1-h7f98852_0
++conda-forge/linux-64::ca-certificates-2022.5.18-ha878542_0
++conda-forge/linux-64::keyutils-1.6.1-h166bdaf_0
++conda-forge/linux-64::krb5-1.19.3-h3790be6_0
++conda-forge/linux-64::libcurl-7.83.1-h7bff187_0
++conda-forge/linux-64::libdeflate-1.7-h7f98852_5
++conda-forge/linux-64::libedit-3.1.20191231-he28a2e2_2
++conda-forge/linux-64::libev-4.33-h516909a_1
++conda-forge/linux-64::libgcc-ng-12.1.0-h8d9b700_16
++conda-forge/linux-64::libgomp-12.1.0-h8d9b700_16
++conda-forge/linux-64::libnghttp2-1.47.0-h727a467_0
++conda-forge/linux-64::libssh2-1.10.0-ha56f1ee_2
++conda-forge/linux-64::libstdcxx-ng-12.1.0-ha89aaad_16
++conda-forge/linux-64::libzlib-1.2.11-h166bdaf_1014
++conda-forge/linux-64::ncurses-6.2-h58526e2_4
++conda-forge/linux-64::openssl-1.1.1o-h166bdaf_0
++conda-forge/linux-64::xz-5.2.5-h516909a_1
++conda-forge/linux-64::zlib-1.2.11-h166bdaf_1014
+# update specs: ['samtools=1.13']

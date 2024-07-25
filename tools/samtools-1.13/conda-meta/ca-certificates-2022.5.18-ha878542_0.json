@@ -1,0 +1,48 @@
+{
+  "build": "ha878542_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [],
+  "extracted_package_dir": "/home/ubuntu/.conda/pkgs/ca-certificates-2022.5.18-ha878542_0",
+  "features": "",
+  "files": [
+    "ssl/cacert.pem",
+    "ssl/cert.pem"
+  ],
+  "fn": "ca-certificates-2022.5.18-ha878542_0.tar.bz2",
+  "license": "ISC",
+  "link": {
+    "source": "/home/ubuntu/.conda/pkgs/ca-certificates-2022.5.18-ha878542_0",
+    "type": 1
+  },
+  "md5": "197979dd6e328f51ae890cb211220f2f",
+  "name": "ca-certificates",
+  "package_tarball_full_path": "/home/ubuntu/.conda/pkgs/ca-certificates-2022.5.18-ha878542_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "ssl/cacert.pem",
+        "path_type": "hardlink",
+        "sha256": "1f6578be2b486d69e311a9064e69bd703ae6223b27dc8f172592afc9b395cdb8",
+        "sha256_in_prefix": "1f6578be2b486d69e311a9064e69bd703ae6223b27dc8f172592afc9b395cdb8",
+        "size_in_bytes": 276001
+      },
+      {
+        "_path": "ssl/cert.pem",
+        "path_type": "softlink",
+        "sha256": "1f6578be2b486d69e311a9064e69bd703ae6223b27dc8f172592afc9b395cdb8",
+        "size_in_bytes": 276001
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "c2d228f7c7d749bc7f0f608987c4ab143dacc94fb5cf5089a0af35b6e7f138f5",
+  "size": 147948,
+  "subdir": "linux-64",
+  "timestamp": 1652909144489,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/ca-certificates-2022.5.18-ha878542_0.tar.bz2",
+  "version": "2022.5.18"
+}

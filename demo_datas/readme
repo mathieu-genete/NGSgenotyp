@@ -1,8 +1,8 @@
 Datas format:
 
-      sample DRS032518: interlaces data - use the split option
-      sample DRS032528: paired end datas - if split option is set, add ,format=paired,nosplit=True to the reads list file (see below)
-      sample DRS032540: interlaces data - use the split option
+      sample DRS032518: concatenated reads data; need to use the split option - paired end datas => format=paired,split=True
+      sample DRS032528: paired end datas => format=paired
+      sample DRS032540: concatenated reads data; need to use the split option - paired end datas => format=paired,split=True
 
 Expected genotype for all three samples
 
@@ -11,16 +11,17 @@ Expected genotype for all three samples
 	 sample DRS032540: AhSRK02 and AhSRK19
 
 
-format for the reads list file:
+format for the reads list file (by default format=single and split=False):
+       
        /path/to/the/fastq/folder
        sample_name_1,fastq_file_1, fastq_file_2,...
-       sample_name_2,fastq_Fwd_1,fastq_Rev_1,...,fastq_Fwd_n,fastq_Rev_n,format=paired,nosplit=True
+       sample_name_2,fastq_Fwd_1,fastq_Rev_1,...,fastq_Fwd_n,fastq_Rev_n,format=paired,split=False
+       sample_name_2,fastq_concatenated_1,...,format=paired,split=True
        .
        .
        .
 
 You can add a comment, only after the first line. The first line must always contain the absolute path to the fastq files folder.
 
-add "format=paried" when you have paired datas for a sample.
-to prevent files from being split add "nosplit=True"
-When you have paired datas, you should use both parameters at the same time: ....,format=paired,nosplit=True
+add "format=paired" when you have paired datas for a sample.
+If you have concatenated datas, use the 'split' option by adding "split=True"

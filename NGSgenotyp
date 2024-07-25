@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Load conda environment and launch NGSgenotyp
+source $CONDA_PREFIX/etc/profile.d/conda.sh
+scriptDIR="$(dirname "$(readlink "$0")")"
+
+while test "$CONDA_PREFIX"
+do
+    conda deactivate
+done
+
+conda activate NGSgenotyp2_env
+
+python3 $scriptDIR/NGSgenotyp2.py "$@"

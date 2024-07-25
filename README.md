@@ -6,14 +6,16 @@ NGSgenotyp is an efficient pipeline to map raw reads from individual outcrossing
 This pipeline can in principle be adapted to other highly polymorphic loci, given datasets of relevant reference sequences are available.
 
 ## Reference list of dependencies
-NGSgenotyp is written with Python 2.7.5 and requires following packages installed before running:
+NGSgenotyp is written with Python 3 and requires following packages installed before running:
 
-	   biopython - >= 1.68
-	   ete3 - >= 3.0.0b35
-	   matplotlib >= 2.0.0
-	   scipy - >= 0.19.1
-	   numpy - >= 1.13.1
-	   pysam - >= 0.8.2.1
+	   biopython - >= 1.79
+	   ete3 - >= 3.1.2
+	   matplotlib >= 3.4.2
+	   scipy - >= 1.7.0
+	   numpy - >= 1.21.1
+	   pysam - >= 0.16.0.1
+	   pyyaml - >= 5.4.1
+	   psutil - >= 5.9.4
 
 NGSgenotyp also use embeded following tools (no need to install them):
 
@@ -29,7 +31,17 @@ NGSgenotyp also use embeded following tools (no need to install them):
 	   yass - 1.14
 
 ## Installing NGSgenotyp form the git repository
-Create a repository for the pipeline and download it inside:
+### 1a) Create a conda environment
+
+```
+conda create -n NGSgenotyp2_env python=3.9.6 matplotlib biopython scipy numpy pysam ete3 pyyaml xlrd xlwt psutil
+```
+### 1b) Or install Python packages
+```
+biopython, ete3, matplotlib, scipy, numpy, pysam, pyyaml, psutil
+```
+
+### 2) Create a repository for the pipeline and download it inside:
 ```
 wget https://github.com/mathieu-genete/NGSgenotyp/archive/master.zip
 unzip master.zip
@@ -40,322 +52,96 @@ unzip master.zip
 usage: NGSgenotyp [feature]
 
 features list:
-	RapidFastQC     	-- A qualitative tool for quick quality check on fastq raw files (.fastq or .gz)
 
 	help            	-- show this help message
 
-	kmerRefFilter   	-- fastq raw files filtering by kmers dictionnary generated from references sequences
-
-	extractFromFasta	-- extract sequences from multiple haploAsm contigs files
-
-	splitFastq      	-- Split reads of one or more fastq file(s) in 2 files (_R1_RSplit.fastq and _R2_RSplit.fastq)
+	version         	-- program version
 
 	genotyp         	-- execute genotyp pipeline from raw NGS reads data
 
-	graphs_genotyp  	-- draw genotyps score plots in pdf file(s)
-
-	SRAGetDatas     	-- download sequencing data and metadata from SRA number
-
-	chMaxJob        	-- change the number of background jobs launched during genotyp pipeline execution.
-
-	version         	-- program version
-
-	databases       	-- list available databases
-
-	haploAsm        	-- haplotypes assembly from genotyps mapped reads
+	haploAsm        	-- Assembly pipeline from genotyping results
 
 ```
-### NGSgenotyp SRAGetDatas
-```
-usage: NGSgenotyp SRAGetDatas [-h] [-m] [-f] [-s SRAQUERY] [-l LISTOFSRA] -d DESTDIR
-                              [-o CSVOUTPUTFILE] [-x ADDFILTER] [-F FILTERFROMREF]
 
-Get SRA raw files and Metadatas
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -m, --metaDataOnly    get metadata only for given SRA
-  -f, --localSratoolkit
-  -s SRAQUERY, --sraquery SRAQUERY
-                        SRA Query
-  -l LISTOFSRA, --listOfSra LISTOFSRA
-                        text file with list Of SRA Query (one per line)
-  -d DESTDIR, --destdir DESTDIR
-                        destination directory
-  -o CSVOUTPUTFILE, --CSVoutputfile CSVOUTPUTFILE
-                        csv output file
-  -x ADDFILTER, --addfilter ADDFILTER
-                        download data wich correspond to filer: header=value
-  -F FILTERFROMREF, --filterFromRef FILTERFROMREF
-                        directly filter reads while download with reference
-```
-### NGSgenotyp RapidFastQC
-```
-usage: NGSgenotyp RapidFastQC [-h] [-v] [-d OUTPUTDIR] [-n NUMBEROFREADS] -i
-                              [FASTQFILE [FASTQFILE ...]]
-
-A qualitative tool for quick quality check on fastq raw files.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -v, --verbose         show results on output
-  -d OUTPUTDIR, --outputdir OUTPUTDIR
-                        output directory for report
-  -n NUMBEROFREADS, --numberOfReads NUMBEROFREADS
-                        reads sampling. By default 2000
-  -i [FASTQFILE [FASTQFILE ...]], --fastqfile [FASTQFILE [FASTQFILE ...]]
-                        Fastq file(s) to analyse (fastq or gz file). For gz
-                        file, reads number is not available
-```
-### NGSgenotyp kmerRefFilter
-```
-usage: NGSgenotyp kmerRefFilter [-h] [-v] [-prog] [-a] [-d] [-y] [-knf] [-o OUTPUTDIR]
-                               [-k KMERSIZE] [-m MINMATCHKEEPSEQ] [-z MINSHENTROPY]
-                               [-q MAXRATIOAMBIGOUS] [-e [EXTREMITY5P3P]]
-                               [-r [REFERENCESFASTA [REFERENCESFASTA ...]]]
-                               [-i KMERINFILE] [-p KMEROUTPUT]
-                               [-x [EXCLUDEFASTA [EXCLUDEFASTA ...]]] [-maxRD MAXREADS]
-                               [-f [FASTQFILE [FASTQFILE ...]]] [-l FASTQLIST]
-                               [-1 [FWDFASTQ [FWDFASTQ ...]]]
-                               [-2 [REVFASTQ [REVFASTQ ...]]]
-                               [-u [FASTQURL [FASTQURL ...]]] [-u1 FWDFASTQURL]
-                               [-u2 REVFASTQURL] [-ugzip] [-s STREAMINPUT]
-                               [-c FWDREVCHOICE] [-kc KMERFWDREV]
-
-Tool for raw reads kmer-based filtering.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -v, --version         show program's version number and exit
-  -prog, --printprogress
-                        print progession if set
-  -a, --append          if fastq filtered exists, add new reads at the end of
-                        file
-  -d, --ambigousDNA     generate all possible kmers from an ambigous kmer
-  -y, --yamlout         generate yaml output on stdout
-  -knf, --keepNotFiltered
-                        keep not filtered reads in a file _KEEPED.fastq
-  -o OUTPUTDIR, --outputdir OUTPUTDIR
-                        output directory for filtered fastq files
-  -k KMERSIZE, --kmersize KMERSIZE
-                        size for kmers - default=20
-  -m MINMATCHKEEPSEQ, --minMatchKeepSeq MINMATCHKEEPSEQ
-                        minimum number of ref reads matched to keep fastq read
-                        -- default=1
-  -z MINSHENTROPY, --minShEntropy MINSHENTROPY
-                        minimum Shannon Entropy for kmers (0 to 2.0)--
-                        defaut=0.8
-  -q MAXRATIOAMBIGOUS, --maxratioAmbigous MAXRATIOAMBIGOUS
-                        maximum ambigous bases accepted in kmers in % --
-                        defaut=0.2
-  -e [EXTREMITY5P3P], --extremity5p3p [EXTREMITY5P3P]
-                        compare 5' and 3' read extremity only -- nbr of bases
-                        to test from extremities default=1
-  -r [REFERENCESFASTA [REFERENCESFASTA ...]], --referencesfasta [REFERENCESFASTA [REFERENCESFASTA ...]]
-                        fasta files with references sequences
-  -i KMERINFILE, --kmerinfile KMERINFILE
-                        load kmer dictionary from a saved dictionary file
-  -p KMEROUTPUT, --kmeroutput KMEROUTPUT
-                        only save kmer dictionary in a file and exit without
-                        filtering
-  -x [EXCLUDEFASTA [EXCLUDEFASTA ...]], --excludefasta [EXCLUDEFASTA [EXCLUDEFASTA ...]]
-                        fasta files with sequences to exclude
-  -maxRD MAXREADS, --maxreads MAXREADS
-                        maximum number of read to analyze
-  -f [FASTQFILE [FASTQFILE ...]], --fastqfile [FASTQFILE [FASTQFILE ...]]
-                        Fastq to filter (fastq, gz, bz2)
-  -l FASTQLIST, --fastqlist FASTQLIST
-                        text file with all fastq (fastq, gz, bz2) path -- 1
-                        per line
-  -1 [FWDFASTQ [FWDFASTQ ...]], --fwdfastq [FWDFASTQ [FWDFASTQ ...]]
-                        forward Fastq to filter (fastq, gz, bz2) respect file
-                        order with reverse files
-  -2 [REVFASTQ [REVFASTQ ...]], --revfastq [REVFASTQ [REVFASTQ ...]]
-                        reverse Fastq to filter (fastq, gz, bz2) respect file
-                        order with forward files
-  -u [FASTQURL [FASTQURL ...]], --fastqurl [FASTQURL [FASTQURL ...]]
-                        url to Fastq to filter (fastq, gz)
-  -u1 FWDFASTQURL, --fwdfastqurl FWDFASTQURL
-                        url to forward Fastq to filter (fastq, gz)
-  -u2 REVFASTQURL, --revfastqurl REVFASTQURL
-                        url to reverse Fastq to filter (fastq, gz)
-  -ugzip, --urlgzip     indicate that url's given in -u or in -u1 and -u2 are
-                        gz files
-  -s STREAMINPUT, --streamInput STREAMINPUT
-                        use stdind as input - specify output filename
-  -c FWDREVCHOICE, --fwdRevChoice FWDREVCHOICE
-                        for paired filtering: filtering on forward reads only
-                        (FWD), reverse reads only (REV) or both (BOTH - by
-                        default)
-  -kc KMERFWDREV, --kmerFwdRev KMERFWDREV
-                        kmders dictionary generation: use forward kmers only
-                        (FWD), reverse kmers only (REV) or both (BOTH - by
-                        default)
-```
 ### NGSgenotyp genotyp
 ```
-usage: NGSgenotyp genotyp [-h] [-V] [-v] [-f] [-k] [-ks KMERSIZE] [-pdf] [-q] [-s] [-sh]
-               [-r REGION REGION] [-T MAXPARALLELSJOBS] [-e ERRORATETHRLD]
-               [-S [SPLITREADS]] -o OUTFOLDER -i READSINFO -d REFDATABASE
-               [-x REFEXCLUDE] [--config CONFIG]
+usage: genotyp [-h] [-V] [-v] [-f] [-k] [-ks KMERSIZE] [-m MISMATCHTHRLD] [-pdf] [-s] [-sh] [-sm] [-kid] [-T MAXPARALLELSJOBS]
+               [-e ERRORATETHRLD] [-M READSMAPPEDTHRLD] [-A ALIGNMENTMODE] [-S ALIGNMENTSENSITIVITY] -o OUTFOLDER -i READSINFO -d REFDATABASE
+               [-x REFEXCLUDE] [-on OUTNBSHEETPERXLS]
 
-genotyping pipeline
+NGSgenotyp v2 -- genotyping pipeline
 
 optional arguments:
   -h, --help            show this help message and exit
   -V, --verbose         full verbose
   -v, --tinyverbose     verbose
   -f, --force
-  -k, --kmerfilter      filtering fastq raw data with kmers dictionnary
-                        generated from references sequences. Should be use if
-                        your input fastq are not yet filtered (significatively
-                        reduces compute time)
+  -k, --kmerfilter      filtering fastq raw data with kmers dictionnary generated from references sequences. Should be use if your input
+                        fastq are not yet filtered (significatively reduces compute time)
   -ks KMERSIZE, --kmerSize KMERSIZE
                         kmer size for kmer filtering - default = 20
+  -m MISMATCHTHRLD, --mismatchthrld MISMATCHTHRLD
+                        mismatch threshold on aligned reads (remove reads whose mitmatch value is greater than threshold)
   -pdf, --pdfreports    generate PDF reports (can take long time)
-  -q, --samplesqc       samples quality control only
   -s, --statsonly       do stats only
   -sh, --sharedreads    generates shared reads file
-  -r REGION REGION, --region REGION REGION
-                        Region to analyse in sequences <min> <max>
+  -sm, --statsmismatchthrld
+                        do stats with filtered bam with mismatchthrld value
+  -kid, --keepindel     force keep reads with insertion/deletion during bam filtering step
   -T MAXPARALLELSJOBS, --MaxParallelsJobs MAXPARALLELSJOBS
-                        max number of parallels jobs to run - default= see
-                        config file
+                        max number of parallels jobs to run - default= see config file
   -e ERRORATETHRLD, --ErroRateThrld ERRORATETHRLD
                         Force error rate threshold - default= see config file
-  -S [SPLITREADS], --splitreads [SPLITREADS]
-                        split fastq files reads in half use this option if
-                        reads are concatenated - add [nosplit=True] parameter
-                        in reads information file for sample not need to be
-                        split
+  -M READSMAPPEDTHRLD, --readsMappedThrld READSMAPPEDTHRLD
+                        Take into account only alignments with 'reads mapped' greater then threshold (default = 10)
+  -A ALIGNMENTMODE, --alignmentMode ALIGNMENTMODE
+                        bowtie2 reads alignments set to local or end-to-end (default = end-to-end)
+  -S ALIGNMENTSENSITIVITY, --alignmentSensitivity ALIGNMENTSENSITIVITY
+                        bowtie2 reads alignments sensitivity set to very-fast, fast, sensitive or very-sensitive (default = sensitive)
   -o OUTFOLDER, --outfolder OUTFOLDER
                         destination folder (create it if not exist)
   -i READSINFO, --readsinfo READSINFO
-                        Configuration file with reads informations if reads
-                        ares paired add [format=paired] parameter
+                        Configuration file with reads informations if reads ares paired add [format=paired] parameter
   -d REFDATABASE, --refdatabase REFDATABASE
                         reference database in fasta format (see documentation)
   -x REFEXCLUDE, --refexclude REFEXCLUDE
-                        simple text file contains for each line, references
-                        names to exclude for current analysis
-  --config CONFIG       config file
-```
-### NGSgenotyp graphs_genotyp
-```
-usage: NGSgenotyp graphs_genotyp [-h] [-v] [-g] [-S] -s SAMTVIEWSTATS
-                                  [-d GRAPHSPERDOCUMENT] -o OUTPDF
-                                  [-f [REFFILTERNAME [REFFILTERNAME ...]]]
-
-graphic for genotyp
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -v, --version         show program's version number and exit
-  -g, --sortbygroup     sort by group
-  -S, --ShowScore       print genotyp scores on plots
-  -s SAMTVIEWSTATS, --samtviewstats SAMTVIEWSTATS
-                        samview_stats.p file to analyse
-  -d GRAPHSPERDOCUMENT, --graphsPerDocument GRAPHSPERDOCUMENT
-                        number of graphs per documents (15 by default)
-  -o OUTPDF, --outpdf OUTPDF
-                        out pdf filename
-  -f [REFFILTERNAME [REFFILTERNAME ...]], --refFilterName [REFFILTERNAME [REFFILTERNAME ...]]
-                        filter for reference
+                        simple text file contains for each line, references names to exclude for current analysis
+  -on OUTNBSHEETPERXLS, --outnbsheetperxls OUTNBSHEETPERXLS
+                        maximum sheet number by output xls files (default = 15)
 ```
 ### NGSgenotyp haploAsm
 ```
-usage: NGSgenotyp haploAsm [-h] [-v] [-f] [-i] [-p] [-d] [-x] [-y] [-yx] [-t THREADED]
-                [-st SPADESTHREADS] -db REFDATABASE [-k KMERSIZE] -o OUTPUTDIR
-                [-l INDIVLIST] [-m CONTIGMINLEN] [-M CONTIGMAXLEN]
-                [-mdc MAXDISTCONTIGS] -filFQ FILTEREDFQ -s SAMVIEWSTATS
-                [--config CONFIG]
+usage: haploAsm [-h] [-V] [-v] [-f] [-p] [-y] [-x] [-T THREADED] [-st SPADESTHREADS] [-l INDIVLIST] [-m CONTIGMINLEN] [-M CONTIGMAXLEN] -g
+                GENOTYPFOLDER -s ASMSUFFIX [-a ASSEMBLER]
 
 NGSgenotyp Haplotyp Assembly
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --version         show program's version number and exit
-  -f, --force           force
-  -i, --concatenated    orignals reads files with concatenated forward and
-                        reverse paired-end reads
-  -p, --paired          orignals reads files with paired-end reads forward and
-                        reverse files distincts
-  -d, --diploid         use with diploid highly polymorphic genomes
-  -x, --excludeParalogs
-                        exclude paralogs from yass results
-  -y, --phylotree       generate phylogenetic tree
-  -yx, --excludeParaPhylo
-                        exclude paralogs from phylogeny trees
-  -t THREADED, --threaded THREADED
-                        define threads number used for phylogeny. By default
-                        10% of cpu numbers
+  -V, --verbose         full verbose
+  -v, --tinyverbose     verbose
+  -f, --force
+  -p, --paired          orignals reads files with paired-end reads forward and reverse files distincts
+  -y, --includeParalogsyass
+                        include paralogs for yass analyse
+  -x, --includeParalogstree
+                        include paralogs for phylogeny
+  -T THREADED, --threaded THREADED
+                        define threads number used for phylogeny. By default 8 cpus
   -st SPADESTHREADS, --spadesThreads SPADESTHREADS
-                        define threads number used for spades. By default 50%
-                        of cpu numbers
-  -db REFDATABASE, --refdatabase REFDATABASE
-                        reference database used for genotyping
-  -k KMERSIZE, --kmerSize KMERSIZE
-                        comma-separated list of k-mer sizes for Spades (must
-                        be odd and less then 128)
-  -o OUTPUTDIR, --outputdir OUTPUTDIR
-                        output directory for assembly
+                        define threads number used for spades. By default 50% of cpu numbers
   -l INDIVLIST, --indivlist INDIVLIST
                         list of haplotype name for assembly
   -m CONTIGMINLEN, --contigminlen CONTIGMINLEN
-                        keep contigs up from minimum lenght
+                        keep contigs up from minimum lenght (default=500)
   -M CONTIGMAXLEN, --contigmaxlen CONTIGMAXLEN
                         keep contigs down to maximum lenght
-  -mdc MAXDISTCONTIGS, --maxDistContigs MAXDISTCONTIGS
-                        contig maximum distance from nearest node - default =
-                        see maxDistContigs value in configuration file
-  -filFQ FILTEREDFQ, --filteredFQ FILTEREDFQ
-                        Configuration file with filtered reads informations
-  -s SAMVIEWSTATS, --samviewstats SAMVIEWSTATS
-                        samview_stats file from genotyp results
-  --config CONFIG       config file
-```
-### NGSgenotyp extractFromFasta
-```
-usage: NGSgenotyp extractFromFasta [-h] [-v] -f INFASTASPATH -o OUTFOLDER -l CONSTIGSLIST
-
-Extract sequences from multiple NGSgenotyp haploAsm contigs files
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -v, --version         show program's version number and exit
-  -f INFASTASPATH, --infastaspath INFASTASPATH
-                        haploAsm results folder
-  -o OUTFOLDER, --outfolder OUTFOLDER
-                        output folder for fasta files
-  -l CONSTIGSLIST, --constigslist CONSTIGSLIST
-                        contigs list to extract in text format -- sample for a
-                        line: out_fasta_filename_(without
-                        exention),contig_Id_1,contig_Id_2,...,contig_Id_n
-```
-### NGSgenotyp chMaxJob
-```
-usage: NGSgenotyp chMaxJob [-h] [-u UTILSPARAM] -T MAXPARALLELSJOBS
-
-Change Max parallels number of jobs runing
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -u UTILSPARAM, --utilsparam UTILSPARAM
-                        'XXXX_utils_params' file
-  -T MAXPARALLELSJOBS, --MaxParallelsJobs MAXPARALLELSJOBS
-                        max number of parallels jobs to run
-```
-### NGSgenotyp databases
-```
-usage: NGSgenotyp databases [-h] [--config CONFIG] [-r REMOVEDB]
-
-database list
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --config CONFIG       config file
-  -r REMOVEDB, --removedb REMOVEDB
-                        database to remove
+  -g GENOTYPFOLDER, --genotypfolder GENOTYPFOLDER
+                        genotyping folder
+  -s ASMSUFFIX, --asmsuffix ASMSUFFIX
+                        assembly folder suffix
+  -a ASSEMBLER, --assembler ASSEMBLER
+                        Program used to assemble alleles (spades,minia) defaut: spades
 ```
 ---
 
