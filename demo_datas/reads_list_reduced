@@ -1,4 +1,0 @@
-<absolute path of fastq raw reads folder here>
-DRS032518,DRR031891_reduced.fastq.gz,DRR031892_reduced.fastq.gz
-DRS032528,DRR031908_reduced_R1.fastq.gz,DRR031908_reduced_R2.fastq.gz,format=paired,nosplit=True
-DRS032540,DRR031927_reduced.fastq.gz,DRR031926_reduced.fastq.gz
